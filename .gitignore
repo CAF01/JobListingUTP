@@ -4,3 +4,4 @@ obj/
 *.cache
 JobList/.vs/JobList/v17/.suo
 JobList/.vs/JobList/FileContentIndex/read.lock
+JobList/.vs/JobList/config/applicationhost.config
