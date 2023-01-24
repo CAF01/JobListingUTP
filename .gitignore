@@ -1,0 +1,6 @@
+bin/
+obj/
+*.vsidx
+*.cache
+JobList/.vs/JobList/v17/.suo
+JobList/.vs/JobList/FileContentIndex/read.lock
