@@ -59,5 +59,14 @@ namespace JobList.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DefaultConnection.
+        /// </summary>
+        public static string DefaultConnection {
+            get {
+                return ResourceManager.GetString("DefaultConnection", resourceCulture);
+            }
+        }
     }
 }

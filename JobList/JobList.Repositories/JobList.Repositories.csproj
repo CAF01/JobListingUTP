@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JobList.Entities\JobList.Entities.csproj" />
+    <ProjectReference Include="..\JobList.Resources\JobList.Resources.csproj" />
+  </ItemGroup>
+
 </Project>
