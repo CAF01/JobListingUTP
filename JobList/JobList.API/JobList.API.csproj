@@ -9,10 +9,11 @@
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.32" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\JobList.Services\JobList.Services.csproj" />
   </ItemGroup>
 
 </Project>
