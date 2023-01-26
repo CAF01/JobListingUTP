@@ -59,5 +59,194 @@ namespace JobList.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _area.
+        /// </summary>
+        public static string Area {
+            get {
+                return ResourceManager.GetString("Area", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _descripcion.
+        /// </summary>
+        public static string Descripcion {
+            get {
+                return ResourceManager.GetString("Descripcion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idDivision.
+        /// </summary>
+        public static string idDivision {
+            get {
+                return ResourceManager.GetString("idDivision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevaArea.
+        /// </summary>
+        public static string idNuevaArea {
+            get {
+                return ResourceManager.GetString("idNuevaArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevaDivision.
+        /// </summary>
+        public static string idNuevaDivision {
+            get {
+                return ResourceManager.GetString("idNuevaDivision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevoAdministrador.
+        /// </summary>
+        public static string idNuevoAdministrador {
+            get {
+                return ResourceManager.GetString("idNuevoAdministrador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevoEstadoOferta.
+        /// </summary>
+        public static string idNuevoEstadoOferta {
+            get {
+                return ResourceManager.GetString("idNuevoEstadoOferta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevoEstadoPostulacion.
+        /// </summary>
+        public static string idNuevoEstadoPostulacion {
+            get {
+                return ResourceManager.GetString("idNuevoEstadoPostulacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevoUsuario.
+        /// </summary>
+        public static string idNuevoUsuario {
+            get {
+                return ResourceManager.GetString("idNuevoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idTipo.
+        /// </summary>
+        public static string idTipo {
+            get {
+                return ResourceManager.GetString("idTipo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idUsuario.
+        /// </summary>
+        public static string idUsuario {
+            get {
+                return ResourceManager.GetString("idUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _nombre.
+        /// </summary>
+        public static string Nombre {
+            get {
+                return ResourceManager.GetString("Nombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _opcion.
+        /// </summary>
+        public static string Opcion {
+            get {
+                return ResourceManager.GetString("Opcion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_adminAreasUTP.
+        /// </summary>
+        public static string sp_adminAreasUTP {
+            get {
+                return ResourceManager.GetString("sp_adminAreasUTP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_adminDivisionesUTP.
+        /// </summary>
+        public static string sp_adminDivisionesUTP {
+            get {
+                return ResourceManager.GetString("sp_adminDivisionesUTP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_adminEstadosOferta.
+        /// </summary>
+        public static string sp_adminEstadosOferta {
+            get {
+                return ResourceManager.GetString("sp_adminEstadosOferta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_adminEstadosPostulacion.
+        /// </summary>
+        public static string sp_adminEstadosPostulacion {
+            get {
+                return ResourceManager.GetString("sp_adminEstadosPostulacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Administrador_Insertar.
+        /// </summary>
+        public static string sp_Administrador_Insertar {
+            get {
+                return ResourceManager.GetString("sp_Administrador_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Usuario_Insertar.
+        /// </summary>
+        public static string sp_Usuario_Insertar {
+            get {
+                return ResourceManager.GetString("sp_Usuario_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _usuario.
+        /// </summary>
+        public static string Usuario {
+            get {
+                return ResourceManager.GetString("Usuario", resourceCulture);
+            }
+        }
     }
 }

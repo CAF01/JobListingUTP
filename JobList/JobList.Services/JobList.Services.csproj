@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JobList.Entities\JobList.Entities.csproj" />
+    <ProjectReference Include="..\JobList.Framework\JobList.Framework.csproj" />
+    <ProjectReference Include="..\JobList.Repositories\JobList.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>
