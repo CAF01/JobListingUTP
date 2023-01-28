@@ -61,11 +61,29 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _apellido.
+        /// </summary>
+        public static string Apellido {
+            get {
+                return ResourceManager.GetString("Apellido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _area.
         /// </summary>
         public static string Area {
             get {
                 return ResourceManager.GetString("Area", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _ConocimientoID.
+        /// </summary>
+        public static string ConocimientoID {
+            get {
+                return ResourceManager.GetString("ConocimientoID", resourceCulture);
             }
         }
         
@@ -79,11 +97,38 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _idArea.
+        /// </summary>
+        public static string idArea {
+            get {
+                return ResourceManager.GetString("idArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idConocimiento.
+        /// </summary>
+        public static string idConocimiento {
+            get {
+                return ResourceManager.GetString("idConocimiento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _idDivision.
         /// </summary>
         public static string idDivision {
             get {
                 return ResourceManager.GetString("idDivision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idHabilidad.
+        /// </summary>
+        public static string idHabilidad {
+            get {
+                return ResourceManager.GetString("idHabilidad", resourceCulture);
             }
         }
         
@@ -106,11 +151,47 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _idNuevaHabilidad.
+        /// </summary>
+        public static string idNuevaHabilidad {
+            get {
+                return ResourceManager.GetString("idNuevaHabilidad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _idNuevoAdministrador.
         /// </summary>
         public static string idNuevoAdministrador {
             get {
                 return ResourceManager.GetString("idNuevoAdministrador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevoConocimiento.
+        /// </summary>
+        public static string idNuevoConocimiento {
+            get {
+                return ResourceManager.GetString("idNuevoConocimiento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevoDocente.
+        /// </summary>
+        public static string idNuevoDocente {
+            get {
+                return ResourceManager.GetString("idNuevoDocente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevoEgresado.
+        /// </summary>
+        public static string idNuevoEgresado {
+            get {
+                return ResourceManager.GetString("idNuevoEgresado", resourceCulture);
             }
         }
         
@@ -160,11 +241,29 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _idUsuarioEgresado.
+        /// </summary>
+        public static string idUsuarioEgresado {
+            get {
+                return ResourceManager.GetString("idUsuarioEgresado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _nombre.
         /// </summary>
         public static string Nombre {
             get {
                 return ResourceManager.GetString("Nombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _nuevaDescripcion.
+        /// </summary>
+        public static string NuevaDescripcion {
+            get {
+                return ResourceManager.GetString("NuevaDescripcion", resourceCulture);
             }
         }
         
@@ -228,6 +327,96 @@ namespace JobList.Resources {
         public static string sp_Administrador_Insertar {
             get {
                 return ResourceManager.GetString("sp_Administrador_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Conocimiento_Actualizar.
+        /// </summary>
+        public static string sp_Conocimiento_Actualizar {
+            get {
+                return ResourceManager.GetString("sp_Conocimiento_Actualizar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Conocimiento_Eliminar.
+        /// </summary>
+        public static string sp_Conocimiento_Eliminar {
+            get {
+                return ResourceManager.GetString("sp_Conocimiento_Eliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Conocimiento_Insertar.
+        /// </summary>
+        public static string sp_Conocimiento_Insertar {
+            get {
+                return ResourceManager.GetString("sp_Conocimiento_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_ConocimientosEgresado_Insertar.
+        /// </summary>
+        public static string sp_ConocimientosEgresado_Insertar {
+            get {
+                return ResourceManager.GetString("sp_ConocimientosEgresado_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Docentes_Insertar.
+        /// </summary>
+        public static string sp_Docentes_Insertar {
+            get {
+                return ResourceManager.GetString("sp_Docentes_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Egresados_Agregar.
+        /// </summary>
+        public static string sp_Egresados_Agregar {
+            get {
+                return ResourceManager.GetString("sp_Egresados_Agregar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Habilidad_Actualizar.
+        /// </summary>
+        public static string sp_Habilidad_Actualizar {
+            get {
+                return ResourceManager.GetString("sp_Habilidad_Actualizar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Habilidad_Eliminar.
+        /// </summary>
+        public static string sp_Habilidad_Eliminar {
+            get {
+                return ResourceManager.GetString("sp_Habilidad_Eliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Habilidad_Insertar.
+        /// </summary>
+        public static string sp_Habilidad_Insertar {
+            get {
+                return ResourceManager.GetString("sp_Habilidad_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_HabilidadesEgresado_Insertar.
+        /// </summary>
+        public static string sp_HabilidadesEgresado_Insertar {
+            get {
+                return ResourceManager.GetString("sp_HabilidadesEgresado_Insertar", resourceCulture);
             }
         }
         
