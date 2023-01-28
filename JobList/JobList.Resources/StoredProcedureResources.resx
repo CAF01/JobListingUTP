@@ -117,14 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Apellido" xml:space="preserve">
+    <value>_apellido</value>
+  </data>
   <data name="Area" xml:space="preserve">
     <value>_area</value>
+  </data>
+  <data name="ConocimientoID" xml:space="preserve">
+    <value>_ConocimientoID</value>
   </data>
   <data name="Descripcion" xml:space="preserve">
     <value>_descripcion</value>
   </data>
+  <data name="idArea" xml:space="preserve">
+    <value>_idArea</value>
+  </data>
+  <data name="idConocimiento" xml:space="preserve">
+    <value>_idConocimiento</value>
+  </data>
   <data name="idDivision" xml:space="preserve">
     <value>_idDivision</value>
+  </data>
+  <data name="idHabilidad" xml:space="preserve">
+    <value>_idHabilidad</value>
   </data>
   <data name="idNuevaArea" xml:space="preserve">
     <value>_idNuevaArea</value>
@@ -132,8 +147,20 @@
   <data name="idNuevaDivision" xml:space="preserve">
     <value>_idNuevaDivision</value>
   </data>
+  <data name="idNuevaHabilidad" xml:space="preserve">
+    <value>_idNuevaHabilidad</value>
+  </data>
   <data name="idNuevoAdministrador" xml:space="preserve">
     <value>_idNuevoAdministrador</value>
+  </data>
+  <data name="idNuevoConocimiento" xml:space="preserve">
+    <value>_idNuevoConocimiento</value>
+  </data>
+  <data name="idNuevoDocente" xml:space="preserve">
+    <value>_idNuevoDocente</value>
+  </data>
+  <data name="idNuevoEgresado" xml:space="preserve">
+    <value>_idNuevoEgresado</value>
   </data>
   <data name="idNuevoEstadoOferta" xml:space="preserve">
     <value>_idNuevoEstadoOferta</value>
@@ -150,8 +177,14 @@
   <data name="idUsuario" xml:space="preserve">
     <value>_idUsuario</value>
   </data>
+  <data name="idUsuarioEgresado" xml:space="preserve">
+    <value>_idUsuarioEgresado</value>
+  </data>
   <data name="Nombre" xml:space="preserve">
     <value>_nombre</value>
+  </data>
+  <data name="NuevaDescripcion" xml:space="preserve">
+    <value>_nuevaDescripcion</value>
   </data>
   <data name="Opcion" xml:space="preserve">
     <value>_opcion</value>
@@ -173,6 +206,36 @@
   </data>
   <data name="sp_Administrador_Insertar" xml:space="preserve">
     <value>sp_Administrador_Insertar</value>
+  </data>
+  <data name="sp_ConocimientosEgresado_Insertar" xml:space="preserve">
+    <value>sp_ConocimientosEgresado_Insertar</value>
+  </data>
+  <data name="sp_Conocimiento_Actualizar" xml:space="preserve">
+    <value>sp_Conocimiento_Actualizar</value>
+  </data>
+  <data name="sp_Conocimiento_Eliminar" xml:space="preserve">
+    <value>sp_Conocimiento_Eliminar</value>
+  </data>
+  <data name="sp_Conocimiento_Insertar" xml:space="preserve">
+    <value>sp_Conocimiento_Insertar</value>
+  </data>
+  <data name="sp_Docentes_Insertar" xml:space="preserve">
+    <value>sp_Docentes_Insertar</value>
+  </data>
+  <data name="sp_Egresados_Agregar" xml:space="preserve">
+    <value>sp_Egresados_Agregar</value>
+  </data>
+  <data name="sp_HabilidadesEgresado_Insertar" xml:space="preserve">
+    <value>sp_HabilidadesEgresado_Insertar</value>
+  </data>
+  <data name="sp_Habilidad_Actualizar" xml:space="preserve">
+    <value>sp_Habilidad_Actualizar</value>
+  </data>
+  <data name="sp_Habilidad_Eliminar" xml:space="preserve">
+    <value>sp_Habilidad_Eliminar</value>
+  </data>
+  <data name="sp_Habilidad_Insertar" xml:space="preserve">
+    <value>sp_Habilidad_Insertar</value>
   </data>
   <data name="sp_Usuario_Insertar" xml:space="preserve">
     <value>sp_Usuario_Insertar</value>

@@ -33,6 +33,14 @@ builder.Services.AddScoped<ICuentaAdministradorService, CuentaAdministradorServi
 builder.Services.AddScoped<ICuentaAdministradorRepository, CuentaAdministradorRepository>();
 builder.Services.AddScoped<IEstadosPostulacionService, EstadosPostulacionService>();
 builder.Services.AddScoped<IEstadosPostulacionRepository, EstadosPostulacionRepository>();
+builder.Services.AddScoped<IHabilidadesService, HabilidadesService>();
+builder.Services.AddScoped<IHabilidadesRepository, HabilidadesRepository>();
+builder.Services.AddScoped<IConocimientosService, ConocimientosService>();
+builder.Services.AddScoped<IConocimientosRepository, ConocimientosRepository>();
+builder.Services.AddScoped<ICuentaDocenteService, CuentaDocenteService>();
+builder.Services.AddScoped<ICuentaDocenteRepository, CuentaDocenteRepository>();
+builder.Services.AddScoped<ICuentaEgresadoService, CuentaEgresadoService>();
+builder.Services.AddScoped<ICuentaEgresadoRepository, CuentaEgresadoRepository>();
 
 
 
