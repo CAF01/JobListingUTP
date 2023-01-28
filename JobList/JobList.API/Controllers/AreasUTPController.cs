@@ -18,7 +18,7 @@ namespace JobList.API.Controllers
             this.areasUTPService = areasUTP;
         }
 
-        [HttpPost]
+        [HttpPost("new-division")]
         public async Task<IActionResult> PostDivision(insertDivisionRequest request)
         {
             var result = await this.areasUTPService.addDivision(request);
