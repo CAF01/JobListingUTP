@@ -17,6 +17,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>StoredProcedureResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="ValidationResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ValidationResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +32,10 @@
     <EmbeddedResource Update="StoredProcedureResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StoredProcedureResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ValidationResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

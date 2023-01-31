@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JobList.Entities\JobList.Entities.csproj" />
     <ProjectReference Include="..\JobList.Framework\JobList.Framework.csproj" />
     <ProjectReference Include="..\JobList.Repositories\JobList.Repositories.csproj" />

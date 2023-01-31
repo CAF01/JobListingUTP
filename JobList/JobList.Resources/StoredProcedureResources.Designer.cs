@@ -421,6 +421,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_LoginAdmin.
+        /// </summary>
+        public static string sp_LoginAdmin {
+            get {
+                return ResourceManager.GetString("sp_LoginAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_Usuario_Insertar.
         /// </summary>
         public static string sp_Usuario_Insertar {

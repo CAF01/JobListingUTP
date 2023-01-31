@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JobList.Entities\JobList.Entities.csproj" />
+    <ProjectReference Include="..\JobList.Resources\JobList.Resources.csproj" />
+  </ItemGroup>
+
 </Project>

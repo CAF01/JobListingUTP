@@ -237,6 +237,9 @@
   <data name="sp_Habilidad_Insertar" xml:space="preserve">
     <value>sp_Habilidad_Insertar</value>
   </data>
+  <data name="sp_LoginAdmin" xml:space="preserve">
+    <value>sp_LoginAdmin</value>
+  </data>
   <data name="sp_Usuario_Insertar" xml:space="preserve">
     <value>sp_Usuario_Insertar</value>
   </data>
