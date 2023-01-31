@@ -5,7 +5,7 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertAreaValidation : AbstractValidator<insertAreaRequest>
+    public class insertAreaValidation : AbstractValidator<InsertAreaRequest>
     {
         public insertAreaValidation()
         {

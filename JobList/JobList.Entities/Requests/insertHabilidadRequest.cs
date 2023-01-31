@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace JobList.Entities.Requests
+﻿namespace JobList.Entities.Requests
 {
-    public class insertHabilidadRequest
-    {
-        public string descripcion { get; set; }
+    using JobList.Entities.Responses;
+    using MediatR;
 
-        public int idNuevaHabilidad { get; set; }
+    public class InsertHabilidadRequest : IRequest<InsertHabilidadResponse>
+    {
+        public string descripcion { get; set; } = default!;
     }
 }

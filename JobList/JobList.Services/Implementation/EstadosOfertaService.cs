@@ -13,7 +13,7 @@
         {
             this.estadosOfertaRepository = estadosOfertaRepository;
         }
-        public async Task<bool> addEstadoOferta(insertEstadoOfertaRequest request)
+        public async Task<int> addEstadoOferta(InsertEstadoOfertaRequest request)
         {
             return await this.estadosOfertaRepository.addEstadoOferta(request);
         }

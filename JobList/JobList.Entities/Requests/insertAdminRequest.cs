@@ -1,20 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace JobList.Entities.Requests
+﻿namespace JobList.Entities.Requests
 {
-    public class insertAdminRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class InsertAdminRequest : IRequest<InsertAdminResponse>
     {
-   
-        public string usuario { get; set; }
-
-   
-        public string password { get; set; }
-
-     
-        public string nombre { get; set; }
-
+        public string usuario { get; set; } = default!;
+        public string password { get; set; } = default!;
+        public string nombre { get; set; } = default!;
         public readonly int idTipo = 5;
-        public int idNuevoUsuario { get; set; }
-        public int idNuevoAdministrador { get; set; }
     }
 }

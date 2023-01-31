@@ -1,6 +1,6 @@
 ﻿namespace JobList.Entities.Models
 {
-    public class adminInfo
+    public class AdminInfo
     {
         public int idUsuario { get; set; }
         public string nombre { get; set; }

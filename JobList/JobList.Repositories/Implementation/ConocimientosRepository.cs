@@ -19,14 +19,14 @@
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
-        public async Task<bool> addConocimiento(insertConocimientoRequest request)
+        public async Task<int> addConocimiento(InsertConocimientoRequest request)
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.Descripcion, request.descripcion);
-                parameters.Add(StoredProcedureResources.idNuevoConocimiento, request.idNuevoConocimiento, direction: ParameterDirection.Output);
+                parameters.Add(StoredProcedureResources.idNuevoConocimiento, direction: ParameterDirection.Output);
 
                 await dbConnection.ExecuteAsync(
                            sql: StoredProcedureResources.sp_Conocimiento_Insertar,
@@ -35,12 +35,12 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                request.idNuevoConocimiento = parameters.Get<int>(StoredProcedureResources.idNuevoConocimiento);
-                return request.idNuevoConocimiento > 0;
+                var result = parameters.Get<int>(StoredProcedureResources.idNuevoConocimiento);
+                return result;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {
@@ -48,7 +48,7 @@
             }
         }
 
-        public async Task<bool> deleteConocimiento(deleteConocimientoRequest request)
+        public async Task<bool> deleteConocimiento(DeleteConocimientoRequest request)
         {
             try
             {
@@ -75,7 +75,7 @@
             }
         }
 
-        public async Task<bool> updateConocimiento(updateConocimientoRequest request)
+        public async Task<bool> updateConocimiento(UpdateConocimientoRequest request)
         {
             try
             {

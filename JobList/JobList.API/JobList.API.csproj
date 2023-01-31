@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JobList.Handlers\JobList.Handlers.csproj" />
     <ProjectReference Include="..\JobList.Services\JobList.Services.csproj" />
   </ItemGroup>
 

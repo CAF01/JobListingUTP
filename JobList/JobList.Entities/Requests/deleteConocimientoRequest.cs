@@ -1,6 +1,8 @@
 ﻿namespace JobList.Entities.Requests
 {
-    public class deleteConocimientoRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class DeleteConocimientoRequest : IRequest<DeleteConocimientoResponse>
     {
         public int idConocimiento { get; set; }
     }

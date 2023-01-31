@@ -2,7 +2,7 @@
 {
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
-    using JobList.Services.Service;
+    using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
 
@@ -11,31 +11,31 @@
     [ApiController]
     public class HabilidadesController : ControllerBase
     {
-        private readonly IHabilidadesService habilidadesService;
+        private readonly IMediator mediator;
 
-        public HabilidadesController(IHabilidadesService habilidades)
+        public HabilidadesController(IMediator mediator)
         {
-            this.habilidadesService = habilidades;
+            this.mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostHabilidad(insertHabilidadRequest request)
+        public async Task<IActionResult> PostHabilidad(InsertHabilidadRequest request)
         {
-            var result = await this.habilidadesService.addHabilidad(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
 
         [HttpPut]
-        public async Task<IActionResult> PutHabilidad(updateHabilidadRequest request)
+        public async Task<IActionResult> PutHabilidad(UpdateHabilidadRequest request)
         {
-            var result = await this.habilidadesService.updateHabilidad(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteHabilidad(deleteHabilidadRequest request)
+        public async Task<IActionResult> DeleteHabilidad(DeleteHabilidadRequest request)
         {
-            var result = await this.habilidadesService.deleteHabilidad(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
     }

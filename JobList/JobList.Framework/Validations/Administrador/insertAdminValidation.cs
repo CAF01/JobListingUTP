@@ -5,7 +5,7 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertAdminValidation : AbstractValidator<insertAdminRequest>
+    public class insertAdminValidation : AbstractValidator<InsertAdminRequest>
     {
         public insertAdminValidation()
         {

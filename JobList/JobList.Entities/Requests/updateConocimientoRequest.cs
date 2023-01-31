@@ -1,8 +1,10 @@
 ﻿namespace JobList.Entities.Requests
 {
-    public class updateConocimientoRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class UpdateConocimientoRequest : IRequest<UpdateConocimientoResponse>
     {
-        public string nuevaDescripcion { get; set; }
-        public int idConocimiento { get; set; }
+        public string nuevaDescripcion { get; set; } = default!;
+        public int idConocimiento { get; set; } = default!;
     }
 }

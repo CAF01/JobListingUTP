@@ -1,8 +1,10 @@
 ﻿namespace JobList.Entities.Requests
 {
-    public class updateHabilidadRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class UpdateHabilidadRequest : IRequest<UpdateHabilidadResponse>
     {
-        public string nuevaDescripcion { get; set; }
+        public string nuevaDescripcion { get; set; } = default!;
         public int idHabilidad { get; set; }
     }
 }

@@ -1,16 +1,20 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using JobList.Entities.Requests;
 using JobList.Framework.Validations.Administrador;
+using JobList.Handlers.Catalogs;
 using JobList.Repositories.Implementation;
 using JobList.Repositories.Service;
 using JobList.Resources;
 using JobList.Services.Implementation;
 using JobList.Services.Service;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +29,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 #region modificaciones de inyección
+
+builder.Services.AddMediatR(typeof(InsertDivisionRequest).Assembly);
+builder.Services.AddMediatR(typeof(InsertDivisionHandler).GetTypeInfo().Assembly);
 
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<insertAdminValidation>();

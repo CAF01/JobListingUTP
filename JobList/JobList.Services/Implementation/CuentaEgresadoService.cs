@@ -14,18 +14,18 @@
             this.cuentaEgresadoRepository = cuentaEgresadoRepository;
         }
 
-        public async Task<bool> addConocimientoEgresado(insertConocimientoEgresadoRequest request)
+        public async Task<int> addConocimientoEgresado(InsertConocimientoEgresadoRequest request)
         {
             return await this.cuentaEgresadoRepository.addConocimientoEgresado(request);
         }
 
-        public async Task<bool> addEgresado(insertEgresadoRequest request)
+        public async Task<int> addEgresado(InsertEgresadoRequest request)
         {
             request.password=PasswordEncryptor.GetMD5(request.password);
             return await this.cuentaEgresadoRepository.addEgresado(request);
         }
 
-        public async Task<bool> addHabilidadEgresado(insertHabilidadEgresadoRequest request)
+        public async Task<int> addHabilidadEgresado(InsertHabilidadEgresadoRequest request)
         {
             return await this.cuentaEgresadoRepository.addHabilidadEgresado(request);
         }

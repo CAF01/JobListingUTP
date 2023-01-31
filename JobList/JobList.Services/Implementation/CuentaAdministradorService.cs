@@ -24,14 +24,14 @@
             this.cuentaAdministradorRepository = cuentaAdministradorRepository;
             Options = options;
         }
-        public async Task<bool> addAdministrador(insertAdminRequest request)
+        public async Task<int> addAdministrador(InsertAdminRequest request)
         {
             request.password = PasswordEncryptor.GetMD5(request.password);
 
             return await this.cuentaAdministradorRepository.addAdministrador(request);
         }
 
-        public async Task<adminInfo> loginAdministradorConToken(loginAdminRequest userLogin)
+        public async Task<AdminInfo> loginAdministradorConToken(LoginAdminRequest userLogin)
         {
             userLogin.password = PasswordEncryptor.GetMD5(userLogin.password);
 

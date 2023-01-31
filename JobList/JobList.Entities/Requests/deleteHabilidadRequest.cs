@@ -1,6 +1,8 @@
 ﻿namespace JobList.Entities.Requests
 {
-    public class deleteHabilidadRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class DeleteHabilidadRequest : IRequest<DeleteHabilidadResponse>
     {
         public int idHabilidad { get; set; }
     }

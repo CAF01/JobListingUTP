@@ -19,7 +19,7 @@
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
-        public async Task<bool> addConocimientoEgresado(insertConocimientoEgresadoRequest request)
+        public async Task<int> addConocimientoEgresado(InsertConocimientoEgresadoRequest request)
         {
             try
             {
@@ -35,11 +35,11 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return result > 0;
+                return result;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {
@@ -47,12 +47,12 @@
             }
         }
 
-        public async Task<bool> addEgresado(insertEgresadoRequest request)
+        public async Task<int> addEgresado(InsertEgresadoRequest request)
         {
             try
             {
                 dbConnection.Open();
-
+                var idEgresado = 0;
                 using (var transaction = dbConnection.BeginTransaction())
                 {
                     try
@@ -61,7 +61,7 @@
                         parameters.Add(StoredProcedureResources.Usuario, request.usuario);
                         parameters.Add(StoredProcedureResources.Password, request.password);
                         parameters.Add(StoredProcedureResources.idTipo, request.idTipo);
-                        parameters.Add(StoredProcedureResources.idNuevoUsuario, request.idNuevoUsuario, direction: ParameterDirection.Output);
+                        parameters.Add(StoredProcedureResources.idNuevoUsuario, direction: ParameterDirection.Output);
 
 
                         await dbConnection.ExecuteAsync(
@@ -71,16 +71,16 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure);
 
-                        request.idNuevoUsuario = parameters.Get<int>(StoredProcedureResources.idNuevoUsuario);
+                        var idUsuario = parameters.Get<int>(StoredProcedureResources.idNuevoUsuario);
 
-                        if (request.idNuevoUsuario > 0)
+                        if (idUsuario > 0)
                         {
                             parameters = new DynamicParameters();
-                            parameters.Add(StoredProcedureResources.idUsuario, request.idNuevoUsuario);
+                            parameters.Add(StoredProcedureResources.idUsuario, idUsuario);
                             parameters.Add(StoredProcedureResources.Nombre, request.nombre);
                             parameters.Add(StoredProcedureResources.Apellido, request.apellido);
                             parameters.Add(StoredProcedureResources.idArea, request.idArea);
-                            parameters.Add(StoredProcedureResources.idNuevoEgresado, request.idNuevoEgresado, direction: ParameterDirection.Output);
+                            parameters.Add(StoredProcedureResources.idNuevoEgresado, direction: ParameterDirection.Output);
 
 
                             await dbConnection.ExecuteAsync(
@@ -89,7 +89,7 @@
                                param: parameters,
                                commandTimeout: DatabaseHelper.TIMEOUT,
                                commandType: CommandType.StoredProcedure);
-                            request.idNuevoEgresado = parameters.Get<int>(StoredProcedureResources.idNuevoEgresado);
+                            idEgresado = parameters.Get<int>(StoredProcedureResources.idNuevoEgresado);
                         }
 
                         transaction.Commit();
@@ -99,11 +99,11 @@
                         transaction.Rollback();
                     }
                 }
-                return request.idNuevoEgresado > 0;
+                return idEgresado;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {
@@ -111,7 +111,7 @@
             }
         }
 
-        public async Task<bool> addHabilidadEgresado(insertHabilidadEgresadoRequest request)
+        public async Task<int> addHabilidadEgresado(InsertHabilidadEgresadoRequest request)
         {
             try
             {
@@ -127,11 +127,11 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return result > 0;
+                return result;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {

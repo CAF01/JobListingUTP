@@ -12,12 +12,12 @@
             this.areasUTPRepository = areasUTPRepository;
         }
 
-        public async Task<bool> addArea(insertAreaRequest request)
+        public async Task<int> addArea(InsertAreaRequest request)
         {
             return await this.areasUTPRepository.addArea(request);
         }
 
-        public async Task<bool> addDivision(insertDivisionRequest request)
+        public async Task<int> addDivision(InsertDivisionRequest request)
         {
             return await this.areasUTPRepository.addDivision(request);
         }

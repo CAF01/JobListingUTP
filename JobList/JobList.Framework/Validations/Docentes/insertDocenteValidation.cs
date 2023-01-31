@@ -5,7 +5,7 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertDocenteValidation : AbstractValidator<insertDocenteRequest>
+    public class insertDocenteValidation : AbstractValidator<InsertDocenteRequest>
     {
         public insertDocenteValidation()
         {

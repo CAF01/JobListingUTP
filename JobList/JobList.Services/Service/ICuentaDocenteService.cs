@@ -3,6 +3,6 @@
     using JobList.Entities.Requests;
     public interface ICuentaDocenteService
     {
-        public Task<bool> addDocente(insertDocenteRequest request);
+        public Task<int> addDocente(InsertDocenteRequest request);
     }
 }

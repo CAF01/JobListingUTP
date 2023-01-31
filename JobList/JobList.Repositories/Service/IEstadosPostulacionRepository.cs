@@ -4,6 +4,6 @@ namespace JobList.Repositories.Service
 {
     public interface IEstadosPostulacionRepository
     {
-        public Task<bool> addEstadoPostulacion(insertEstadoPostulacionRequest request);
+        public Task<int> addEstadoPostulacion(InsertEstadoPostulacionRequest request);
     }
 }

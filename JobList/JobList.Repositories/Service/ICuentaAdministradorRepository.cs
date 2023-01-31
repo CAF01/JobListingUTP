@@ -5,7 +5,7 @@ namespace JobList.Repositories.Service
 {
     public interface ICuentaAdministradorRepository
     {
-        public Task<bool> addAdministrador(insertAdminRequest request);
-        public Task<adminInfo> findAdministrador(loginAdminRequest userLogin);
+        public Task<int> addAdministrador(InsertAdminRequest request);
+        public Task<AdminInfo> findAdministrador(LoginAdminRequest userLogin);
     }
 }
