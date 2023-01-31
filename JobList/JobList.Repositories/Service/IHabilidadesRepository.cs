@@ -3,8 +3,8 @@
     using JobList.Entities.Requests;
     public interface IHabilidadesRepository
     {
-        public Task<bool> addHabilidad(insertHabilidadRequest request);
-        public Task<bool> updateHabilidad(updateHabilidadRequest request);
-        public Task<bool> deleteHabilidad(deleteHabilidadRequest request);
+        public Task<int> addHabilidad(InsertHabilidadRequest request);
+        public Task<bool> updateHabilidad(UpdateHabilidadRequest request);
+        public Task<bool> deleteHabilidad(DeleteHabilidadRequest request);
     }
 }

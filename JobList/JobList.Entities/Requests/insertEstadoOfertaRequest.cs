@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace JobList.Entities.Requests
+﻿namespace JobList.Entities.Requests
 {
-    public class insertEstadoOfertaRequest
-    {
-        public string descripcion { get; set; }
+    using JobList.Entities.Responses;
+    using MediatR;
 
-        public int idNuevoEstadoOferta { get; set; }
+    public class InsertEstadoOfertaRequest : IRequest<InsertEstadoOfertaResponse>
+    {
+        public string descripcion { get; set; } = default!;
     }
 }

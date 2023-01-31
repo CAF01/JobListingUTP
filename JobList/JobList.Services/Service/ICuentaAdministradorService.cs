@@ -5,7 +5,7 @@
 
     public interface ICuentaAdministradorService
     {
-        public Task<bool> addAdministrador(insertAdminRequest request);
-        public Task<adminInfo> loginAdministradorConToken(loginAdminRequest userLogin);
+        public Task<int> addAdministrador(InsertAdminRequest request);
+        public Task<AdminInfo> loginAdministradorConToken(LoginAdminRequest userLogin);
     }
 }

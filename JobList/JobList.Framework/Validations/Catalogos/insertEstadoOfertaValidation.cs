@@ -5,7 +5,7 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertEstadoOfertaValidation : AbstractValidator<insertEstadoOfertaRequest>
+    public class insertEstadoOfertaValidation : AbstractValidator<InsertEstadoOfertaRequest>
     {
         public insertEstadoOfertaValidation()
         {

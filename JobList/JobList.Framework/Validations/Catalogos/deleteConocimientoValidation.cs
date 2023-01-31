@@ -4,7 +4,7 @@
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
 
-    public class deleteConocimientoValidation : AbstractValidator<deleteConocimientoRequest>
+    public class deleteConocimientoValidation : AbstractValidator<DeleteConocimientoRequest>
     {
         public deleteConocimientoValidation()
         {

@@ -3,6 +3,7 @@
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
     using JobList.Services.Service;
+    using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
 
@@ -11,17 +12,17 @@
     [ApiController]
     public class CuentaDocenteController : ControllerBase
     {
-        private readonly ICuentaDocenteService cuentaDocenteService;
+        private readonly IMediator mediator;
 
-        public CuentaDocenteController(ICuentaDocenteService cuentaDocenteService)
+        public CuentaDocenteController(IMediator mediator)
         {
-            this.cuentaDocenteService = cuentaDocenteService;
+            this.mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostDocente(insertDocenteRequest request)
+        public async Task<IActionResult> PostDocente(InsertDocenteRequest request)
         {
-            var result = await this.cuentaDocenteService.addDocente(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
     }

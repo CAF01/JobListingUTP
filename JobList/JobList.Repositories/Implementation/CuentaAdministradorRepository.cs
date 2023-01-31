@@ -21,12 +21,12 @@
         }
 
 
-        public async Task<bool> addAdministrador(insertAdminRequest request)
+        public async Task<int> addAdministrador(InsertAdminRequest request)
         {
             try
             {
                 dbConnection.Open();
-
+                var idadmin = 0;
                 using (var transaction = dbConnection.BeginTransaction())
                 {
                     try
@@ -35,7 +35,7 @@
                         parameters.Add(StoredProcedureResources.Usuario, request.usuario);
                         parameters.Add(StoredProcedureResources.Password, request.password);
                         parameters.Add(StoredProcedureResources.idTipo, request.idTipo);
-                        parameters.Add(StoredProcedureResources.idNuevoUsuario, request.idNuevoUsuario, direction: ParameterDirection.Output);
+                        parameters.Add(StoredProcedureResources.idNuevoUsuario, direction: ParameterDirection.Output);
                         
 
                         await dbConnection.ExecuteAsync(
@@ -45,14 +45,13 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure);
 
-                        request.idNuevoUsuario = parameters.Get<int>(StoredProcedureResources.idNuevoUsuario);
-
-                        if(request.idNuevoUsuario>0)
+                        var idUsuario = parameters.Get<int>(StoredProcedureResources.idNuevoUsuario);
+                        if(idUsuario > 0)
                         {
                             parameters = new DynamicParameters();
-                            parameters.Add(StoredProcedureResources.idUsuario, request.idNuevoUsuario);
+                            parameters.Add(StoredProcedureResources.idUsuario, idUsuario);
                             parameters.Add(StoredProcedureResources.Nombre, request.nombre);
-                            parameters.Add(StoredProcedureResources.idNuevoAdministrador, request.idNuevoAdministrador, direction: ParameterDirection.Output);
+                            parameters.Add(StoredProcedureResources.idNuevoAdministrador, direction: ParameterDirection.Output);
 
 
                             await dbConnection.ExecuteAsync(
@@ -61,7 +60,7 @@
                                param: parameters,
                                commandTimeout: DatabaseHelper.TIMEOUT,
                                commandType: CommandType.StoredProcedure);
-                            request.idNuevoAdministrador = parameters.Get<int>(StoredProcedureResources.idNuevoAdministrador);
+                            idadmin = parameters.Get<int>(StoredProcedureResources.idNuevoAdministrador);
                         }
 
                         transaction.Commit();
@@ -71,11 +70,11 @@
                         transaction.Rollback();
                     }
                 }
-                return request.idNuevoAdministrador>0;
+                return idadmin;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {
@@ -83,7 +82,7 @@
             }
         }
 
-        public async Task<adminInfo> findAdministrador(loginAdminRequest userLogin)
+        public async Task<AdminInfo> findAdministrador(LoginAdminRequest userLogin)
         {
             try
             {
@@ -92,7 +91,7 @@
                 parameters.Add(StoredProcedureResources.Usuario, userLogin.usuario);
                 parameters.Add(StoredProcedureResources.Password, userLogin.password);
 
-                return await dbConnection.QueryFirstAsync<adminInfo>(
+                return await dbConnection.QueryFirstAsync<AdminInfo>(
                     sql: StoredProcedureResources.sp_LoginAdmin,
                     param: parameters,
                     transaction: null,

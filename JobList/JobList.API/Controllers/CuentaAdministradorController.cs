@@ -1,6 +1,6 @@
 ﻿using JobList.Entities.Helpers;
 using JobList.Entities.Requests;
-using JobList.Services.Service;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -11,24 +11,24 @@ namespace JobList.API.Controllers
     [ApiController]
     public class CuentaAdministradorController : ControllerBase
     {
-        private readonly ICuentaAdministradorService cuentaAdministrador;
+        private readonly IMediator mediator;
 
-        public CuentaAdministradorController(ICuentaAdministradorService cuentaAdministrador)
+        public CuentaAdministradorController(IMediator mediator)
         {
-            this.cuentaAdministrador = cuentaAdministrador;
+            this.mediator = mediator;
         }
 
         [HttpPost("add-admin")]
-        public async Task<IActionResult> PostAdministrador(insertAdminRequest request)
+        public async Task<IActionResult> PostAdministrador(InsertAdminRequest request)
         {
-            var result = await this.cuentaAdministrador.addAdministrador(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
 
         [HttpPost("login-admin")]
-        public async Task<IActionResult> PostAdministrador(loginAdminRequest request)
+        public async Task<IActionResult> PostLoginAdministrador(LoginAdminRequest request)
         {
-            var result = await this.cuentaAdministrador.loginAdministradorConToken(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
     }

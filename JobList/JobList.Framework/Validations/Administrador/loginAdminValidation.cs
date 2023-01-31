@@ -5,7 +5,7 @@ using JobList.Resources;
 
 namespace JobList.Framework.Validations.Administrador
 {
-    public class loginAdminValidation : AbstractValidator<loginAdminRequest>
+    public class loginAdminValidation : AbstractValidator<LoginAdminRequest>
     {
         public loginAdminValidation()
         {

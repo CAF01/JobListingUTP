@@ -14,7 +14,7 @@
         {
             this.cuentaDocenteRepository = cuentaDocenteRepository;
         }
-        public async Task<bool> addDocente(insertDocenteRequest request)
+        public async Task<int> addDocente(InsertDocenteRequest request)
         {
             request.password = PasswordEncryptor.GetMD5(request.password);
             return await this.cuentaDocenteRepository.addDocente(request);

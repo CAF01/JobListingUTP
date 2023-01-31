@@ -1,9 +1,9 @@
 ﻿namespace JobList.Entities.Requests
 {
-    public class insertDivisionRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class InsertDivisionRequest : IRequest<InsertDivisionResponse>
     {
-        public int opcion { get; set; }
-        public string descripcion { get; set; }
-        public int idNuevaDivision { get; set; }
+        public string descripcion { get; set; } = default!;
     }
 }

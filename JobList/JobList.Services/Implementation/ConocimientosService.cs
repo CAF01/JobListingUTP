@@ -14,17 +14,17 @@
             this.conocimientosRepository = conocimientosRepository;
         }
 
-        public async Task<bool> addConocimiento(insertConocimientoRequest request)
+        public async Task<int> addConocimiento(InsertConocimientoRequest request)
         {
             return await this.conocimientosRepository.addConocimiento(request);
         }
 
-        public async Task<bool> deleteConocimiento(deleteConocimientoRequest request)
+        public async Task<bool> deleteConocimiento(DeleteConocimientoRequest request)
         {
             return await this.conocimientosRepository.deleteConocimiento(request);
         }
 
-        public async Task<bool> updateConocimiento(updateConocimientoRequest request)
+        public async Task<bool> updateConocimiento(UpdateConocimientoRequest request)
         {
             return await this.conocimientosRepository.updateConocimiento(request);
         }

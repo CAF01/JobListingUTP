@@ -3,6 +3,6 @@
     using JobList.Entities.Requests;
     public interface IEstadosPostulacionService
     {
-        public Task<bool> addEstadoPostulacion(insertEstadoPostulacionRequest request);
+        public Task<int> addEstadoPostulacion(InsertEstadoPostulacionRequest request);
     }
 }

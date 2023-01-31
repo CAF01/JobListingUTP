@@ -2,7 +2,7 @@
 {
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
-    using JobList.Services.Service;
+    using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
     [SwaggerTag("Conocimientos")]
@@ -10,31 +10,31 @@
     [ApiController]
     public class ConocimientosController : ControllerBase
     {
-        private readonly IConocimientosService conocimientosService;
+        private readonly IMediator mediator;
 
-        public ConocimientosController(IConocimientosService conocimientos)
+        public ConocimientosController(IMediator mediator)
         {
-            this.conocimientosService = conocimientos;
+            this.mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostConocimiento(insertConocimientoRequest request)
+        public async Task<IActionResult> PostConocimiento(InsertConocimientoRequest request)
         {
-            var result = await this.conocimientosService.addConocimiento(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
 
         [HttpPut]
-        public async Task<IActionResult> PutConocimiento(updateConocimientoRequest request)
+        public async Task<IActionResult> PutConocimiento(UpdateConocimientoRequest request)
         {
-            var result = await this.conocimientosService.updateConocimiento(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteConocimiento(deleteConocimientoRequest request)
+        public async Task<IActionResult> DeleteConocimiento(DeleteConocimientoRequest request)
         {
-            var result = await this.conocimientosService.deleteConocimiento(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
     }
