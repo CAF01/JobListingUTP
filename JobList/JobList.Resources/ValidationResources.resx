@@ -117,22 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AdminAudience" xml:space="preserve">
-    <value>ADM</value>
+  <data name="descriptionMaxLength" xml:space="preserve">
+    <value>El máximo de carácteres es: </value>
   </data>
-  <data name="DefaultConnection" xml:space="preserve">
-    <value>DefaultConnection</value>
+  <data name="descriptionMinLength" xml:space="preserve">
+    <value>El minimo de carácteres es: </value>
   </data>
-  <data name="Issuer" xml:space="preserve">
-    <value>LoginServiceUTP2023</value>
+  <data name="descriptionNotEmpty" xml:space="preserve">
+    <value>Descripción no puede estar vacia</value>
   </data>
-  <data name="RolAdmin" xml:space="preserve">
-    <value>Administrador</value>
+  <data name="descriptionRequired" xml:space="preserve">
+    <value>Descripción es requerida</value>
   </data>
-  <data name="SecondaryConnection" xml:space="preserve">
-    <value>SecondaryConnection</value>
+  <data name="nameMaxLength" xml:space="preserve">
+    <value>Nombre no puede superar 85 carácteres</value>
   </data>
-  <data name="Strings" xml:space="preserve">
-    <value>Strings</value>
+  <data name="nameMinLength" xml:space="preserve">
+    <value>Nombre requiere 10 carácteres</value>
+  </data>
+  <data name="nameNotEmpty" xml:space="preserve">
+    <value>Nombre no puede estar vacío</value>
+  </data>
+  <data name="nameRequired" xml:space="preserve">
+    <value>Nombre es requerido</value>
+  </data>
+  <data name="noWhiteSpace" xml:space="preserve">
+    <value>No se permiten espacios en blanco</value>
+  </data>
+  <data name="PassMaxLength" xml:space="preserve">
+    <value>Supera el máximo de 30 carácteres</value>
+  </data>
+  <data name="PassMinLength" xml:space="preserve">
+    <value>Al menos 6 carácteres requeridos</value>
+  </data>
+  <data name="passwordNotEmpty" xml:space="preserve">
+    <value>Contraseña no puede estar vacia</value>
+  </data>
+  <data name="passwordRequired" xml:space="preserve">
+    <value>Contraseña es requerido</value>
+  </data>
+  <data name="userMaxLength" xml:space="preserve">
+    <value>Usuario no puede superar 15 carácteres</value>
+  </data>
+  <data name="userMinLength" xml:space="preserve">
+    <value>Usuario requiere al menos 5 carácteres</value>
+  </data>
+  <data name="userNotEmpty" xml:space="preserve">
+    <value>Usuario no puede estar vacío</value>
+  </data>
+  <data name="userRequired" xml:space="preserve">
+    <value>Usuario es requerido</value>
   </data>
 </root>

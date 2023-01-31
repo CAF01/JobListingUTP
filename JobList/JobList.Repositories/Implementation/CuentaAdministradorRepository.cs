@@ -2,6 +2,7 @@
 {
     using Dapper;
     using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Repositories.Service;
     using JobList.Resources;
@@ -75,6 +76,32 @@
             catch
             {
                 return false;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<adminInfo> findAdministrador(loginAdminRequest userLogin)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.Usuario, userLogin.usuario);
+                parameters.Add(StoredProcedureResources.Password, userLogin.password);
+
+                return await dbConnection.QueryFirstAsync<adminInfo>(
+                    sql: StoredProcedureResources.sp_LoginAdmin,
+                    param: parameters,
+                    transaction: null,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure);
+            }
+            catch
+            {
+                return null;
             }
             finally
             {

@@ -61,11 +61,56 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ADM.
+        /// </summary>
+        public static string AdminAudience {
+            get {
+                return ResourceManager.GetString("AdminAudience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DefaultConnection.
         /// </summary>
         public static string DefaultConnection {
             get {
                 return ResourceManager.GetString("DefaultConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LoginServiceUTP2023.
+        /// </summary>
+        public static string Issuer {
+            get {
+                return ResourceManager.GetString("Issuer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Administrador.
+        /// </summary>
+        public static string RolAdmin {
+            get {
+                return ResourceManager.GetString("RolAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SecondaryConnection.
+        /// </summary>
+        public static string SecondaryConnection {
+            get {
+                return ResourceManager.GetString("SecondaryConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strings.
+        /// </summary>
+        public static string Strings {
+            get {
+                return ResourceManager.GetString("Strings", resourceCulture);
             }
         }
     }
