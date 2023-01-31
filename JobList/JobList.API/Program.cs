@@ -1,26 +1,62 @@
+using FluentValidation.AspNetCore;
+using JobList.Framework.Validations.Administrador;
 using JobList.Repositories.Implementation;
 using JobList.Repositories.Service;
+using JobList.Resources;
 using JobList.Services.Implementation;
 using JobList.Services.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
+//using Microsoft.AspNetCore.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var Configuration = builder.Configuration;
+
 builder.Services.AddControllers();
+//builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+#region modificaciones de inyección
+builder.Services.Configure<IOptions<JobList.Entities.Models.Options>>(Configuration.GetSection(ConfigResources.Strings));
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
 
-Dictionary<string, IDbConnection> connections = new Dictionary<string, IDbConnection>
-{
-    { "DefaultConnection", new MySqlConnection(Configuration.GetConnectionString("DefaultConnection")) },
-    { "SecondaryConnection", new MySqlConnection(Configuration.GetConnectionString("SecondaryConnection")) }
-};
+        options.TokenValidationParameters = new TokenValidationParameters
+      {
+          ValidateIssuer = false,
+          ValidateAudience = false,
+          ValidateLifetime = true,
+          ValidateIssuerSigningKey = true,
+          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(ConfigResources.Strings).Value.ToString()))
+      };
+    });
 
-builder.Services.AddSingleton(connections);
+
+    Dictionary<string, IDbConnection> connections = new Dictionary<string, IDbConnection>
+    {
+        { ConfigResources.DefaultConnection, new MySqlConnection(Configuration.GetConnectionString(ConfigResources.DefaultConnection)) },
+        { ConfigResources.SecondaryConnection, new MySqlConnection(Configuration.GetConnectionString(ConfigResources.SecondaryConnection)) }
+    };
+
+    builder.Services.AddSingleton(connections);
+
+
+    var assembly = typeof(insertAdminValidation).Assembly;
+    //builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<JobList.Framework.Validations.Administrador.insertAdminValidation>());
+    builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(assembly)).AddFluentValidationClientsideAdapters();
+
+#endregion
 
 
 #region scopeds
@@ -51,14 +87,21 @@ builder.Services.AddScoped<ICuentaEgresadoRepository, CuentaEgresadoRepository>(
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
+app.UseSwagger();
     app.UseSwaggerUI();
 //}
 
-app.UseAuthorization();
+app.UseRouting(); //agregados
+app.UseAuthentication(); //agregado JWT
+app.UseAuthorization(); //ya estaba
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+}); //agregado
 
 app.MapControllers();
 

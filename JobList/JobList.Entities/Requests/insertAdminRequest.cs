@@ -13,7 +13,7 @@ namespace JobList.Entities.Requests
         [Required]
         public string nombre { get; set; }
 
-        public readonly int idTipo = 1;
+        public readonly int idTipo = 5;
         public int idNuevoUsuario { get; set; }
         public int idNuevoAdministrador { get; set; }
     }

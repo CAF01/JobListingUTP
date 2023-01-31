@@ -18,10 +18,17 @@ namespace JobList.API.Controllers
             this.cuentaAdministrador = cuentaAdministrador;
         }
 
-        [HttpPost]
+        [HttpPost("add-admin")]
         public async Task<IActionResult> PostAdministrador(insertAdminRequest request)
         {
             var result = await this.cuentaAdministrador.addAdministrador(request);
+            return HelperResult.Result(result);
+        }
+
+        [HttpPost("login-admin")]
+        public async Task<IActionResult> PostAdministrador(loginAdminRequest request)
+        {
+            var result = await this.cuentaAdministrador.loginAdministradorConToken(request);
             return HelperResult.Result(result);
         }
     }
