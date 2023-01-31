@@ -1,3 +1,4 @@
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using JobList.Framework.Validations.Administrador;
 using JobList.Repositories.Implementation;
@@ -7,7 +8,6 @@ using JobList.Services.Implementation;
 using JobList.Services.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
-//using Microsoft.AspNetCore.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
 using System.Data;
@@ -25,6 +25,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 #region modificaciones de inyección
+
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<insertAdminValidation>();
+
 builder.Services.Configure<IOptions<JobList.Entities.Models.Options>>(Configuration.GetSection(ConfigResources.Strings));
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -33,28 +37,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.SaveToken = true;
 
         options.TokenValidationParameters = new TokenValidationParameters
-      {
-          ValidateIssuer = false,
-          ValidateAudience = false,
-          ValidateLifetime = true,
-          ValidateIssuerSigningKey = true,
-          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(ConfigResources.Strings).Value.ToString()))
-      };
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(ConfigResources.Strings).Value.ToString()))
+        };
     });
 
 
-    Dictionary<string, IDbConnection> connections = new Dictionary<string, IDbConnection>
+Dictionary<string, IDbConnection> connections = new Dictionary<string, IDbConnection>
     {
         { ConfigResources.DefaultConnection, new MySqlConnection(Configuration.GetConnectionString(ConfigResources.DefaultConnection)) },
         { ConfigResources.SecondaryConnection, new MySqlConnection(Configuration.GetConnectionString(ConfigResources.SecondaryConnection)) }
     };
 
-    builder.Services.AddSingleton(connections);
-
-
-    var assembly = typeof(insertAdminValidation).Assembly;
-    //builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<JobList.Framework.Validations.Administrador.insertAdminValidation>());
-    builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(assembly)).AddFluentValidationClientsideAdapters();
+builder.Services.AddSingleton(connections);
 
 #endregion
 
@@ -92,7 +91,7 @@ var app = builder.Build();
 //if (app.Environment.IsDevelopment())
 //{
 app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwaggerUI();
 //}
 
 app.UseRouting(); //agregados
