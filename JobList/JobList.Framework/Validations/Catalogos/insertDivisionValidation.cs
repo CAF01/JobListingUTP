@@ -5,7 +5,7 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertDivisionValidation : AbstractValidator<insertDivisionRequest>
+    public class insertDivisionValidation : AbstractValidator<InsertDivisionRequest>
     {
         public insertDivisionValidation()
         {

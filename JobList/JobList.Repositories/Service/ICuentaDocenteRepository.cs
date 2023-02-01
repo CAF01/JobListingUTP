@@ -4,6 +4,6 @@ namespace JobList.Repositories.Service
 {
     public interface ICuentaDocenteRepository
     {
-        public Task<bool> addDocente(insertDocenteRequest request);
+        public Task<int> addDocente(InsertDocenteRequest request);
     }
 }

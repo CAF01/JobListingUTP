@@ -129,6 +129,15 @@
   <data name="descriptionRequired" xml:space="preserve">
     <value>Descripción es requerida</value>
   </data>
+  <data name="failDelete" xml:space="preserve">
+    <value>Error al eliminar registro.</value>
+  </data>
+  <data name="failInsert" xml:space="preserve">
+    <value>Error al insertar registro.</value>
+  </data>
+  <data name="failUpdate" xml:space="preserve">
+    <value>Error al modificar registro.</value>
+  </data>
   <data name="nameMaxLength" xml:space="preserve">
     <value>Nombre no puede superar 85 carácteres</value>
   </data>
@@ -155,6 +164,15 @@
   </data>
   <data name="passwordRequired" xml:space="preserve">
     <value>Contraseña es requerido</value>
+  </data>
+  <data name="successDelete" xml:space="preserve">
+    <value>Registro eliminado correctamente.</value>
+  </data>
+  <data name="successInsert" xml:space="preserve">
+    <value>Registro insertado correctamente.</value>
+  </data>
+  <data name="successUpdate" xml:space="preserve">
+    <value>Registro actualizado correctamente.</value>
   </data>
   <data name="userMaxLength" xml:space="preserve">
     <value>Usuario no puede superar 15 carácteres</value>

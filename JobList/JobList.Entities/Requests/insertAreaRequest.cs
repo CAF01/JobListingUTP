@@ -1,16 +1,10 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
-
-namespace JobList.Entities.Requests
+﻿namespace JobList.Entities.Requests
 {
-    public class insertAreaRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class InsertAreaRequest : IRequest<InsertAreaResponse>
     {
-        [Required]
-        public string descripcion { get; set; }
-
-        [Required]
-        public int idDivision { get; set; }
-
-        public int idNuevaArea { get; set; }
+        public string descripcion { get; set; } = default!;
+        public int idDivision { get; set; } = default!;
     }
 }

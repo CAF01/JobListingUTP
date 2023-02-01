@@ -18,14 +18,14 @@
             this.connections = connections;
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
-        public async Task<bool> addEstadoPostulacion(insertEstadoPostulacionRequest request)
+        public async Task<int> addEstadoPostulacion(InsertEstadoPostulacionRequest request)
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.Descripcion, request.descripcion);
-                parameters.Add(StoredProcedureResources.idNuevoEstadoPostulacion, request.idNuevoEstadoPostulacion, direction: ParameterDirection.Output);
+                parameters.Add(StoredProcedureResources.idNuevoEstadoPostulacion, direction: ParameterDirection.Output);
 
                 await dbConnection.ExecuteAsync(
                            sql: StoredProcedureResources.sp_adminEstadosPostulacion,
@@ -34,12 +34,12 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                request.idNuevoEstadoPostulacion = parameters.Get<int>(StoredProcedureResources.idNuevoEstadoPostulacion);
-                return request.idNuevoEstadoPostulacion > 0;
+                var result = parameters.Get<int>(StoredProcedureResources.idNuevoEstadoPostulacion);
+                return result;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {

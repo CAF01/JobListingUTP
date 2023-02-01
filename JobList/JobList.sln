@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobList.API", "JobList.API\JobList.API.csproj", "{128F62B9-59F1-4A04-AE90-8E7414AE4A3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobList.API", "JobList.API\JobList.API.csproj", "{128F62B9-59F1-4A04-AE90-8E7414AE4A3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobList.Repositories", "JobList.Repositories\JobList.Repositories.csproj", "{804920FB-D5B3-4A88-950A-B1810B6F1890}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobList.Repositories", "JobList.Repositories\JobList.Repositories.csproj", "{804920FB-D5B3-4A88-950A-B1810B6F1890}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobList.Services", "JobList.Services\JobList.Services.csproj", "{FD79F671-0332-48ED-B5A5-73471BF56FBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobList.Services", "JobList.Services\JobList.Services.csproj", "{FD79F671-0332-48ED-B5A5-73471BF56FBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobList.Resources", "JobList.Resources\JobList.Resources.csproj", "{9637769A-D60C-45DB-8BCB-01658C2FD7A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobList.Resources", "JobList.Resources\JobList.Resources.csproj", "{9637769A-D60C-45DB-8BCB-01658C2FD7A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobList.Entities", "JobList.Entities\JobList.Entities.csproj", "{A080D1CF-AFF4-4F70-995D-094CD9A67B4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobList.Entities", "JobList.Entities\JobList.Entities.csproj", "{A080D1CF-AFF4-4F70-995D-094CD9A67B4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobList.Framework", "JobList.Framework\JobList.Framework.csproj", "{D4C7C47B-C540-4DD7-82A9-C9A6D2F386F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobList.Framework", "JobList.Framework\JobList.Framework.csproj", "{D4C7C47B-C540-4DD7-82A9-C9A6D2F386F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobList.Handlers", "JobList.Handlers\JobList.Handlers.csproj", "{05E61749-DC92-4A9A-841F-28AA577ECD44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{D4C7C47B-C540-4DD7-82A9-C9A6D2F386F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4C7C47B-C540-4DD7-82A9-C9A6D2F386F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4C7C47B-C540-4DD7-82A9-C9A6D2F386F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05E61749-DC92-4A9A-841F-28AA577ECD44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05E61749-DC92-4A9A-841F-28AA577ECD44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05E61749-DC92-4A9A-841F-28AA577ECD44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05E61749-DC92-4A9A-841F-28AA577ECD44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,7 +3,7 @@
     using JobList.Entities.Requests;
     public interface IAreasUTPRepository
     {
-        public Task<bool> addDivision(insertDivisionRequest request);
-        public Task<bool> addArea(insertAreaRequest request);
+        public Task<int> addDivision(InsertDivisionRequest request);
+        public Task<int> addArea(InsertAreaRequest request);
     }
 }

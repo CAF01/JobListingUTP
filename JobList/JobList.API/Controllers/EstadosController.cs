@@ -2,7 +2,7 @@
 {
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
-    using JobList.Services.Service;
+    using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
 
@@ -11,26 +11,24 @@
     [ApiController]
     public class EstadosController : ControllerBase
     {
-        private readonly IEstadosOfertaService estadosOfertaService;
-        private readonly IEstadosPostulacionService estadosPostulacionService;
+        private readonly IMediator mediator;
 
-        public EstadosController(IEstadosOfertaService estadosOferta,IEstadosPostulacionService estadosPostulacion)
+        public EstadosController(IMediator mediator)
         {
-            this.estadosOfertaService = estadosOferta;
-            this.estadosPostulacionService = estadosPostulacion;
+            this.mediator = mediator;
         }
 
         [HttpPost("new-estado-oferta")]
-        public async Task<IActionResult> PostEstadoOferta(insertEstadoOfertaRequest request)
+        public async Task<IActionResult> PostEstadoOferta(InsertEstadoOfertaRequest request)
         {
-            var result = await this.estadosOfertaService.addEstadoOferta(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
 
         [HttpPost("new-estado-postulacion")]
-        public async Task<IActionResult> PostEstadoPostulacion(insertEstadoPostulacionRequest request)
+        public async Task<IActionResult> PostEstadoPostulacion(InsertEstadoPostulacionRequest request)
         {
-            var result = await this.estadosPostulacionService.addEstadoPostulacion(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
 

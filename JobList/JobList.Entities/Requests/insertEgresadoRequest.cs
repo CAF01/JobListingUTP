@@ -1,25 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace JobList.Entities.Requests
+﻿namespace JobList.Entities.Requests
 {
-    public class insertEgresadoRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class InsertEgresadoRequest : IRequest<InsertEgresadoResponse>
     {
-        [Required]
-        public string usuario { get; set; }
-
-        [Required]
-        public string password { get; set; }
-
-        [Required]
-        public string nombre { get; set; }
-
-        [Required]
-        public string apellido { get; set; }
-
+        public string usuario { get; set; } = default!;
+        public string password { get; set; } = default!;
+        public string nombre { get; set; } = default!;
+        public string apellido { get; set; } = default!;
         public int idArea { get; set; }
-
-        public readonly int idTipo = 2;
-        public int idNuevoUsuario { get; set; }
-        public int idNuevoEgresado { get; set; }
+        public readonly int idTipo = 8;
     }
 }

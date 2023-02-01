@@ -3,7 +3,7 @@
     using FluentValidation;
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
-    public class insertHabilidadEgresadoValidation : AbstractValidator<insertHabilidadEgresadoRequest>
+    public class insertHabilidadEgresadoValidation : AbstractValidator<InsertHabilidadEgresadoRequest>
     {
         public insertHabilidadEgresadoValidation()
         {

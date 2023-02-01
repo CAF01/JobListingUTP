@@ -20,14 +20,14 @@
             
         }
 
-        public async Task<bool> addHabilidad(insertHabilidadRequest request)
+        public async Task<int> addHabilidad(InsertHabilidadRequest request)
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.Descripcion, request.descripcion);
-                parameters.Add(StoredProcedureResources.idNuevaHabilidad, request.idNuevaHabilidad, direction: ParameterDirection.Output);
+                parameters.Add(StoredProcedureResources.idNuevaHabilidad, direction: ParameterDirection.Output);
 
                 await dbConnection.ExecuteAsync(
                            sql: StoredProcedureResources.sp_Habilidad_Insertar,
@@ -36,12 +36,12 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                request.idNuevaHabilidad = parameters.Get<int>(StoredProcedureResources.idNuevaHabilidad);
-                return request.idNuevaHabilidad > 0;
+                var result = parameters.Get<int>(StoredProcedureResources.idNuevaHabilidad);
+                return result;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {
@@ -49,7 +49,7 @@
             }
         }
 
-        public async Task<bool> deleteHabilidad(deleteHabilidadRequest request)
+        public async Task<bool> deleteHabilidad(DeleteHabilidadRequest request)
         {
             try
             {
@@ -76,7 +76,7 @@
             }
         }
 
-        public async Task<bool> updateHabilidad(updateHabilidadRequest request)
+        public async Task<bool> updateHabilidad(UpdateHabilidadRequest request)
         {
             try
             {

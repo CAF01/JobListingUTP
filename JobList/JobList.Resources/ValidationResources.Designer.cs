@@ -97,6 +97,33 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al eliminar registro..
+        /// </summary>
+        public static string failDelete {
+            get {
+                return ResourceManager.GetString("failDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al insertar registro..
+        /// </summary>
+        public static string failInsert {
+            get {
+                return ResourceManager.GetString("failInsert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al modificar registro..
+        /// </summary>
+        public static string failUpdate {
+            get {
+                return ResourceManager.GetString("failUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre no puede superar 85 carácteres.
         /// </summary>
         public static string nameMaxLength {
@@ -174,6 +201,33 @@ namespace JobList.Resources {
         public static string passwordRequired {
             get {
                 return ResourceManager.GetString("passwordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registro eliminado correctamente..
+        /// </summary>
+        public static string successDelete {
+            get {
+                return ResourceManager.GetString("successDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registro insertado correctamente..
+        /// </summary>
+        public static string successInsert {
+            get {
+                return ResourceManager.GetString("successInsert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registro actualizado correctamente..
+        /// </summary>
+        public static string successUpdate {
+            get {
+                return ResourceManager.GetString("successUpdate", resourceCulture);
             }
         }
         

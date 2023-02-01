@@ -4,8 +4,8 @@
 
     public interface ICuentaEgresadoRepository
     {
-        public Task<bool> addEgresado(insertEgresadoRequest request);
-        public Task<bool> addConocimientoEgresado(insertConocimientoEgresadoRequest request);
-        public Task<bool> addHabilidadEgresado(insertHabilidadEgresadoRequest request);
+        public Task<int> addEgresado(InsertEgresadoRequest request);
+        public Task<int> addConocimientoEgresado(InsertConocimientoEgresadoRequest request);
+        public Task<int> addHabilidadEgresado(InsertHabilidadEgresadoRequest request);
     }
 }

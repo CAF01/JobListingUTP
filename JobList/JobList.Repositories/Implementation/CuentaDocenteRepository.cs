@@ -19,12 +19,12 @@
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
-        public async Task<bool> addDocente(insertDocenteRequest request)
+        public async Task<int> addDocente(InsertDocenteRequest request)
         {
             try
             {
                 dbConnection.Open();
-
+                var idDocente = 0;
                 using (var transaction = dbConnection.BeginTransaction())
                 {
                     try
@@ -33,7 +33,7 @@
                         parameters.Add(StoredProcedureResources.Usuario, request.usuario);
                         parameters.Add(StoredProcedureResources.Password, request.password);
                         parameters.Add(StoredProcedureResources.idTipo, request.idTipo);
-                        parameters.Add(StoredProcedureResources.idNuevoUsuario, request.idNuevoUsuario, direction: ParameterDirection.Output);
+                        parameters.Add(StoredProcedureResources.idNuevoUsuario, direction: ParameterDirection.Output);
 
 
                         await dbConnection.ExecuteAsync(
@@ -43,14 +43,14 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure);
 
-                        request.idNuevoUsuario = parameters.Get<int>(StoredProcedureResources.idNuevoUsuario);
+                        var idUsuario = parameters.Get<int>(StoredProcedureResources.idNuevoUsuario);
 
-                        if (request.idNuevoUsuario > 0)
+                        if (idUsuario > 0)
                         {
                             parameters = new DynamicParameters();
-                            parameters.Add(StoredProcedureResources.idUsuario, request.idNuevoUsuario);
+                            parameters.Add(StoredProcedureResources.idUsuario, idUsuario);
                             parameters.Add(StoredProcedureResources.Nombre, request.nombre);
-                            parameters.Add(StoredProcedureResources.idNuevoDocente, request.idNuevoDocente, direction: ParameterDirection.Output);
+                            parameters.Add(StoredProcedureResources.idNuevoDocente, direction: ParameterDirection.Output);
 
 
                             await dbConnection.ExecuteAsync(
@@ -59,7 +59,7 @@
                                param: parameters,
                                commandTimeout: DatabaseHelper.TIMEOUT,
                                commandType: CommandType.StoredProcedure);
-                            request.idNuevoDocente = parameters.Get<int>(StoredProcedureResources.idNuevoDocente);
+                            idDocente = parameters.Get<int>(StoredProcedureResources.idNuevoDocente);
                         }
 
                         transaction.Commit();
@@ -69,11 +69,11 @@
                         transaction.Rollback();
                     }
                 }
-                return request.idNuevoDocente > 0;
+                return idDocente;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {

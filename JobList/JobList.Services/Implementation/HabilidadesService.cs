@@ -13,17 +13,17 @@
         {
             this.habilidadesRepository = habilidadesRepository;
         }
-        public async Task<bool> addHabilidad(insertHabilidadRequest request)
+        public async Task<int> addHabilidad(InsertHabilidadRequest request)
         {
             return await this.habilidadesRepository.addHabilidad(request);
         }
 
-        public async Task<bool> deleteHabilidad(deleteHabilidadRequest request)
+        public async Task<bool> deleteHabilidad(DeleteHabilidadRequest request)
         {
             return await this.habilidadesRepository.deleteHabilidad(request);
         }
 
-        public async Task<bool> updateHabilidad(updateHabilidadRequest request)
+        public async Task<bool> updateHabilidad(UpdateHabilidadRequest request)
         {
             return await this.habilidadesRepository.updateHabilidad(request);
         }

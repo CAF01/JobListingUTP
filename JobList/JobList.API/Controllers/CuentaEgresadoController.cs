@@ -2,7 +2,7 @@
 {
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
-    using JobList.Services.Service;
+    using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
 
@@ -11,29 +11,29 @@
     [ApiController]
     public class CuentaEgresadoController : ControllerBase
     {
-        private readonly ICuentaEgresadoService cuentaEgresadoService;
+        private readonly IMediator mediator;
 
-        public CuentaEgresadoController(ICuentaEgresadoService cuentaEgresado)
+        public CuentaEgresadoController(IMediator mediator)
         {
-            this.cuentaEgresadoService = cuentaEgresado;
+            this.mediator = mediator;
         }
 
         [HttpPost("add-account-egresado")]
-        public async Task<IActionResult> PostEgresado(insertEgresadoRequest request)
+        public async Task<IActionResult> PostEgresado(InsertEgresadoRequest request)
         {
-            var result = await this.cuentaEgresadoService.addEgresado(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
         [HttpPost("add-habilidad-egresado")]
-        public async Task<IActionResult> PostHabilidad(insertHabilidadEgresadoRequest request)
+        public async Task<IActionResult> PostHabilidad(InsertHabilidadEgresadoRequest request)
         {
-            var result = await this.cuentaEgresadoService.addHabilidadEgresado(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
         [HttpPost("add-conocimiento-egresado")]
-        public async Task<IActionResult> PostConocimiento(insertConocimientoEgresadoRequest request)
+        public async Task<IActionResult> PostConocimiento(InsertConocimientoEgresadoRequest request)
         {
-            var result = await this.cuentaEgresadoService.addConocimientoEgresado(request);
+            var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
     }

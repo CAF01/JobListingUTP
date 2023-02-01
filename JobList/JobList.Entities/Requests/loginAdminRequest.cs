@@ -1,8 +1,10 @@
 ﻿namespace JobList.Entities.Requests
 {
-    public class loginAdminRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class LoginAdminRequest : IRequest<LoginAdminResponse>
     {
-        public string usuario { get; set; }
-        public string password { get; set; }
+        public string usuario { get; set; } = default!;
+        public string password { get; set; } = default!;
     }
 }

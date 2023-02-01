@@ -5,7 +5,7 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertConocimietoValidation : AbstractValidator<insertConocimientoRequest>
+    public class insertConocimietoValidation : AbstractValidator<InsertConocimientoRequest>
     {
         public insertConocimietoValidation()
         {

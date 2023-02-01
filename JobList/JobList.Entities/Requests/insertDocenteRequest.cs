@@ -1,20 +1,12 @@
 ﻿namespace JobList.Entities.Requests
 {
-    using System.ComponentModel.DataAnnotations;
-
-    public class insertDocenteRequest
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class InsertDocenteRequest : IRequest<InsertDocenteResponse>
     {
-        [Required]
-        public string usuario { get; set; }
-
-        [Required]
-        public string password { get; set; }
-
-        [Required]
-        public string nombre { get; set; }
-
+        public string usuario { get; set; } = default!;
+        public string password { get; set; } = default!;
+        public string nombre { get; set; } = default!;
         public readonly int idTipo = 3;
-        public int idNuevoUsuario { get; set; }
-        public int idNuevoDocente { get; set; }
     }
 }

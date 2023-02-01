@@ -18,14 +18,15 @@
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
-        public async Task<bool> addArea(insertAreaRequest request)
+        public async Task<int> addArea(InsertAreaRequest request)
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.Descripcion, request.descripcion);
-                parameters.Add(StoredProcedureResources.idNuevaArea, request.idNuevaArea, direction: ParameterDirection.Output);
+                parameters.Add(StoredProcedureResources.idDivision, request.idDivision);
+                parameters.Add(StoredProcedureResources.idNuevaArea, direction: ParameterDirection.Output);
 
                 await dbConnection.ExecuteAsync(
                            sql: StoredProcedureResources.sp_adminAreasUTP,
@@ -34,12 +35,12 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                request.idNuevaArea = parameters.Get<int>(StoredProcedureResources.idNuevaArea);
-                return request.idNuevaArea > 0;
+                var result = parameters.Get<int>(StoredProcedureResources.idNuevaArea);
+                return result;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {
@@ -47,15 +48,14 @@
             }
         }
 
-        public async Task<bool> addDivision(insertDivisionRequest request)
+        public async Task<int> addDivision(InsertDivisionRequest request)
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add(StoredProcedureResources.Opcion, request.opcion);
                 parameters.Add(StoredProcedureResources.Descripcion, request.descripcion);
-                parameters.Add(StoredProcedureResources.idNuevaDivision, request.idNuevaDivision, direction: ParameterDirection.Output);
+                parameters.Add(StoredProcedureResources.idNuevaDivision, direction: ParameterDirection.Output);
 
                 await dbConnection.ExecuteAsync(
                            sql: StoredProcedureResources.sp_adminDivisionesUTP,
@@ -64,12 +64,12 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                request.idNuevaDivision = parameters.Get<int>(StoredProcedureResources.idNuevaDivision);
-                return request.idNuevaDivision > 0;
+                var result = parameters.Get<int>(StoredProcedureResources.idNuevaDivision);
+                return result;
             }
             catch
             {
-                return false;
+                return 0;
             }
             finally
             {
