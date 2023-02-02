@@ -207,8 +207,14 @@
   <data name="sp_Administrador_Insertar" xml:space="preserve">
     <value>sp_Administrador_Insertar</value>
   </data>
+  <data name="sp_AreasDivision_Consultar" xml:space="preserve">
+    <value>sp_AreasDivision_Consultar</value>
+  </data>
   <data name="sp_ConocimientosEgresado_Insertar" xml:space="preserve">
     <value>sp_ConocimientosEgresado_Insertar</value>
+  </data>
+  <data name="sp_Conocimientos_Consultar" xml:space="preserve">
+    <value>sp_Conocimientos_Consultar</value>
   </data>
   <data name="sp_Conocimiento_Actualizar" xml:space="preserve">
     <value>sp_Conocimiento_Actualizar</value>
@@ -219,14 +225,23 @@
   <data name="sp_Conocimiento_Insertar" xml:space="preserve">
     <value>sp_Conocimiento_Insertar</value>
   </data>
+  <data name="sp_DivisionesUTP_Consultar" xml:space="preserve">
+    <value>sp_DivisionesUTP_Consultar</value>
+  </data>
   <data name="sp_Docentes_Insertar" xml:space="preserve">
     <value>sp_Docentes_Insertar</value>
   </data>
   <data name="sp_Egresados_Agregar" xml:space="preserve">
     <value>sp_Egresados_Agregar</value>
   </data>
+  <data name="sp_Generos_Consultar" xml:space="preserve">
+    <value>sp_Generos_Consultar</value>
+  </data>
   <data name="sp_HabilidadesEgresado_Insertar" xml:space="preserve">
     <value>sp_HabilidadesEgresado_Insertar</value>
+  </data>
+  <data name="sp_Habilidades_Consultar" xml:space="preserve">
+    <value>sp_Habilidades_Consultar</value>
   </data>
   <data name="sp_Habilidad_Actualizar" xml:space="preserve">
     <value>sp_Habilidad_Actualizar</value>
@@ -239,6 +254,15 @@
   </data>
   <data name="sp_LoginAdmin" xml:space="preserve">
     <value>sp_LoginAdmin</value>
+  </data>
+  <data name="sp_LoginDocente" xml:space="preserve">
+    <value>sp_LoginDocente</value>
+  </data>
+  <data name="sp_LoginEmpresa" xml:space="preserve">
+    <value>sp_LoginEmpresa</value>
+  </data>
+  <data name="sp_TiposUsuario_Consultar" xml:space="preserve">
+    <value>sp_TiposUsuario_Consultar</value>
   </data>
   <data name="sp_Usuario_Insertar" xml:space="preserve">
     <value>sp_Usuario_Insertar</value>

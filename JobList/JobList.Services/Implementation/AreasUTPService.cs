@@ -1,5 +1,6 @@
 ﻿namespace JobList.Services.Implementation
 {
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Repositories.Service;
     using JobList.Services.Service;
@@ -7,19 +8,34 @@
     {
         private readonly IAreasUTPRepository areasUTPRepository;
 
+        // Constructor
         public AreasUTPService(IAreasUTPRepository areasUTPRepository)
         {
             this.areasUTPRepository = areasUTPRepository;
         }
 
+        // Insertar un área
         public async Task<int> addArea(InsertAreaRequest request)
         {
             return await this.areasUTPRepository.addArea(request);
         }
 
+        // Insertar una división
         public async Task<int> addDivision(InsertDivisionRequest request)
         {
             return await this.areasUTPRepository.addDivision(request);
+        }
+
+        // Devolver lista de divisiones
+        public async Task<IEnumerable<Division>> readDivisiones()
+        {
+            return await this.areasUTPRepository.readDivisiones();
+        }
+
+        // Devolver lista de áreas de una división
+        public async Task<IEnumerable<Area>> readAreasDivision(readAreasDivisionRequest request)
+        {
+            return await this.areasUTPRepository.readAreasDivision(request);
         }
     }
 }
