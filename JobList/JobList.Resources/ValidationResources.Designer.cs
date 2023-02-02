@@ -97,6 +97,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La contraseña no puede ser la misma..
+        /// </summary>
+        public static string equalPassword {
+            get {
+                return ResourceManager.GetString("equalPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al eliminar registro..
         /// </summary>
         public static string failDelete {
