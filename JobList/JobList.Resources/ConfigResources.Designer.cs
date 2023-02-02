@@ -79,6 +79,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UTPEgresados.
+        /// </summary>
+        public static string EgresadoAudience {
+            get {
+                return ResourceManager.GetString("EgresadoAudience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LoginServiceUTP2023.
         /// </summary>
         public static string Issuer {
@@ -93,6 +102,15 @@ namespace JobList.Resources {
         public static string RolAdmin {
             get {
                 return ResourceManager.GetString("RolAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Egresado.
+        /// </summary>
+        public static string RolEgresado {
+            get {
+                return ResourceManager.GetString("RolEgresado", resourceCulture);
             }
         }
         

@@ -123,11 +123,32 @@
   <data name="Area" xml:space="preserve">
     <value>_area</value>
   </data>
+  <data name="Cargo" xml:space="preserve">
+    <value>_cargo</value>
+  </data>
   <data name="ConocimientoID" xml:space="preserve">
     <value>_ConocimientoID</value>
   </data>
+  <data name="Correo" xml:space="preserve">
+    <value>_correo</value>
+  </data>
+  <data name="DescipcionEgresado" xml:space="preserve">
+    <value>_descripcionEgresado</value>
+  </data>
   <data name="Descripcion" xml:space="preserve">
     <value>_descripcion</value>
+  </data>
+  <data name="Edad" xml:space="preserve">
+    <value>_edad</value>
+  </data>
+  <data name="Empresa" xml:space="preserve">
+    <value>_empresa</value>
+  </data>
+  <data name="EqualPassword" xml:space="preserve">
+    <value>_mismaPassword</value>
+  </data>
+  <data name="Generacion" xml:space="preserve">
+    <value>_generacion</value>
   </data>
   <data name="idArea" xml:space="preserve">
     <value>_idArea</value>
@@ -138,6 +159,12 @@
   <data name="idDivision" xml:space="preserve">
     <value>_idDivision</value>
   </data>
+  <data name="idExperiencia" xml:space="preserve">
+    <value>_idExperiencia</value>
+  </data>
+  <data name="idGenero" xml:space="preserve">
+    <value>_idGenero</value>
+  </data>
   <data name="idHabilidad" xml:space="preserve">
     <value>_idHabilidad</value>
   </data>
@@ -146,6 +173,9 @@
   </data>
   <data name="idNuevaDivision" xml:space="preserve">
     <value>_idNuevaDivision</value>
+  </data>
+  <data name="idNuevaExperiencia" xml:space="preserve">
+    <value>_idNuevaExperiencia</value>
   </data>
   <data name="idNuevaHabilidad" xml:space="preserve">
     <value>_idNuevaHabilidad</value>
@@ -192,6 +222,12 @@
   <data name="Password" xml:space="preserve">
     <value>_password</value>
   </data>
+  <data name="Periodo" xml:space="preserve">
+    <value>_periodo</value>
+  </data>
+  <data name="Salario" xml:space="preserve">
+    <value>_salario</value>
+  </data>
   <data name="sp_adminAreasUTP" xml:space="preserve">
     <value>sp_adminAreasUTP</value>
   </data>
@@ -206,6 +242,9 @@
   </data>
   <data name="sp_Administrador_Insertar" xml:space="preserve">
     <value>sp_Administrador_Insertar</value>
+  </data>
+  <data name="sp_ConocimientosEgresado_Eliminar" xml:space="preserve">
+    <value>sp_ConocimientosEgresado_Eliminar</value>
   </data>
   <data name="sp_ConocimientosEgresado_Insertar" xml:space="preserve">
     <value>sp_ConocimientosEgresado_Insertar</value>
@@ -225,6 +264,33 @@
   <data name="sp_Egresados_Agregar" xml:space="preserve">
     <value>sp_Egresados_Agregar</value>
   </data>
+  <data name="sp_Egresados_DatosPersonales_Actualizar" xml:space="preserve">
+    <value>sp_Egresados_DatosPersonales_Actualizar</value>
+  </data>
+  <data name="sp_Egresados_Password_Actualizar" xml:space="preserve">
+    <value>sp_Egresados_Password_Actualizar</value>
+  </data>
+  <data name="sp_Egresado_Conocimientos_Consultar" xml:space="preserve">
+    <value>sp_Egresado_Conocimientos_Consultar</value>
+  </data>
+  <data name="sp_Egresado_DatosPersonales_Consultar" xml:space="preserve">
+    <value>sp_Egresado_DatosPersonales_Consultar</value>
+  </data>
+  <data name="sp_Egresado_ExLa_Eliminar" xml:space="preserve">
+    <value>sp_Egresado_ExLa_Eliminar</value>
+  </data>
+  <data name="sp_Egresado_ExLa_Insertar" xml:space="preserve">
+    <value>sp_Egresado_ExLa_Insertar</value>
+  </data>
+  <data name="sp_Egresado_ExperienciasLaborales_Consultar" xml:space="preserve">
+    <value>sp_Egresado_ExperienciasLaborales_Consultar</value>
+  </data>
+  <data name="sp_Egresado_Habilidades_Consultar" xml:space="preserve">
+    <value>sp_Egresado_Habilidades_Consultar</value>
+  </data>
+  <data name="sp_HabilidadesEgresado_Eliminar" xml:space="preserve">
+    <value>sp_HabilidadesEgresado_Eliminar</value>
+  </data>
   <data name="sp_HabilidadesEgresado_Insertar" xml:space="preserve">
     <value>sp_HabilidadesEgresado_Insertar</value>
   </data>
@@ -240,8 +306,17 @@
   <data name="sp_LoginAdmin" xml:space="preserve">
     <value>sp_LoginAdmin</value>
   </data>
+  <data name="sp_LoginEgresado" xml:space="preserve">
+    <value>sp_LoginEgresado</value>
+  </data>
   <data name="sp_Usuario_Insertar" xml:space="preserve">
     <value>sp_Usuario_Insertar</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>_success</value>
+  </data>
+  <data name="Telefono" xml:space="preserve">
+    <value>_telefono</value>
   </data>
   <data name="Usuario" xml:space="preserve">
     <value>_usuario</value>

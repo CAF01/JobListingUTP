@@ -22,7 +22,8 @@
                     idUsuario=0,
                     success=false,
                     token=string.Empty,
-                    usuario=request.usuario
+                    usuario=request.usuario,
+                    nombre=string.Empty
                 };
             }
             return new LoginAdminResponse()

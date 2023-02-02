@@ -129,6 +129,9 @@
   <data name="descriptionRequired" xml:space="preserve">
     <value>Descripción es requerida</value>
   </data>
+  <data name="equalPassword" xml:space="preserve">
+    <value>La contraseña no puede ser la misma.</value>
+  </data>
   <data name="failDelete" xml:space="preserve">
     <value>Error al eliminar registro.</value>
   </data>
