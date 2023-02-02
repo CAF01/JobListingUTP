@@ -19,8 +19,15 @@
             this.mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpPost("add-docente")]
         public async Task<IActionResult> PostDocente(InsertDocenteRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+
+        [HttpPost("login-docente")]
+        public async Task<IActionResult> PostLoginDocente(LoginDocenteRequest request)
         {
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);

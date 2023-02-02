@@ -37,5 +37,12 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+
+        [HttpGet("list-conocimientos")]
+        public async Task<IActionResult> GetConocimientos()
+        {
+            var result = await this.mediator.Send(new readConocimientosRequest());
+            return HelperResult.Result(result);
+        }
     }
 }

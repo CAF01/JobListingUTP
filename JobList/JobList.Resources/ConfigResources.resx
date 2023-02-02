@@ -123,11 +123,23 @@
   <data name="DefaultConnection" xml:space="preserve">
     <value>DefaultConnection</value>
   </data>
+  <data name="DocenteAudience" xml:space="preserve">
+    <value>DCT</value>
+  </data>
+  <data name="EmpresaAudience" xml:space="preserve">
+    <value>EMP</value>
+  </data>
   <data name="Issuer" xml:space="preserve">
     <value>LoginServiceUTP2023</value>
   </data>
   <data name="RolAdmin" xml:space="preserve">
     <value>Administrador</value>
+  </data>
+  <data name="RolDocente" xml:space="preserve">
+    <value>Docente</value>
+  </data>
+  <data name="RolEmpresa" xml:space="preserve">
+    <value>Empresa</value>
   </data>
   <data name="SecondaryConnection" xml:space="preserve">
     <value>SecondaryConnection</value>

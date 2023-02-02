@@ -79,6 +79,24 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DCT.
+        /// </summary>
+        public static string DocenteAudience {
+            get {
+                return ResourceManager.GetString("DocenteAudience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMP.
+        /// </summary>
+        public static string EmpresaAudience {
+            get {
+                return ResourceManager.GetString("EmpresaAudience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LoginServiceUTP2023.
         /// </summary>
         public static string Issuer {
@@ -93,6 +111,24 @@ namespace JobList.Resources {
         public static string RolAdmin {
             get {
                 return ResourceManager.GetString("RolAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Docente.
+        /// </summary>
+        public static string RolDocente {
+            get {
+                return ResourceManager.GetString("RolDocente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empresa.
+        /// </summary>
+        public static string RolEmpresa {
+            get {
+                return ResourceManager.GetString("RolEmpresa", resourceCulture);
             }
         }
         

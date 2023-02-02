@@ -2,6 +2,7 @@
 {
     using Dapper;
     using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Repositories.Service;
     using JobList.Resources;
@@ -13,12 +14,14 @@
         private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
 
+        // Constructor
         public CuentaDocenteRepository(Dictionary<string, IDbConnection> connections)
         {
             this.connections = connections;
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
+        // Insertar un docente
         public async Task<int> addDocente(InsertDocenteRequest request)
         {
             try
@@ -74,6 +77,33 @@
             catch
             {
                 return 0;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        // Encontrar la cuenta de usuario de un docente
+        public async Task<DocenteInfo> findDocente(LoginDocenteRequest userLogin)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.Usuario, userLogin.usuario);
+                parameters.Add(StoredProcedureResources.Password, userLogin.password);
+
+                return await dbConnection.QueryFirstAsync<DocenteInfo>(
+                    sql: StoredProcedureResources.sp_LoginDocente,
+                    param: parameters,
+                    transaction: null,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure);
+            }
+            catch
+            {
+                return null;
             }
             finally
             {

@@ -87,7 +87,12 @@ builder.Services.AddScoped<ICuentaEgresadoRepository, CuentaEgresadoRepository>(
 
 
 //Tamara
-
+builder.Services.AddScoped<ITiposUsuarioService, TiposUsuarioService>();
+builder.Services.AddScoped<ITiposUsuarioRepository, TiposUsuarioRepository>();
+builder.Services.AddScoped<IGenerosService, GenerosService>();
+builder.Services.AddScoped<IGenerosRepository, GenerosRepository>();
+builder.Services.AddScoped<ICuentaEmpresaService, CuentaEmpresaService>();
+builder.Services.AddScoped<ICuentaEmpresaRepository, CuentaEmpresaRepository>();
 
 #endregion
 

@@ -2,6 +2,7 @@
 {
     using Dapper;
     using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Repositories.Service;
     using JobList.Resources;
@@ -13,12 +14,14 @@
         private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
 
+        // Constructor
         public ConocimientosRepository(Dictionary<string, IDbConnection> connections)
         {
             this.connections = connections;
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
+        // Insertar un conocimiento
         public async Task<int> addConocimiento(InsertConocimientoRequest request)
         {
             try
@@ -48,6 +51,7 @@
             }
         }
 
+        // Eliminar un conocimiento
         public async Task<bool> deleteConocimiento(DeleteConocimientoRequest request)
         {
             try
@@ -75,6 +79,7 @@
             }
         }
 
+        // Actualizar un conocimiento
         public async Task<bool> updateConocimiento(UpdateConocimientoRequest request)
         {
             try
@@ -96,6 +101,33 @@
             catch
             {
                 return false;
+            }
+            finally
+            {
+                this.dbConnection?.Close();
+            }
+        }
+
+        // Devolver lista de conocimientos
+        public async Task<IEnumerable<Conocimiento>> readConocimientos()
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+
+                var result = await dbConnection.QueryAsync<Conocimiento>(
+                           sql: StoredProcedureResources.sp_Conocimientos_Consultar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return result;
+            }
+            catch
+            {
+                return null;
             }
             finally
             {

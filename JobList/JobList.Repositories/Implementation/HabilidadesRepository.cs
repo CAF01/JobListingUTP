@@ -2,6 +2,7 @@
 {
     using Dapper;
     using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Repositories.Service;
     using JobList.Resources;
@@ -13,6 +14,7 @@
         private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
 
+        // Constructor
         public HabilidadesRepository(Dictionary<string, IDbConnection> connections)
         {
                 this.connections = connections;
@@ -20,6 +22,7 @@
             
         }
 
+        // Insertar una habilidad
         public async Task<int> addHabilidad(InsertHabilidadRequest request)
         {
             try
@@ -49,6 +52,7 @@
             }
         }
 
+        // Eliminar una habilidad
         public async Task<bool> deleteHabilidad(DeleteHabilidadRequest request)
         {
             try
@@ -76,6 +80,7 @@
             }
         }
 
+        // Actualizar una habilidad
         public async Task<bool> updateHabilidad(UpdateHabilidadRequest request)
         {
             try
@@ -97,6 +102,33 @@
             catch
             {
                 return false;
+            }
+            finally
+            {
+                this.dbConnection?.Close();
+            }
+        }
+
+        // Devolver lista de habilidades
+        public async Task<IEnumerable<Habilidad>> readHabilidades()
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+
+                var result = await dbConnection.QueryAsync<Habilidad>(
+                           sql: StoredProcedureResources.sp_Habilidades_Consultar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return result;
+            }
+            catch
+            {
+                return null;
             }
             finally
             {
