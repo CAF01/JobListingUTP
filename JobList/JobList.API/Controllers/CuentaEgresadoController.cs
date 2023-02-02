@@ -36,5 +36,48 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+        [HttpPost("login-account-egresado")]
+        public async Task<IActionResult> LoginEgresado(LoginEgresadoRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        [HttpPut("update-password")]
+        public async Task<IActionResult> UpdatePassword(UpdatePasswordEgresadoRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        [HttpPut("update-datos-personales")]
+        public async Task<IActionResult> UpdatePassword(UpdateEgresadoDatosPersonalesRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        [HttpPost("add-experiencia-laboral-egresado")]
+        public async Task<IActionResult> PostExperienciaLaboral(InsertEgresadoExpLaboralRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        [HttpPut("update-perfil")]
+        public async Task<IActionResult> UpdatePerfil(UpdatePerfilEgresadoRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        [HttpPut("get-datos-personales")]
+        public async Task<IActionResult> GetDatosPersonales(GetEgresadoInfoPersonalRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        [HttpPut("get-info-completo")]
+        public async Task<IActionResult> GetPerfilCompleto(GetEgresadoInfoPerfilRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        
     }
 }

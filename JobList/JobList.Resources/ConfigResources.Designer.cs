@@ -88,6 +88,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EgresadoAudience.
+        /// </summary>
+        public static string EgresadoAudience {
+            get {
+                return ResourceManager.GetString("EgresadoAudience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EMP.
         /// </summary>
         public static string EmpresaAudience {
@@ -120,6 +129,15 @@ namespace JobList.Resources {
         public static string RolDocente {
             get {
                 return ResourceManager.GetString("RolDocente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RolEgresado.
+        /// </summary>
+        public static string RolEgresado {
+            get {
+                return ResourceManager.GetString("RolEgresado", resourceCulture);
             }
         }
         

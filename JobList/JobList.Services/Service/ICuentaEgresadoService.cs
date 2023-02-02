@@ -1,4 +1,5 @@
 ﻿using JobList.Entities.Requests;
+using JobList.Entities.Responses;
 
 namespace JobList.Services.Service
 {
@@ -7,5 +8,13 @@ namespace JobList.Services.Service
         public Task<int> addEgresado(InsertEgresadoRequest request);
         public Task<int> addConocimientoEgresado(InsertConocimientoEgresadoRequest request);
         public Task<int> addHabilidadEgresado(InsertHabilidadEgresadoRequest request);
+        public Task<LoginEgresadoResponse> findEgresado(LoginEgresadoRequest request);
+        public Task<UpdatePasswordEgresadoResponse> updatePassword(UpdatePasswordEgresadoRequest request);
+        public Task<bool> updateDatosPersonales(UpdateEgresadoDatosPersonalesRequest request);
+        public Task<int> addExperienciaLaboral(InsertEgresadoExpLaboralRequest request);
+
+        public Task<UpdatePerfilEgresadoResponse> updatePerfil(UpdatePerfilEgresadoRequest request);
+        public Task<GetEgresadoInfoPersonalResponse> getInfoEgresado(GetEgresadoInfoPersonalRequest request);
+        public Task<GetEgresadoInfoPerfilResponse> getInfoPerfilEgresado(GetEgresadoInfoPerfilRequest request);
     }
 }

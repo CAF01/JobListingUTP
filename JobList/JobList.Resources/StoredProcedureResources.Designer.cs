@@ -79,6 +79,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _cargo.
+        /// </summary>
+        public static string Cargo {
+            get {
+                return ResourceManager.GetString("Cargo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _ConocimientoID.
         /// </summary>
         public static string ConocimientoID {
@@ -88,11 +97,65 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _correo.
+        /// </summary>
+        public static string Correo {
+            get {
+                return ResourceManager.GetString("Correo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _descripcionEgresado.
+        /// </summary>
+        public static string DescipcionEgresado {
+            get {
+                return ResourceManager.GetString("DescipcionEgresado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _descripcion.
         /// </summary>
         public static string Descripcion {
             get {
                 return ResourceManager.GetString("Descripcion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _edad.
+        /// </summary>
+        public static string Edad {
+            get {
+                return ResourceManager.GetString("Edad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _empresa.
+        /// </summary>
+        public static string Empresa {
+            get {
+                return ResourceManager.GetString("Empresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _mismaPassword.
+        /// </summary>
+        public static string EqualPassword {
+            get {
+                return ResourceManager.GetString("EqualPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _generacion.
+        /// </summary>
+        public static string Generacion {
+            get {
+                return ResourceManager.GetString("Generacion", resourceCulture);
             }
         }
         
@@ -124,6 +187,24 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _idExperiencia.
+        /// </summary>
+        public static string idExperiencia {
+            get {
+                return ResourceManager.GetString("idExperiencia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idGenero.
+        /// </summary>
+        public static string idGenero {
+            get {
+                return ResourceManager.GetString("idGenero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _idHabilidad.
         /// </summary>
         public static string idHabilidad {
@@ -147,6 +228,15 @@ namespace JobList.Resources {
         public static string idNuevaDivision {
             get {
                 return ResourceManager.GetString("idNuevaDivision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idNuevaExperiencia.
+        /// </summary>
+        public static string idNuevaExperiencia {
+            get {
+                return ResourceManager.GetString("idNuevaExperiencia", resourceCulture);
             }
         }
         
@@ -286,6 +376,24 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _periodo.
+        /// </summary>
+        public static string Periodo {
+            get {
+                return ResourceManager.GetString("Periodo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _salario.
+        /// </summary>
+        public static string Salario {
+            get {
+                return ResourceManager.GetString("Salario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_adminAreasUTP.
         /// </summary>
         public static string sp_adminAreasUTP {
@@ -367,6 +475,13 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_ConocimientosEgresado_Eliminar.
+        /// </summary>
+        public static string sp_ConocimientosEgresado_Eliminar {
+            get {
+                return ResourceManager.GetString("sp_ConocimientosEgresado_Eliminar", resourceCulture);
+                }
+        }
         ///   Looks up a localized string similar to sp_Conocimientos_Consultar.
         /// </summary>
         public static string sp_Conocimientos_Consultar {
@@ -403,6 +518,60 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_Egresado_Conocimientos_Consultar.
+        /// </summary>
+        public static string sp_Egresado_Conocimientos_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Egresado_Conocimientos_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Egresado_DatosPersonales_Consultar.
+        /// </summary>
+        public static string sp_Egresado_DatosPersonales_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Egresado_DatosPersonales_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Egresado_ExLa_Eliminar.
+        /// </summary>
+        public static string sp_Egresado_ExLa_Eliminar {
+            get {
+                return ResourceManager.GetString("sp_Egresado_ExLa_Eliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Egresado_ExLa_Insertar.
+        /// </summary>
+        public static string sp_Egresado_ExLa_Insertar {
+            get {
+                return ResourceManager.GetString("sp_Egresado_ExLa_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Egresado_ExperienciasLaborales_Consultar.
+        /// </summary>
+        public static string sp_Egresado_ExperienciasLaborales_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Egresado_ExperienciasLaborales_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Egresado_Habilidades_Consultar.
+        /// </summary>
+        public static string sp_Egresado_Habilidades_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Egresado_Habilidades_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_Egresados_Agregar.
         /// </summary>
         public static string sp_Egresados_Agregar {
@@ -412,6 +581,22 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_Egresados_DatosPersonales_Actualizar.
+        /// </summary>
+        public static string sp_Egresados_DatosPersonales_Actualizar {
+            get {
+                return ResourceManager.GetString("sp_Egresados_DatosPersonales_Actualizar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Egresados_Password_Actualizar.
+        /// </summary>
+        public static string sp_Egresados_Password_Actualizar {
+            get {
+                return ResourceManager.GetString("sp_Egresados_Password_Actualizar", resourceCulture);
+                }
+        }
         ///   Looks up a localized string similar to sp_Generos_Consultar.
         /// </summary>
         public static string sp_Generos_Consultar {
@@ -448,6 +633,13 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_HabilidadesEgresado_Eliminar.
+        /// </summary>
+        public static string sp_HabilidadesEgresado_Eliminar {
+            get {
+                return ResourceManager.GetString("sp_HabilidadesEgresado_Eliminar", resourceCulture);
+                }
+        }
         ///   Looks up a localized string similar to sp_Habilidades_Consultar.
         /// </summary>
         public static string sp_Habilidades_Consultar {
@@ -475,6 +667,13 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_LoginEgresado.
+        /// </summary>
+        public static string sp_LoginEgresado {
+            get {
+                return ResourceManager.GetString("sp_LoginEgresado", resourceCulture);
+                }
+        }
         ///   Looks up a localized string similar to sp_LoginDocente.
         /// </summary>
         public static string sp_LoginDocente {
@@ -507,6 +706,24 @@ namespace JobList.Resources {
         public static string sp_Usuario_Insertar {
             get {
                 return ResourceManager.GetString("sp_Usuario_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _success.
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _telefono.
+        /// </summary>
+        public static string Telefono {
+            get {
+                return ResourceManager.GetString("Telefono", resourceCulture);
             }
         }
         
