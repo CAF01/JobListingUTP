@@ -79,19 +79,20 @@ namespace JobList.Resources {
         }
         
         /// <summary>
-
-        ///   Looks up a localized string similar to UTPEgresados.
-        /// </summary>
-        public static string EgresadoAudience {
-            get {
-                return ResourceManager.GetString("EgresadoAudience", resourceCulture);
-                }
-        }
         ///   Looks up a localized string similar to DCT.
         /// </summary>
         public static string DocenteAudience {
             get {
                 return ResourceManager.GetString("DocenteAudience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EgresadoAudience.
+        /// </summary>
+        public static string EgresadoAudience {
+            get {
+                return ResourceManager.GetString("EgresadoAudience", resourceCulture);
             }
         }
         
@@ -123,18 +124,20 @@ namespace JobList.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Egresado.
-        /// </summary>
-        public static string RolEgresado {
-            get {
-                return ResourceManager.GetString("RolEgresado", resourceCulture);
-            }
-        }
         ///   Looks up a localized string similar to Docente.
         /// </summary>
         public static string RolDocente {
             get {
                 return ResourceManager.GetString("RolDocente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RolEgresado.
+        /// </summary>
+        public static string RolEgresado {
+            get {
+                return ResourceManager.GetString("RolEgresado", resourceCulture);
             }
         }
         

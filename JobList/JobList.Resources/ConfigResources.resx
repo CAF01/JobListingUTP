@@ -123,10 +123,11 @@
   <data name="DefaultConnection" xml:space="preserve">
     <value>DefaultConnection</value>
   </data>
-  <data name="EgresadoAudience" xml:space="preserve">
-    <value>UTPEgresados</value>
   <data name="DocenteAudience" xml:space="preserve">
     <value>DCT</value>
+  </data>
+  <data name="EgresadoAudience" xml:space="preserve">
+    <value>EgresadoAudience</value>
   </data>
   <data name="EmpresaAudience" xml:space="preserve">
     <value>EMP</value>
@@ -137,10 +138,11 @@
   <data name="RolAdmin" xml:space="preserve">
     <value>Administrador</value>
   </data>
-  <data name="RolEgresado" xml:space="preserve">
-    <value>Egresado</value>
   <data name="RolDocente" xml:space="preserve">
     <value>Docente</value>
+  </data>
+  <data name="RolEgresado" xml:space="preserve">
+    <value>RolEgresado</value>
   </data>
   <data name="RolEmpresa" xml:space="preserve">
     <value>Empresa</value>
