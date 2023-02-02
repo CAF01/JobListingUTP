@@ -125,6 +125,11 @@
   </data>
   <data name="EgresadoAudience" xml:space="preserve">
     <value>UTPEgresados</value>
+  <data name="DocenteAudience" xml:space="preserve">
+    <value>DCT</value>
+  </data>
+  <data name="EmpresaAudience" xml:space="preserve">
+    <value>EMP</value>
   </data>
   <data name="Issuer" xml:space="preserve">
     <value>LoginServiceUTP2023</value>
@@ -134,6 +139,11 @@
   </data>
   <data name="RolEgresado" xml:space="preserve">
     <value>Egresado</value>
+  <data name="RolDocente" xml:space="preserve">
+    <value>Docente</value>
+  </data>
+  <data name="RolEmpresa" xml:space="preserve">
+    <value>Empresa</value>
   </data>
   <data name="SecondaryConnection" xml:space="preserve">
     <value>SecondaryConnection</value>

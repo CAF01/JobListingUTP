@@ -1,4 +1,5 @@
-﻿using JobList.Entities.Requests;
+﻿using JobList.Entities.Models;
+using JobList.Entities.Requests;
 
 namespace JobList.Repositories.Service
 {
@@ -7,5 +8,6 @@ namespace JobList.Repositories.Service
         public Task<int> addConocimiento(InsertConocimientoRequest request);
         public Task<bool> updateConocimiento(UpdateConocimientoRequest request);
         public Task<bool> deleteConocimiento(DeleteConocimientoRequest request);
+        public Task<IEnumerable<Conocimiento>> readConocimientos();
     }
 }

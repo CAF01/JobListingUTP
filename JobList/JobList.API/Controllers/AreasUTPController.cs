@@ -13,6 +13,7 @@ namespace JobList.API.Controllers
     {
         private readonly IMediator mediator;
 
+        // Constructor
         public AreasUTPController(IMediator mediator)
         {
             this.mediator = mediator;
@@ -29,6 +30,23 @@ namespace JobList.API.Controllers
         public async Task<IActionResult> PostMediatorDivision(InsertDivisionRequest request)
         {
             var result = await mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+
+        [HttpGet("list-divisiones")]
+        public async Task<IActionResult> GetDivisiones()
+        {
+            var result = await this.mediator.Send(new readDivisionesRequest());
+            return HelperResult.Result(result);
+        }
+
+        [HttpGet("list-areasdivision")]
+        public async Task<IActionResult> GetAreasDivision(int idDivision)
+        {
+            var result = await this.mediator.Send(new readAreasDivisionRequest()
+            {
+                idDivision = idDivision
+            });
             return HelperResult.Result(result);
         }
     }
