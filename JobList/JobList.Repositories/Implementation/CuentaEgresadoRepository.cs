@@ -424,7 +424,7 @@
                 parameters.Add(StoredProcedureResources.idGenero, request.genero);
                 parameters.Add(StoredProcedureResources.Edad, request.edad);
                 parameters.Add(StoredProcedureResources.Telefono, request.telefono);
-                parameters.Add(StoredProcedureResources.DescipcionEgresado, request.descripcionEgresado);
+                parameters.Add(StoredProcedureResources.DescripcionEgresado, request.descripcionEgresado);
                 parameters.Add(StoredProcedureResources.idArea, request.idArea);
                 parameters.Add(StoredProcedureResources.Nombre, request.nombre);
                 parameters.Add(StoredProcedureResources.Apellido, request.apellido);
@@ -502,7 +502,7 @@
                         parameters.Add(StoredProcedureResources.idGenero, request.genero);
                         parameters.Add(StoredProcedureResources.Edad, request.edad);
                         parameters.Add(StoredProcedureResources.Telefono, request.telefono);
-                        parameters.Add(StoredProcedureResources.DescipcionEgresado, request.descripcionEgresado);
+                        parameters.Add(StoredProcedureResources.DescripcionEgresado, request.descripcionEgresado);
                         parameters.Add(StoredProcedureResources.idArea, request.idArea);
                         parameters.Add(StoredProcedureResources.Nombre, request.nombre);
                         parameters.Add(StoredProcedureResources.Apellido, request.apellido);
