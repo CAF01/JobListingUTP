@@ -72,37 +72,37 @@
         }
 
         // Listado de nuevas ofertas, esperando a ser validadas por el administrador
-        public async Task<IEnumerable<OfertaNuevaAdministrador>> readOfertasNuevasAdministrador()
+        public async Task<IEnumerable<ReadOfertasNuevasAdministradorResponse>> readOfertasNuevasAdministrador()
         {
             return await this.cuentaAdministradorRepository.readOfertasNuevasAdministrador();
         }
 
         // Listado de ofertas activas (de todos los usuarios)
-        public async Task<IEnumerable<OfertaActivaAdministrador>> readOfertasActivasAdministrador()
+        public async Task<IEnumerable<ReadOfertasActivasAdministradorResponse>> readOfertasActivasAdministrador()
         {
             return await this.cuentaAdministradorRepository.readOfertasActivasAdministrador();
         }
 
         // Listado de empresas afiliadas
-        public async Task<IEnumerable<EmpresaAfiliada>> readEmpresasAfiliadas()
+        public async Task<IEnumerable<ReadEmpresasAfiliadasResponse>> readEmpresasAfiliadas()
         {
             return await this.cuentaAdministradorRepository.readEmpresasAfiliadas();
         }
 
         // Consultar los detalles de una empresa
-        public async Task<IEnumerable<DetallesEmpresa>> readDetallesEmpresa(ReadDetallesEmpresaRequest request)
+        public async Task<IEnumerable<ReadDetallesEmpresaResponse>> readDetallesEmpresa(ReadDetallesEmpresaRequest request)
         {
             return await this.cuentaAdministradorRepository.readDetallesEmpresa(request);
         }
 
         // Listado de ofertas publicadas por una empresa (parte de los detalles de la empresa)
-        public async Task<IEnumerable<OfertaPublicadaEmpresa>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request)
+        public async Task<IEnumerable<ReadOfertasPublicadasEmpresaResponse>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request)
         {
             return await this.cuentaAdministradorRepository.readOfertasPublicadasEmpresa(request);
         }
 
         // Listado de seguimientos de postulaciones de todos los egresados
-        public async Task<IEnumerable<SeguimientoPostulacionEgresado>> readSeguimientosPostulacionEgresados()
+        public async Task<IEnumerable<ReadSeguimientosPostulacionEgresadosResponse>> readSeguimientosPostulacionEgresados()
         {
             return await this.cuentaAdministradorRepository.readSeguimientosPostulacionEgresados();
         }

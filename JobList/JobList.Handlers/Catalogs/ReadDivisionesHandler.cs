@@ -1,16 +1,10 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Handlers.Catalogs
+﻿namespace JobList.Handlers.Catalogs
 {
-    public class ReadDivisionesHandler : IRequestHandler<readDivisionesRequest, List<Division>>
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using JobList.Services.Service;
+    using MediatR;
+    public class ReadDivisionesHandler : IRequestHandler<ReadDivisionesRequest, List<ReadDivisionesResponse>>
     {
         private readonly IAreasUTPService areasUTPService;
 
@@ -20,9 +14,9 @@ namespace JobList.Handlers.Catalogs
         }
 
         // Tarea para obtener lista de divisiones
-        public async Task<List<Division>> Handle(readDivisionesRequest request, CancellationToken cancellationToken)
+        public async Task<List<ReadDivisionesResponse>> Handle(ReadDivisionesRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<Division> listDivisiones = await this.areasUTPService.readDivisiones();
+            IEnumerable<ReadDivisionesResponse> listDivisiones = await this.areasUTPService.readDivisiones();
             return listDivisiones.ToList();
         }
     }

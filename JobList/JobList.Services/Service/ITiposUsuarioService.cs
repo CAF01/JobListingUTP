@@ -9,6 +9,6 @@ namespace JobList.Services.Service
 {
     public interface ITiposUsuarioService
     {
-        public Task<IEnumerable<TipoUsuario>> readTiposUsuario();
+        public Task<IEnumerable<ReadTiposUsuarioResponse>> readTiposUsuario();
     }
 }

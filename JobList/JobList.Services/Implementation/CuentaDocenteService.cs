@@ -2,6 +2,7 @@
 {
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
     using JobList.Framework;
     using JobList.Repositories.Service;
     using JobList.Resources;
@@ -34,7 +35,7 @@
         }
 
         // Login 
-        public async Task<DocenteInfo> loginDocenteConToken(LoginDocenteRequest userLogin)
+        public async Task<LoginDocenteResponse> loginDocenteConToken(LoginDocenteRequest userLogin)
         {
             userLogin.password = PasswordEncryptor.GetMD5(userLogin.password);
 

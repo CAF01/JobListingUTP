@@ -110,14 +110,14 @@
         }
 
         // Devolver lista de habilidades
-        public async Task<IEnumerable<Habilidad>> readHabilidades()
+        public async Task<IEnumerable<ReadHabilidadesResponse>> readHabilidades()
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<Habilidad>(
+                var result = await dbConnection.QueryAsync<ReadHabilidadesResponse>(
                            sql: StoredProcedureResources.sp_Habilidades_Consultar,
                            param: parameters,
                            transaction: null,

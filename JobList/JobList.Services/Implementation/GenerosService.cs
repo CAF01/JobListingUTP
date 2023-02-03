@@ -18,7 +18,7 @@ namespace JobList.Services.Implementation
             this.generosRepository = generosRepository;
         }
 
-        public async Task<IEnumerable<Genero>> readGeneros()
+        public async Task<IEnumerable<ReadGenerosResponse>> readGeneros()
         {
             return await this.generosRepository.readGeneros();
         }

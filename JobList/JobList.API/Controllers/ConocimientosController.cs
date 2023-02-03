@@ -41,7 +41,7 @@
         [HttpGet("list-conocimientos")]
         public async Task<IActionResult> GetConocimientos()
         {
-            var result = await this.mediator.Send(new readConocimientosRequest());
+            var result = await this.mediator.Send(new ReadConocimientosRequest());
             return HelperResult.Result(result);
         }
     }

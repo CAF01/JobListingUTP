@@ -1,15 +1,9 @@
-﻿using JobList.Entities.Requests;
-using JobList.Entities.Responses;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Handlers.Docente
+﻿namespace JobList.Handlers.Docente
 {
+    using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
+    using JobList.Services.Service;
+    using MediatR;
     public class LoginDocenteHandler : IRequestHandler<LoginDocenteRequest, LoginDocenteResponse>
     {
         private readonly ICuentaDocenteService cuentaDocenteService;

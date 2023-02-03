@@ -35,7 +35,7 @@
         }
 
         // Devolver lista de habilidades
-        public async Task<IEnumerable<Habilidad>> readHabilidades()
+        public async Task<IEnumerable<ReadHabilidadesResponse>> readHabilidades()
         {
             return await this.habilidadesRepository.readHabilidades();
         }

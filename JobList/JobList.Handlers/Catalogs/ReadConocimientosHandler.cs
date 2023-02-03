@@ -1,16 +1,10 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Handlers.Catalogs
+﻿namespace JobList.Handlers.Catalogs
 {
-    public class ReadConocimientosHandler : IRequestHandler<readConocimientosRequest, List<Conocimiento>>
+    using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
+    using JobList.Services.Service;
+    using MediatR;
+    public class ReadConocimientosHandler : IRequestHandler<ReadConocimientosRequest, List<ReadConocimientosResponse>>
     {
         private readonly IConocimientosService conocimientosService;
 
@@ -20,9 +14,9 @@ namespace JobList.Handlers.Catalogs
         }
 
         // Obtener lista de conocimientos
-        public async Task<List<Conocimiento>> Handle(readConocimientosRequest request, CancellationToken cancellationToken)
+        public async Task<List<ReadConocimientosResponse>> Handle(ReadConocimientosRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<Conocimiento> listConocimientos = await this.conocimientosService.readConocimientos();
+            IEnumerable<ReadConocimientosResponse> listConocimientos = await this.conocimientosService.readConocimientos();
             return listConocimientos.ToList();
         }
     }

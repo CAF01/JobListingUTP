@@ -20,7 +20,7 @@ namespace JobList.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetTiposUsuario()
         {
-            var result = await this.mediator.Send(new readTiposUsuarioRequest());
+            var result = await this.mediator.Send(new ReadTiposUsuarioRequest());
             return HelperResult.Result(result);
         }
     }

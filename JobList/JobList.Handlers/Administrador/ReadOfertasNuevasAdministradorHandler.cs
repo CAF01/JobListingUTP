@@ -1,16 +1,11 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Handlers.Administrador
+﻿namespace JobList.Handlers.Administrador
 {
-    public class ReadOfertasNuevasAdministradorHandler : IRequestHandler<ReadOfertasNuevasAdministradorRequest, List<OfertaNuevaAdministrador>>
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using JobList.Services.Service;
+    using MediatR;
+
+    public class ReadOfertasNuevasAdministradorHandler : IRequestHandler<ReadOfertasNuevasAdministradorRequest, List<ReadOfertasNuevasAdministradorResponse>>
     {
         private readonly ICuentaAdministradorService cuentaAdministradorService;
 
@@ -21,9 +16,9 @@ namespace JobList.Handlers.Administrador
         }
 
         // Listado de ofertas nuevas, esperando a ser validadas por el administrador
-        public async Task<List<OfertaNuevaAdministrador>> Handle(ReadOfertasNuevasAdministradorRequest request, CancellationToken cancellationToken)
+        public async Task<List<ReadOfertasNuevasAdministradorResponse>> Handle(ReadOfertasNuevasAdministradorRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<OfertaNuevaAdministrador> listOfertasNuevasAdministardor = await this.cuentaAdministradorService.readOfertasNuevasAdministrador();
+            IEnumerable<ReadOfertasNuevasAdministradorResponse> listOfertasNuevasAdministardor = await this.cuentaAdministradorService.readOfertasNuevasAdministrador();
             return listOfertasNuevasAdministardor.ToList();
         }
     }

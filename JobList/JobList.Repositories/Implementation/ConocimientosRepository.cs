@@ -2,8 +2,8 @@
 {
     using Dapper;
     using JobList.Entities.Helpers;
-    using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
     using System.Data;
@@ -109,14 +109,14 @@
         }
 
         // Devolver lista de conocimientos
-        public async Task<IEnumerable<Conocimiento>> readConocimientos()
+        public async Task<IEnumerable<ReadConocimientosResponse>> readConocimientos()
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<Conocimiento>(
+                var result = await dbConnection.QueryAsync<ReadConocimientosResponse>(
                            sql: StoredProcedureResources.sp_Conocimientos_Consultar,
                            param: parameters,
                            transaction: null,

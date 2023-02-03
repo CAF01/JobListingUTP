@@ -1,7 +1,7 @@
 ﻿namespace JobList.Services.Implementation
 {
-    using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Services.Service;
     using System.Threading.Tasks;
@@ -35,7 +35,7 @@
         }
 
         // Devolver lista de conocimientos
-        public async Task<IEnumerable<Conocimiento>> readConocimientos()
+        public async Task<IEnumerable<ReadConocimientosResponse>> readConocimientos()
         {
             return await this.conocimientosRepository.readConocimientos();
         }

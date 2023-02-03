@@ -4,6 +4,7 @@
     using JobList.Entities.Helpers;
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
     using System.Data;
@@ -82,14 +83,14 @@
         }
     
         // Devolver lista de divisiones
-        public async Task<IEnumerable<Division>> readDivisiones()
+        public async Task<IEnumerable<ReadDivisionesResponse>> readDivisiones()
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<Division>(
+                var result = await dbConnection.QueryAsync<ReadDivisionesResponse>(
                            sql: StoredProcedureResources.sp_DivisionesUTP_Consultar,
                            param: parameters,
                            transaction: null,
@@ -109,7 +110,7 @@
         }
 
         // Devolver lista de areas de una division
-        public async Task<IEnumerable<Area>> readAreasDivision(readAreasDivisionRequest request)
+        public async Task<IEnumerable<ReadAreasDivisionResponse>> readAreasDivision(ReadAreasDivisionRequest request)
         {
             try
             {
@@ -117,7 +118,7 @@
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idDivision, request.idDivision);
 
-                var result = await dbConnection.QueryAsync<Area>(
+                var result = await dbConnection.QueryAsync<ReadAreasDivisionResponse>(
                            sql: StoredProcedureResources.sp_AreasDivision_Consultar,
                            param: parameters,
                            transaction: null,

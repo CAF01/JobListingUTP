@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JobList.Entities.Requests
 {
-    public class ReadSeguimientosPostulacionEgresadosRequest : IRequest<List<SeguimientoPostulacionEgresado>>
+    public class ReadSeguimientosPostulacionEgresadosRequest : IRequest<List<ReadSeguimientosPostulacionEgresadosResponse>>
     {
     }
 }

@@ -25,14 +25,14 @@ namespace JobList.Repositories.Implementation
         }
 
         // Tarea para devolver lista de tipos de usuario
-        public async Task<IEnumerable<TipoUsuario>> readTiposUsuario()
+        public async Task<IEnumerable<ReadTiposUsuarioResponse>> readTiposUsuario()
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<TipoUsuario>(
+                var result = await dbConnection.QueryAsync<ReadTiposUsuarioResponse>(
                            sql: StoredProcedureResources.sp_TiposUsuario_Consultar,
                            param: parameters,
                            transaction: null,
