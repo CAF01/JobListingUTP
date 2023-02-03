@@ -4,9 +4,9 @@
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
 
-    public class deleteHabilidadValidation : AbstractValidator<DeleteHabilidadRequest>
+    public class DeleteHabilidadValidation : AbstractValidator<DeleteHabilidadRequest>
     {
-        public deleteHabilidadValidation()
+        public DeleteHabilidadValidation()
         {
             RuleFor(data => data.idHabilidad).NotEmpty().NotNull().GreaterThan(ValidatorHelper.ZERO);
         }

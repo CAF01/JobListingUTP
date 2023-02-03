@@ -5,9 +5,9 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertEstadoOfertaValidation : AbstractValidator<InsertEstadoOfertaRequest>
+    public class InsertEstadoOfertaValidation : AbstractValidator<InsertEstadoOfertaRequest>
     {
-        public insertEstadoOfertaValidation()
+        public InsertEstadoOfertaValidation()
         {
             RuleFor(data => data.descripcion).NotNull().WithMessage(ValidationResources.descriptionRequired)
                 .NotEmpty().WithMessage(ValidationResources.descriptionNotEmpty)
