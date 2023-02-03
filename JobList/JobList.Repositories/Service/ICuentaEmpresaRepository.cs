@@ -1,15 +1,12 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Repositories.Service
+﻿namespace JobList.Repositories.Service
 {
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
+
     public interface ICuentaEmpresaRepository
     {
         public Task<EmpresaInfo> findEmpresa(LoginEmpresaRequest userLogin);
+        public Task<InsertOfertaTrabajoResponse> insertOfertaTrabajo(InsertOfertaTrabajoRequest request);
     }
 }

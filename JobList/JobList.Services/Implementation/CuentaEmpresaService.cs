@@ -1,21 +1,18 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using JobList.Framework;
-using JobList.Repositories.Service;
-using JobList.Resources;
-using JobList.Services.Service;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Services.Implementation
+﻿namespace JobList.Services.Implementation
 {
+    using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
+    using JobList.Framework;
+    using JobList.Repositories.Service;
+    using JobList.Resources;
+    using JobList.Services.Service;
+    using Microsoft.Extensions.Options;
+    using Microsoft.IdentityModel.Tokens;
+    using System.IdentityModel.Tokens.Jwt;
+    using System.Security.Claims;
+    using System.Text;
     public class CuentaEmpresaService : ICuentaEmpresaService
     {
         private readonly ICuentaEmpresaRepository cuentaEmpresaRepository;
@@ -64,6 +61,12 @@ namespace JobList.Services.Implementation
             };
             var createdToken = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(createdToken).ToString();
+        }
+
+        public async Task<InsertOfertaTrabajoResponse> insertOfertaTrabajo(InsertOfertaTrabajoRequest request)
+        {
+            request.fechaCreacion = MexicoDateHelper.obtainDate();
+            return await this.cuentaEmpresaRepository.insertOfertaTrabajo(request);
         }
     }
 }
