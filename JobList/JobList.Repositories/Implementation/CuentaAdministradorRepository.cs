@@ -112,7 +112,7 @@
         }
 
         // Consultar detalles de una empresa
-        public async Task<IEnumerable<DetallesEmpresa>> readDetallesEmpresa(ReadDetallesEmpresaRequest request)
+        public async Task<IEnumerable<ReadDetallesEmpresaResponse>> readDetallesEmpresa(ReadDetallesEmpresaRequest request)
         {
             try
             {
@@ -120,7 +120,7 @@
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuarioEmpresa, request.idUsuarioEmpresa);
 
-                var result = await dbConnection.QueryAsync<DetallesEmpresa>(
+                var result = await dbConnection.QueryAsync<ReadDetallesEmpresaResponse>(
                            sql: StoredProcedureResources.sp_Empresa_Detalles_Consultar,
                            param: parameters,
                            transaction: null,
@@ -140,14 +140,14 @@
         }
 
         // Listado de empresas afiliadas
-        public async Task<IEnumerable<EmpresaAfiliada>> readEmpresasAfiliadas()
+        public async Task<IEnumerable<ReadEmpresasAfiliadasResponse>> readEmpresasAfiliadas()
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<EmpresaAfiliada>(
+                var result = await dbConnection.QueryAsync<ReadEmpresasAfiliadasResponse>(
                            sql: StoredProcedureResources.sp_Empresas_Consultar,
                            param: parameters,
                            transaction: null,
@@ -167,14 +167,14 @@
         }
 
         // Listado de ofertas activas (de todos los usuarios)
-        public async Task<IEnumerable<OfertaActivaAdministrador>> readOfertasActivasAdministrador()
+        public async Task<IEnumerable<ReadOfertasActivasAdministradorResponse>> readOfertasActivasAdministrador()
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<OfertaActivaAdministrador>(
+                var result = await dbConnection.QueryAsync<ReadOfertasActivasAdministradorResponse>(
                            sql: StoredProcedureResources.sp_OfertasTrabajo_ActivasAdministrador_Consultar,
                            param: parameters,
                            transaction: null,
@@ -184,7 +184,7 @@
                 
                 if(result != null) 
                 {
-                    foreach (OfertaActivaAdministrador oferta in result)
+                    foreach (ReadOfertasActivasAdministradorResponse oferta in result)
                     {
                         // amarillo: a partir de un postulante
                         if (oferta.numeroPostulantes >= 1)
@@ -211,14 +211,14 @@
         }
 
         // Listado de nuevas ofertas, esperando a ser validadas por el administrador
-        public async Task<IEnumerable<OfertaNuevaAdministrador>> readOfertasNuevasAdministrador()
+        public async Task<IEnumerable<ReadOfertasNuevasAdministradorResponse>> readOfertasNuevasAdministrador()
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<OfertaNuevaAdministrador>(
+                var result = await dbConnection.QueryAsync<ReadOfertasNuevasAdministradorResponse>(
                            sql: StoredProcedureResources.sp_OfertasTrabajo_NuevasAdministrador_Consultar,
                            param: parameters,
                            transaction: null,
@@ -238,7 +238,7 @@
         }
 
         // Listado de ofertas publicadas por una empresa
-        public async Task<IEnumerable<OfertaPublicadaEmpresa>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request)
+        public async Task<IEnumerable<ReadOfertasPublicadasEmpresaResponse>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request)
         {
             try
             {
@@ -246,7 +246,7 @@
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuarioEmpresa, request.idUsuarioEmpresa);
 
-                var result = await dbConnection.QueryAsync<OfertaPublicadaEmpresa>(
+                var result = await dbConnection.QueryAsync<ReadOfertasPublicadasEmpresaResponse>(
                            sql: StoredProcedureResources.sp_OfertasTrabajo_PerfilEmpresa_Consultar,
                            param: parameters,
                            transaction: null,
@@ -266,14 +266,14 @@
         }
 
         // Listado de seguimientos de postulacion de todos los egresados 
-        public async Task<IEnumerable<SeguimientoPostulacionEgresado>> readSeguimientosPostulacionEgresados()
+        public async Task<IEnumerable<ReadSeguimientosPostulacionEgresadosResponse>> readSeguimientosPostulacionEgresados()
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<SeguimientoPostulacionEgresado>(
+                var result = await dbConnection.QueryAsync<ReadSeguimientosPostulacionEgresadosResponse>(
                            sql: StoredProcedureResources.sp_Postulaciones_Consultar,
                            param: parameters,
                            transaction: null,

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JobList.Entities.Requests
 {
-    public class ReadOfertasActivasAdministradorRequest : IRequest<List<OfertaActivaAdministrador>>
+    public class ReadOfertasActivasAdministradorRequest : IRequest<List<ReadOfertasActivasAdministradorResponse>>
     {
     }
 }

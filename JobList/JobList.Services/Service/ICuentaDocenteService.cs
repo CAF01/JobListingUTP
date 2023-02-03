@@ -1,10 +1,11 @@
 ﻿namespace JobList.Services.Service
 {
-    using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
+
     public interface ICuentaDocenteService
     {
         public Task<int> addDocente(InsertDocenteRequest request);
-        public Task<DocenteInfo> loginDocenteConToken(LoginDocenteRequest userLogin);
+        public Task<LoginDocenteResponse> loginDocenteConToken(LoginDocenteRequest userLogin);
     }
 }

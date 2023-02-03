@@ -7,6 +7,6 @@
         public Task<int> addHabilidad(InsertHabilidadRequest request);
         public Task<bool> updateHabilidad(UpdateHabilidadRequest request);
         public Task<bool> deleteHabilidad(DeleteHabilidadRequest request);
-        public Task<IEnumerable<Habilidad>> readHabilidades();
+        public Task<IEnumerable<ReadHabilidadesResponse>> readHabilidades();
     }
 }

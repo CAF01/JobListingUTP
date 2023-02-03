@@ -2,6 +2,7 @@
 {
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Services.Service;
     public class AreasUTPService : IAreasUTPService
@@ -27,13 +28,13 @@
         }
 
         // Devolver lista de divisiones
-        public async Task<IEnumerable<Division>> readDivisiones()
+        public async Task<IEnumerable<ReadDivisionesResponse>> readDivisiones()
         {
             return await this.areasUTPRepository.readDivisiones();
         }
 
         // Devolver lista de áreas de una división
-        public async Task<IEnumerable<Area>> readAreasDivision(readAreasDivisionRequest request)
+        public async Task<IEnumerable<ReadAreasDivisionResponse>> readAreasDivision(ReadAreasDivisionRequest request)
         {
             return await this.areasUTPRepository.readAreasDivision(request);
         }

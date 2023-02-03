@@ -1,14 +1,8 @@
-﻿using JobList.Entities.Models;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Entities.Requests
+﻿namespace JobList.Entities.Requests
 {
-    public class readConocimientosRequest : IRequest<List<Conocimiento>>
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class ReadConocimientosRequest : IRequest<List<ReadConocimientosResponse>>
     {
     }
 }

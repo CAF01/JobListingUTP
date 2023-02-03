@@ -1,16 +1,10 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Handlers.Administrador
+﻿namespace JobList.Handlers.Administrador
 {
-    public class ReadOfertasActivasAdministradorHandler : IRequestHandler<ReadOfertasActivasAdministradorRequest, List<OfertaActivaAdministrador>>
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using JobList.Services.Service;
+    using MediatR;
+    public class ReadOfertasActivasAdministradorHandler : IRequestHandler<ReadOfertasActivasAdministradorRequest, List<ReadOfertasActivasAdministradorResponse>>
     {
         private readonly ICuentaAdministradorService cuentaAdministradorService;
 
@@ -21,9 +15,9 @@ namespace JobList.Handlers.Administrador
         }
 
         // Listado de ofertas activas (de todos los usuarios)
-        public async Task<List<OfertaActivaAdministrador>> Handle(ReadOfertasActivasAdministradorRequest request, CancellationToken cancellationToken)
+        public async Task<List<ReadOfertasActivasAdministradorResponse>> Handle(ReadOfertasActivasAdministradorRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<OfertaActivaAdministrador> listOfertasActivasAdministardor = await this.cuentaAdministradorService.readOfertasActivasAdministrador();
+            IEnumerable<ReadOfertasActivasAdministradorResponse> listOfertasActivasAdministardor = await this.cuentaAdministradorService.readOfertasActivasAdministrador();
             return listOfertasActivasAdministardor.ToList();
         }
     }

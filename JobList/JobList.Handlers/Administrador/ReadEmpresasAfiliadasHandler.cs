@@ -1,16 +1,10 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Handlers.Administrador
+﻿namespace JobList.Handlers.Administrador
 {
-    public class ReadEmpresasAfiliadasHandler : IRequestHandler<ReadEmpresasAfiliadasRequest, List<EmpresaAfiliada>>
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using JobList.Services.Service;
+    using MediatR;
+    public class ReadEmpresasAfiliadasHandler : IRequestHandler<ReadEmpresasAfiliadasRequest, List<ReadEmpresasAfiliadasResponse>>
     {
         private readonly ICuentaAdministradorService cuentaAdministradorService;
 
@@ -21,9 +15,9 @@ namespace JobList.Handlers.Administrador
         }
 
         // Listado de empresas afiliadas
-        public async Task<List<EmpresaAfiliada>> Handle(ReadEmpresasAfiliadasRequest request, CancellationToken cancellationToken)
+        public async Task<List<ReadEmpresasAfiliadasResponse>> Handle(ReadEmpresasAfiliadasRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<EmpresaAfiliada> listEmpresasAfiliadas = await this.cuentaAdministradorService.readEmpresasAfiliadas();
+            IEnumerable<ReadEmpresasAfiliadasResponse> listEmpresasAfiliadas = await this.cuentaAdministradorService.readEmpresasAfiliadas();
             return listEmpresasAfiliadas.ToList();
         }
     }
