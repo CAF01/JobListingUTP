@@ -1,6 +1,5 @@
 ﻿namespace JobList.Services.Implementation
 {
-    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Entities.Responses;
     using JobList.Framework;
@@ -9,6 +8,7 @@
     using JobList.Services.Service;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
+    using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
@@ -102,6 +102,16 @@
         public async Task<GetEgresadoInfoPerfilResponse> getInfoPerfilEgresado(GetEgresadoInfoPerfilRequest request)
         {
             return await this.cuentaEgresadoRepository.getInfoPerfilEgresado(request);
+        }
+
+        public async Task<IEnumerable<GetEgresadoPostulacionesResponse>> getPostulacionesEgresado(GetEgresadoPostulacionesRequest request)
+        {
+            return await this.cuentaEgresadoRepository.getPostulacionesEgresado(request);
+        }
+
+        public async Task<IEnumerable<GetEgresadoListaOfertasActivasResponse>> getOfertasActivasEgresado(GetEgresadoListaOfertasActivasRequest request)
+        {
+            return await this.cuentaEgresadoRepository.getOfertasActivasEgresado(request);
         }
     }
 }

@@ -4,9 +4,9 @@
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
 
-    public class deleteConocimientoValidation : AbstractValidator<DeleteConocimientoRequest>
+    public class DeleteConocimientoValidation : AbstractValidator<DeleteConocimientoRequest>
     {
-        public deleteConocimientoValidation()
+        public DeleteConocimientoValidation()
         {
             RuleFor(data => data.idConocimiento).NotEmpty().NotNull().GreaterThan(ValidatorHelper.ZERO);
         }

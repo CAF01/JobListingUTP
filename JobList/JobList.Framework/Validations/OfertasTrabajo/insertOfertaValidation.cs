@@ -1,8 +1,8 @@
 ﻿namespace JobList.Framework.Validations.OfertasTrabajo
 {
-    public class insertOfertaValidation
+    public class InsertOfertaValidation
     {
-        public insertOfertaValidation()
+        public InsertOfertaValidation()
         {
 
         }

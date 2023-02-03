@@ -66,18 +66,31 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
-        [HttpPut("get-datos-personales")]
-        public async Task<IActionResult> GetDatosPersonales(GetEgresadoInfoPersonalRequest request)
+        [HttpGet("get-datos-personales")]
+        public async Task<IActionResult> GetDatosPersonales(int idUsuario)
         {
-            var result = await this.mediator.Send(request);
+            var result = await this.mediator.Send(new GetEgresadoInfoPersonalRequest() { idUsuario=idUsuario});
             return HelperResult.Result(result);
         }
-        [HttpPut("get-info-completo")]
-        public async Task<IActionResult> GetPerfilCompleto(GetEgresadoInfoPerfilRequest request)
+        [HttpGet("get-info-completo")]
+        public async Task<IActionResult> GetPerfilCompleto(int idUsuario)
         {
-            var result = await this.mediator.Send(request);
+            var result = await this.mediator.Send(new GetEgresadoInfoPerfilRequest() { idUsuario=idUsuario});
+            return HelperResult.Result(result);
+        }
+        [HttpGet("get-postulaciones-egresado")]
+        public async Task<IActionResult> GetPostulacionEgresado(int idUsuario)
+        {
+            var result = await this.mediator.Send(new GetEgresadoPostulacionesRequest() { idUsuario= idUsuario });
             return HelperResult.Result(result);
         }
         
+        [HttpGet("get-ofertas-activas")]
+        public async Task<IActionResult> GetListaOfertasActivas(int idUsuario)
+        {
+            var result = await this.mediator.Send(new GetEgresadoListaOfertasActivasRequest() { idUsuario = idUsuario });
+            return HelperResult.Result(result);
+        }
+
     }
 }

@@ -6,6 +6,8 @@
     using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
     using System.Data;
     using System.Threading.Tasks;
 
@@ -281,6 +283,127 @@
                 return result;
             }
             catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<IEnumerable<GetEgresadoListaOfertasActivasResponse>> getOfertasActivasEgresado(GetEgresadoListaOfertasActivasRequest request)
+        {
+            try
+            {
+                IEnumerable<GetEgresadoListaOfertasActivasResponse> result=null;
+
+                dbConnection.Open();
+                using (var transaction = dbConnection.BeginTransaction())
+                {
+                    try
+                    {
+                        var parameters = new DynamicParameters();
+                        parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                        result = await dbConnection.QueryAsync<GetEgresadoListaOfertasActivasResponse>(
+                            sql: StoredProcedureResources.sp_OfertasTrabajo_ActivasEgresado_Consultar,
+                            transaction: transaction,
+                            param: parameters,
+                            commandTimeout: DatabaseHelper.TIMEOUT,
+                            commandType: CommandType.StoredProcedure
+                            );
+
+                        if(result!= null && result.ToList().Count>0)
+                        {
+                            foreach (var ofertaActiva in result)
+                            {
+                                if(ofertaActiva.postulantes>0)
+                                {
+                                    ofertaActiva.tienePostulantes = true;
+
+                                    parameters = new DynamicParameters();
+                                    parameters.Add(StoredProcedureResources.idOferta, ofertaActiva.idOferta);
+
+                                    ofertaActiva.ListaPostulantes = await dbConnection.QueryAsync<PostulanteOferta>(
+                                        sql: StoredProcedureResources.sp_OfertasTrabajo_Lista_Postulaciones,
+                                        transaction: transaction,
+                                        param: parameters,
+                                        commandTimeout: DatabaseHelper.TIMEOUT,
+                                        commandType: CommandType.StoredProcedure
+                                        );
+                                }
+                               
+                            }
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception s)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<IEnumerable<GetEgresadoPostulacionesResponse>> getPostulacionesEgresado(GetEgresadoPostulacionesRequest request)
+        {
+            try
+            {
+                IEnumerable<GetEgresadoPostulacionesResponse> result;
+                dbConnection.Open();
+                using (var transaction = dbConnection.BeginTransaction())
+                {
+                    try
+                    {
+                        var parameters = new DynamicParameters();
+                        parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                        result = await dbConnection.QueryAsync<GetEgresadoPostulacionesResponse>(
+                            sql: StoredProcedureResources.sp_Postulaciones_Egresado_Consultar,
+                            param: parameters,
+                            transaction: transaction,
+                            commandTimeout: DatabaseHelper.TIMEOUT,
+                            commandType: CommandType.StoredProcedure);
+                        if (result != null && result.Count() > 0)
+                        {
+                            foreach (var datoContacto in result.ToList())
+                            {
+                                if (datoContacto.estadoPostulacion == StoredProcedureResources.OfertaAceptada)
+                                {
+                                    parameters = new DynamicParameters();
+                                    parameters.Add(StoredProcedureResources.idPostulacion, datoContacto.idPostulacion);
+                                    datoContacto.datoContacto = await dbConnection.QueryFirstAsync<DatosContactoAceptado>(
+                                        sql: StoredProcedureResources.sp_DetallesContacto_PostulacionAceptada_Consultar,
+                                        param: parameters,
+                                        transaction: transaction,
+                                        commandTimeout: DatabaseHelper.TIMEOUT,
+                                        commandType: CommandType.StoredProcedure);
+                                    datoContacto.datoContacto.success = true;
+                                }
+                            }
+                        }
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return null;
+                    }
+                    return result;
+                }
+            }
+            catch (Exception)
             {
                 return null;
             }

@@ -34,7 +34,7 @@ builder.Services.AddMediatR(typeof(InsertDivisionRequest).Assembly);
 builder.Services.AddMediatR(typeof(InsertDivisionHandler).GetTypeInfo().Assembly);
 
 builder.Services.AddFluentValidationAutoValidation();
-builder.Services.AddValidatorsFromAssemblyContaining<insertAdminValidation>();
+builder.Services.AddValidatorsFromAssemblyContaining<InsertAdminValidation>();
 
 builder.Services.Configure<IOptions<JobList.Entities.Models.Options>>(Configuration.GetSection(ConfigResources.Strings));
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

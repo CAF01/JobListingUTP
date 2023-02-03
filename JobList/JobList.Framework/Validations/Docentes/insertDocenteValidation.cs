@@ -5,9 +5,9 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertDocenteValidation : AbstractValidator<InsertDocenteRequest>
+    public class InsertDocenteValidation : AbstractValidator<InsertDocenteRequest>
     {
-        public insertDocenteValidation()
+        public InsertDocenteValidation()
         {
             RuleFor(data => data.usuario).NotNull().WithMessage(ValidationResources.userRequired)
                 .NotEmpty().WithMessage(ValidationResources.userNotEmpty)
