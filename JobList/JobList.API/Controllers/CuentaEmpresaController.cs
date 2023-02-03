@@ -23,5 +23,11 @@ namespace JobList.API.Controllers
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+        [HttpPost("crear-oferta")]
+        public async Task<IActionResult> PostOfertaEmpresa(InsertOfertaTrabajoRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
     }
 }
