@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JobList.Handlers.Administrador
 {
-    public class ReadDetallesEmpresaHandler : IRequestHandler<ReadDetallesEmpresaRequest, List<DetallesEmpresa>>
+    public class ReadDetallesEmpresaHandler : IRequestHandler<ReadDetallesEmpresaRequest, List<ReadDetallesEmpresaResponse>>
     {
         private readonly ICuentaAdministradorService cuentaAdministradorService;
 
@@ -21,9 +21,9 @@ namespace JobList.Handlers.Administrador
         }
 
         // Consultar detalles de una empresa
-        public async Task<List<DetallesEmpresa>> Handle(ReadDetallesEmpresaRequest request, CancellationToken cancellationToken)
+        public async Task<List<ReadDetallesEmpresaResponse>> Handle(ReadDetallesEmpresaRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<DetallesEmpresa> listDetallesEmpresa = await this.cuentaAdministradorService.readDetallesEmpresa(request);
+            IEnumerable<ReadDetallesEmpresaResponse> listDetallesEmpresa = await this.cuentaAdministradorService.readDetallesEmpresa(request);
             return listDetallesEmpresa.ToList();
         }
     }

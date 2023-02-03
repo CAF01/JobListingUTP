@@ -36,14 +36,14 @@ namespace JobList.API.Controllers
         [HttpGet("list-divisiones")]
         public async Task<IActionResult> GetDivisiones()
         {
-            var result = await this.mediator.Send(new readDivisionesRequest());
+            var result = await this.mediator.Send(new ReadDivisionesRequest());
             return HelperResult.Result(result);
         }
 
         [HttpGet("list-areasdivision")]
         public async Task<IActionResult> GetAreasDivision(int idDivision)
         {
-            var result = await this.mediator.Send(new readAreasDivisionRequest()
+            var result = await this.mediator.Send(new ReadAreasDivisionRequest()
             {
                 idDivision = idDivision
             });

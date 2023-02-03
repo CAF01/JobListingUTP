@@ -2,8 +2,8 @@
 {
     using Dapper;
     using JobList.Entities.Helpers;
-    using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
     using System.Data;
@@ -85,7 +85,7 @@
         }
 
         // Encontrar la cuenta de usuario de un docente
-        public async Task<DocenteInfo> findDocente(LoginDocenteRequest userLogin)
+        public async Task<LoginDocenteResponse> findDocente(LoginDocenteRequest userLogin)
         {
             try
             {
@@ -94,7 +94,7 @@
                 parameters.Add(StoredProcedureResources.Usuario, userLogin.usuario);
                 parameters.Add(StoredProcedureResources.Password, userLogin.password);
 
-                return await dbConnection.QueryFirstAsync<DocenteInfo>(
+                return await dbConnection.QueryFirstAsync<LoginDocenteResponse>(
                     sql: StoredProcedureResources.sp_LoginDocente,
                     param: parameters,
                     transaction: null,

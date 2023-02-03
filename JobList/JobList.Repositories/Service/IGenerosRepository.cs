@@ -9,6 +9,6 @@ namespace JobList.Repositories.Service
 {
     public interface IGenerosRepository
     {
-        public Task<IEnumerable<Genero>> readGeneros();
+        public Task<IEnumerable<ReadGenerosResponse>> readGeneros();
     }
 }

@@ -1,16 +1,10 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Handlers.Administrador
+﻿namespace JobList.Handlers.Administrador
 {
-    public class ReadOfertasPublicadasEmpresaHandler : IRequestHandler<ReadOfertasPublicadasEmpresaRequest, List<OfertaPublicadaEmpresa>>
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using JobList.Services.Service;
+    using MediatR;
+    public class ReadOfertasPublicadasEmpresaHandler : IRequestHandler<ReadOfertasPublicadasEmpresaRequest, List<ReadOfertasPublicadasEmpresaResponse>>
     {
         private readonly ICuentaAdministradorService cuentaAdministradorService;
 
@@ -21,9 +15,9 @@ namespace JobList.Handlers.Administrador
         }
 
         //  Listado de ofertas publicadas por una empreas
-        public async Task<List<OfertaPublicadaEmpresa>> Handle(ReadOfertasPublicadasEmpresaRequest request, CancellationToken cancellationToken)
+        public async Task<List<ReadOfertasPublicadasEmpresaResponse>> Handle(ReadOfertasPublicadasEmpresaRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<OfertaPublicadaEmpresa> listOfertasPublicadasEmpresa = await this.cuentaAdministradorService.readOfertasPublicadasEmpresa(request);
+            IEnumerable<ReadOfertasPublicadasEmpresaResponse> listOfertasPublicadasEmpresa = await this.cuentaAdministradorService.readOfertasPublicadasEmpresa(request);
             return listOfertasPublicadasEmpresa.ToList();
         }
     }

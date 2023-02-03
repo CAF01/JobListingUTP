@@ -18,7 +18,7 @@ namespace JobList.Services.Implementation
             this.tiposUsuarioRepository = tiposUsuarioRepository;
         }   
 
-        public async Task<IEnumerable<TipoUsuario>> readTiposUsuario()
+        public async Task<IEnumerable<ReadTiposUsuarioResponse>> readTiposUsuario()
         {
             return await this.tiposUsuarioRepository.readTiposUsuario();
         }

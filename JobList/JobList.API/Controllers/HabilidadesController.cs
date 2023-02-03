@@ -42,7 +42,7 @@
         [HttpGet("list-habilidades")]
         public async Task<IActionResult> GetHabilidades()
         {
-            var result = await this.mediator.Send(new readHabilidadesRequest());
+            var result = await this.mediator.Send(new ReadHabilidadesRequest());
             return HelperResult.Result(result);
         }
     }

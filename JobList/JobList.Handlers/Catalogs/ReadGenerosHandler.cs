@@ -1,16 +1,10 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Handlers.Catalogs
+﻿namespace JobList.Handlers.Catalogs
 {
-    public class ReadGenerosHandler : IRequestHandler<readGenerosRequest, List<Genero>>
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using JobList.Services.Service;
+    using MediatR;
+    public class ReadGenerosHandler : IRequestHandler<ReadGenerosRequest, List<ReadGenerosResponse>>
     {
         private readonly IGenerosService generosService;
 
@@ -19,9 +13,9 @@ namespace JobList.Handlers.Catalogs
             this.generosService = generosService;
         }
 
-        public async Task<List<Genero>> Handle(readGenerosRequest request, CancellationToken cancellationToken)
+        public async Task<List<ReadGenerosResponse>> Handle(ReadGenerosRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<Genero> listGeneros = await this.generosService.readGeneros();
+            IEnumerable<ReadGenerosResponse> listGeneros = await this.generosService.readGeneros();
             return listGeneros.ToList();
         }
     }

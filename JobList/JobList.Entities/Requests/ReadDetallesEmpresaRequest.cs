@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JobList.Entities.Requests
 {
-    public class ReadDetallesEmpresaRequest : IRequest<List<DetallesEmpresa>>
+    public class ReadDetallesEmpresaRequest : IRequest<List<ReadDetallesEmpresaResponse>>
     {
         public int idUsuarioEmpresa { get; set; }
     }

@@ -1,16 +1,11 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Handlers.Catalogs
+﻿namespace JobList.Handlers.Catalogs
 {
-    public class ReadTiposUsuarioHandler : IRequestHandler<readTiposUsuarioRequest, List<TipoUsuario>>
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using JobList.Services.Service;
+    using MediatR;
+
+    public class ReadTiposUsuarioHandler : IRequestHandler<ReadTiposUsuarioRequest, List<ReadTiposUsuarioResponse>>
     {
         private readonly ITiposUsuarioService tiposUsuarioService;
 
@@ -19,9 +14,9 @@ namespace JobList.Handlers.Catalogs
             this.tiposUsuarioService = tiposUsuarioService;
         }
 
-        public async Task<List<TipoUsuario>> Handle(readTiposUsuarioRequest request, CancellationToken cancellationToken)
+        public async Task<List<ReadTiposUsuarioResponse>> Handle(ReadTiposUsuarioRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<TipoUsuario> listTipoUsuario = await this.tiposUsuarioService.readTiposUsuario();
+            IEnumerable<ReadTiposUsuarioResponse> listTipoUsuario = await this.tiposUsuarioService.readTiposUsuario();
             return listTipoUsuario.ToList();
         }
     }

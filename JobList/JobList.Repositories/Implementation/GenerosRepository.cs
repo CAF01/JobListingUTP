@@ -24,14 +24,14 @@ namespace JobList.Repositories.Implementation
         }
 
         // Tarea para devolver lista de generos
-        public async Task<IEnumerable<Genero>> readGeneros()
+        public async Task<IEnumerable<ReadGenerosResponse>> readGeneros()
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<Genero>(
+                var result = await dbConnection.QueryAsync<ReadGenerosResponse>(
                            sql: StoredProcedureResources.sp_Generos_Consultar,
                            param: parameters,
                            transaction: null,
