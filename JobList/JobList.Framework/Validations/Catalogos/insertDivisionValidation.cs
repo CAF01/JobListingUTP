@@ -5,9 +5,9 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertDivisionValidation : AbstractValidator<InsertDivisionRequest>
+    public class InsertDivisionValidation : AbstractValidator<InsertDivisionRequest>
     {
-        public insertDivisionValidation()
+        public InsertDivisionValidation()
         {
             RuleFor(data => data.descripcion).NotNull().WithMessage(ValidationResources.descriptionRequired)
                 .NotEmpty().WithMessage(ValidationResources.descriptionNotEmpty)

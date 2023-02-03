@@ -5,9 +5,9 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertConocimietoValidation : AbstractValidator<InsertConocimientoRequest>
+    public class InsertConocimietoValidation : AbstractValidator<InsertConocimientoRequest>
     {
-        public insertConocimietoValidation()
+        public InsertConocimietoValidation()
         {
             RuleFor(data => data.descripcion).NotNull().WithMessage(ValidationResources.descriptionRequired)
                 .NotEmpty().WithMessage(ValidationResources.descriptionNotEmpty)

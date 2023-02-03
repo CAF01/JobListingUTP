@@ -3,9 +3,9 @@
     using FluentValidation;
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
-    public class insertConocimientoEgresadoValidation : AbstractValidator<InsertConocimientoEgresadoRequest>
+    public class InsertConocimientoEgresadoValidation : AbstractValidator<InsertConocimientoEgresadoRequest>
     {
-        public insertConocimientoEgresadoValidation()
+        public InsertConocimientoEgresadoValidation()
         {
             RuleFor(data => data.idUsuarioEgresado).NotEmpty().NotNull().GreaterThan(ValidatorHelper.ZERO);
             RuleFor(data => data.idConocimiento).NotEmpty().NotNull().GreaterThan(ValidatorHelper.ZERO);

@@ -5,9 +5,9 @@
     using JobList.Entities.Requests;
     using JobList.Resources;
 
-    public class insertAdminValidation : AbstractValidator<InsertAdminRequest>
+    public class InsertAdminValidation : AbstractValidator<InsertAdminRequest>
     {
-        public insertAdminValidation()
+        public InsertAdminValidation()
         {
             RuleFor(data => data.usuario).NotNull().WithMessage(ValidationResources.userRequired).NotEmpty()
                 .WithMessage(ValidationResources.userNotEmpty).MinimumLength(ValidatorHelper.FIVE).WithMessage(ValidationResources.userMinLength)

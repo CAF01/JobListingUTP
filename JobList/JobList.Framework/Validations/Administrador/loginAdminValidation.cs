@@ -5,9 +5,9 @@ using JobList.Resources;
 
 namespace JobList.Framework.Validations.Administrador
 {
-    public class loginAdminValidation : AbstractValidator<LoginAdminRequest>
+    public class LoginAdminValidation : AbstractValidator<LoginAdminRequest>
     {
-        public loginAdminValidation()
+        public LoginAdminValidation()
         {
             RuleFor(data => data.usuario).NotNull().WithMessage(ValidationResources.userRequired).NotEmpty()
                 .WithMessage(ValidationResources.userNotEmpty).MinimumLength(ValidatorHelper.FIVE).WithMessage(ValidationResources.userMinLength)
