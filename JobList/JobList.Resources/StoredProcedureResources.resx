@@ -345,4 +345,49 @@
   <data name="Usuario" xml:space="preserve">
     <value>_usuario</value>
   </data>
+  <data name="sp_OfertasTrabajo_NuevasAdministrador_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_NuevasAdministrador_Consultar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_ActivasAdministrador_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_ActivasAdministrador_Consultar</value>
+  </data>
+  <data name="sp_Empresas_Consultar" xml:space="preserve">
+    <value>sp_Empresas_Consultar</value>
+  </data>
+  <data name="sp_Empresa_Detalles_Consultar" xml:space="preserve">
+    <value>sp_Empresa_Detalles_Consultar</value>
+  </data>
+  <data name="idEmpresa" xml:space="preserve">
+    <value>_idEmpresa</value>
+  </data>
+  <data name="idUsuarioEmpresa" xml:space="preserve">
+    <value>_idUsuarioEmpresa</value>
+  </data>
+  <data name="sp_OfertasTrabajo_PerfilEmpresa_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_PerfilEmpresa_Consultar</value>
+  </data>
+  <data name="sp_Postulaciones_Consultar" xml:space="preserve">
+    <value>sp_Postulaciones_Consultar</value>
+  </data>
+  <data name="idOferta" xml:space="preserve">
+    <value>_idOferta</value>
+  </data>
+  <data name="idPostulacion" xml:space="preserve">
+    <value>_idPostulacion</value>
+  </data>
+  <data name="OfertaAceptada" xml:space="preserve">
+    <value>Aceptada</value>
+  </data>
+  <data name="sp_DetallesContacto_PostulacionAceptada_Consultar" xml:space="preserve">
+    <value>sp_DetallesContacto_PostulacionAceptada_Consultar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_ActivasEgresado_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_ActivasEgresado_Consultar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_Lista_Postulaciones" xml:space="preserve">
+    <value>sp_OfertasTrabajo_Lista_Postulaciones</value>
+  </data>
+  <data name="sp_Postulaciones_Egresado_Consultar" xml:space="preserve">
+    <value>sp_Postulaciones_Egresado_Consultar</value>
+  </data>
 </root>
