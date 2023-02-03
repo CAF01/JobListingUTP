@@ -6,6 +6,7 @@
     using JobList.Entities.Requests;
     using JobList.Repositories.Service;
     using JobList.Resources;
+    using System.Collections.Generic;
     using System.Data;
     using System.Threading.Tasks;
 
@@ -14,13 +15,14 @@
         private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
 
+        // Constructor
         public CuentaAdministradorRepository(Dictionary<string, IDbConnection> connections)
         {
             this.connections = connections;
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
-
+        // Insertar una cuenta de usuario administrador
         public async Task<int> addAdministrador(InsertAdminRequest request)
         {
             try
@@ -82,6 +84,7 @@
             }
         }
 
+        // Login administardor
         public async Task<AdminInfo> findAdministrador(LoginAdminRequest userLogin)
         {
             try
@@ -105,6 +108,187 @@
             finally
             {
                 dbConnection?.Close();
+            }
+        }
+
+        // Consultar detalles de una empresa
+        public async Task<IEnumerable<DetallesEmpresa>> readDetallesEmpresa(ReadDetallesEmpresaRequest request)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuarioEmpresa, request.idUsuarioEmpresa);
+
+                var result = await dbConnection.QueryAsync<DetallesEmpresa>(
+                           sql: StoredProcedureResources.sp_Empresa_Detalles_Consultar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.dbConnection?.Close();
+            }
+        }
+
+        // Listado de empresas afiliadas
+        public async Task<IEnumerable<EmpresaAfiliada>> readEmpresasAfiliadas()
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+
+                var result = await dbConnection.QueryAsync<EmpresaAfiliada>(
+                           sql: StoredProcedureResources.sp_Empresas_Consultar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.dbConnection?.Close();
+            }
+        }
+
+        // Listado de ofertas activas (de todos los usuarios)
+        public async Task<IEnumerable<OfertaActivaAdministrador>> readOfertasActivasAdministrador()
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+
+                var result = await dbConnection.QueryAsync<OfertaActivaAdministrador>(
+                           sql: StoredProcedureResources.sp_OfertasTrabajo_ActivasAdministrador_Consultar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                
+                if(result != null) 
+                {
+                    foreach (OfertaActivaAdministrador oferta in result)
+                    {
+                        // amarillo: a partir de un postulante
+                        if (oferta.numeroPostulantes >= 1)
+                            oferta.semaforo = "amarillo";
+                        // verde: no tiene postulantes
+                        if (oferta.numeroPostulantes == 0)
+                            oferta.semaforo = "verde";
+                        // rojo: postulante contactado
+                        if (oferta.estadoPostulacion == "Aceptada")
+                            oferta.semaforo = "rojo";
+                    }
+                }                
+
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.dbConnection?.Close();
+            }
+        }
+
+        // Listado de nuevas ofertas, esperando a ser validadas por el administrador
+        public async Task<IEnumerable<OfertaNuevaAdministrador>> readOfertasNuevasAdministrador()
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+
+                var result = await dbConnection.QueryAsync<OfertaNuevaAdministrador>(
+                           sql: StoredProcedureResources.sp_OfertasTrabajo_NuevasAdministrador_Consultar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.dbConnection?.Close();
+            }
+        }
+
+        // Listado de ofertas publicadas por una empresa
+        public async Task<IEnumerable<OfertaPublicadaEmpresa>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuarioEmpresa, request.idUsuarioEmpresa);
+
+                var result = await dbConnection.QueryAsync<OfertaPublicadaEmpresa>(
+                           sql: StoredProcedureResources.sp_OfertasTrabajo_PerfilEmpresa_Consultar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.dbConnection?.Close();
+            }
+        }
+
+        // Listado de seguimientos de postulacion de todos los egresados 
+        public async Task<IEnumerable<SeguimientoPostulacionEgresado>> readSeguimientosPostulacionEgresados()
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+
+                var result = await dbConnection.QueryAsync<SeguimientoPostulacionEgresado>(
+                           sql: StoredProcedureResources.sp_Postulaciones_Consultar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.dbConnection?.Close();
             }
         }
     }

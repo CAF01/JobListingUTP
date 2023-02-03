@@ -187,6 +187,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _idEmpresa.
+        /// </summary>
+        public static string idEmpresa {
+            get {
+                return ResourceManager.GetString("idEmpresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _idExperiencia.
         /// </summary>
         public static string idExperiencia {
@@ -313,6 +322,24 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _idOferta.
+        /// </summary>
+        public static string idOferta {
+            get {
+                return ResourceManager.GetString("idOferta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _idPostulacion.
+        /// </summary>
+        public static string idPostulacion {
+            get {
+                return ResourceManager.GetString("idPostulacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _idTipo.
         /// </summary>
         public static string idTipo {
@@ -340,6 +367,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _idUsuarioEmpresa.
+        /// </summary>
+        public static string idUsuarioEmpresa {
+            get {
+                return ResourceManager.GetString("idUsuarioEmpresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _nombre.
         /// </summary>
         public static string Nombre {
@@ -354,6 +390,15 @@ namespace JobList.Resources {
         public static string NuevaDescripcion {
             get {
                 return ResourceManager.GetString("NuevaDescripcion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aceptada.
+        /// </summary>
+        public static string OfertaAceptada {
+            get {
+                return ResourceManager.GetString("OfertaAceptada", resourceCulture);
             }
         }
         
@@ -475,13 +520,6 @@ namespace JobList.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sp_ConocimientosEgresado_Eliminar.
-        /// </summary>
-        public static string sp_ConocimientosEgresado_Eliminar {
-            get {
-                return ResourceManager.GetString("sp_ConocimientosEgresado_Eliminar", resourceCulture);
-                }
-        }
         ///   Looks up a localized string similar to sp_Conocimientos_Consultar.
         /// </summary>
         public static string sp_Conocimientos_Consultar {
@@ -491,11 +529,29 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_ConocimientosEgresado_Eliminar.
+        /// </summary>
+        public static string sp_ConocimientosEgresado_Eliminar {
+            get {
+                return ResourceManager.GetString("sp_ConocimientosEgresado_Eliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_ConocimientosEgresado_Insertar.
         /// </summary>
         public static string sp_ConocimientosEgresado_Insertar {
             get {
                 return ResourceManager.GetString("sp_ConocimientosEgresado_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_DetallesContacto_PostulacionAceptada_Consultar.
+        /// </summary>
+        public static string sp_DetallesContacto_PostulacionAceptada_Consultar {
+            get {
+                return ResourceManager.GetString("sp_DetallesContacto_PostulacionAceptada_Consultar", resourceCulture);
             }
         }
         
@@ -595,8 +651,28 @@ namespace JobList.Resources {
         public static string sp_Egresados_Password_Actualizar {
             get {
                 return ResourceManager.GetString("sp_Egresados_Password_Actualizar", resourceCulture);
-                }
+            }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Empresa_Detalles_Consultar.
+        /// </summary>
+        public static string sp_Empresa_Detalles_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Empresa_Detalles_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Empresas_Consultar.
+        /// </summary>
+        public static string sp_Empresas_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Empresas_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_Generos_Consultar.
         /// </summary>
         public static string sp_Generos_Consultar {
@@ -633,18 +709,20 @@ namespace JobList.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sp_HabilidadesEgresado_Eliminar.
-        /// </summary>
-        public static string sp_HabilidadesEgresado_Eliminar {
-            get {
-                return ResourceManager.GetString("sp_HabilidadesEgresado_Eliminar", resourceCulture);
-                }
-        }
         ///   Looks up a localized string similar to sp_Habilidades_Consultar.
         /// </summary>
         public static string sp_Habilidades_Consultar {
             get {
                 return ResourceManager.GetString("sp_Habilidades_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_HabilidadesEgresado_Eliminar.
+        /// </summary>
+        public static string sp_HabilidadesEgresado_Eliminar {
+            get {
+                return ResourceManager.GetString("sp_HabilidadesEgresado_Eliminar", resourceCulture);
             }
         }
         
@@ -667,13 +745,6 @@ namespace JobList.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sp_LoginEgresado.
-        /// </summary>
-        public static string sp_LoginEgresado {
-            get {
-                return ResourceManager.GetString("sp_LoginEgresado", resourceCulture);
-                }
-        }
         ///   Looks up a localized string similar to sp_LoginDocente.
         /// </summary>
         public static string sp_LoginDocente {
@@ -683,11 +754,83 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_LoginEgresado.
+        /// </summary>
+        public static string sp_LoginEgresado {
+            get {
+                return ResourceManager.GetString("sp_LoginEgresado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_LoginEmpresa.
         /// </summary>
         public static string sp_LoginEmpresa {
             get {
                 return ResourceManager.GetString("sp_LoginEmpresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_OfertasTrabajo_ActivasAdministrador_Consultar.
+        /// </summary>
+        public static string sp_OfertasTrabajo_ActivasAdministrador_Consultar {
+            get {
+                return ResourceManager.GetString("sp_OfertasTrabajo_ActivasAdministrador_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_OfertasTrabajo_ActivasEgresado_Consultar.
+        /// </summary>
+        public static string sp_OfertasTrabajo_ActivasEgresado_Consultar {
+            get {
+                return ResourceManager.GetString("sp_OfertasTrabajo_ActivasEgresado_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_OfertasTrabajo_Lista_Postulaciones.
+        /// </summary>
+        public static string sp_OfertasTrabajo_Lista_Postulaciones {
+            get {
+                return ResourceManager.GetString("sp_OfertasTrabajo_Lista_Postulaciones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_OfertasTrabajo_NuevasAdministrador_Consultar.
+        /// </summary>
+        public static string sp_OfertasTrabajo_NuevasAdministrador_Consultar {
+            get {
+                return ResourceManager.GetString("sp_OfertasTrabajo_NuevasAdministrador_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_OfertasTrabajo_PerfilEmpresa_Consultar.
+        /// </summary>
+        public static string sp_OfertasTrabajo_PerfilEmpresa_Consultar {
+            get {
+                return ResourceManager.GetString("sp_OfertasTrabajo_PerfilEmpresa_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Postulaciones_Consultar.
+        /// </summary>
+        public static string sp_Postulaciones_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Postulaciones_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Postulaciones_Egresado_Consultar.
+        /// </summary>
+        public static string sp_Postulaciones_Egresado_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Postulaciones_Egresado_Consultar", resourceCulture);
             }
         }
         
