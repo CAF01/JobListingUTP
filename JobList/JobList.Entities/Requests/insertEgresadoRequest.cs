@@ -9,6 +9,5 @@
         public string nombre { get; set; } = default!;
         public string apellido { get; set; } = default!;
         public int idArea { get; set; }
-        public readonly int idTipo = 8;
     }
 }
