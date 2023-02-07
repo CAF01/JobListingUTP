@@ -19,7 +19,6 @@
                 .MinimumLength(ValidatorHelper.TEN).WithMessage(ValidationResources.nameMinLength)
                 .MaximumLength(ValidatorHelper.EIGHTYFIVE).WithMessage(ValidationResources.nameMaxLength);
 
-            RuleFor(data => data.idTipo).Equal(ValidatorHelper.THREE);
 
             RuleFor(data => data.password).NotNull().WithMessage(ValidationResources.passwordRequired)
                  .NotEmpty().WithMessage(ValidationResources.passwordNotEmpty)

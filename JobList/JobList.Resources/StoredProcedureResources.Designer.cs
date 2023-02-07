@@ -421,6 +421,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _idTipoBuscado.
+        /// </summary>
+        public static string idTipoBuscado {
+            get {
+                return ResourceManager.GetString("idTipoBuscado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _idUsuario.
         /// </summary>
         public static string idUsuario {
@@ -1002,6 +1011,15 @@ namespace JobList.Resources {
         public static string sp_ResponsabilidadesOferta_Insertar {
             get {
                 return ResourceManager.GetString("sp_ResponsabilidadesOferta_Insertar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_TiposUsuario_Buscar.
+        /// </summary>
+        public static string sp_TiposUsuario_Buscar {
+            get {
+                return ResourceManager.GetString("sp_TiposUsuario_Buscar", resourceCulture);
             }
         }
         

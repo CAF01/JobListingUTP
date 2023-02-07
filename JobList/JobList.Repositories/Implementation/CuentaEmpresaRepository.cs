@@ -8,6 +8,8 @@
     using System.Data;
     using JobList.Repositories.Service;
     using JobList.Entities.Responses;
+    using System.ComponentModel;
+
     public class CuentaEmpresaRepository : ICuentaEmpresaRepository
     {
         private readonly Dictionary<string, IDbConnection> connections;
@@ -40,6 +42,34 @@
             catch
             {
                 return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<bool> deleteOfertaFallida(int idOferta)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idOferta);
+
+                var result = await dbConnection.QueryFirstAsync(
+                    sql: StoredProcedureResources.sp_LoginEmpresa,
+                    param: parameters,
+                    transaction: null,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure);
+
+
+                return result > 0 ;
+            }
+            catch
+            {
+                return false;
             }
             finally
             {
