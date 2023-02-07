@@ -26,7 +26,7 @@ namespace JobList.Handlers.Empresa
             {
                 return new LoginEmpresaResponse()
                 {
-                    idUsuario = 0,
+                    idUsuario = -1,
                     success = false,
                     token = string.Empty,
                     usuario = request.usuario

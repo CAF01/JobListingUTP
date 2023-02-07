@@ -20,7 +20,7 @@
         public async Task<InsertOfertaTrabajoResponse> Handle(InsertOfertaTrabajoRequest request, CancellationToken cancellationToken)
         {
             var result = await this.cuentaEmpresaService.insertOfertaTrabajo(request);
-            if(result.idOferta>0)
+            if(result!=null && result.idOferta>0)
             {
                 return new InsertOfertaTrabajoResponse()
                 {
@@ -31,7 +31,7 @@
             }
             return new InsertOfertaTrabajoResponse()
             {
-                idOferta = result.idOferta,
+                idOferta = -1,
                 mensaje = ValidationResources.failInsert,
                 success = false
             };

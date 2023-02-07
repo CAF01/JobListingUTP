@@ -33,9 +33,22 @@
                     try
                     {
                         var parameters = new DynamicParameters();
+                        parameters.Add(StoredProcedureResources.idTipoBuscado, 3);//Enumerador en SP esta definido 3 para docente
+                        parameters.Add(StoredProcedureResources.idTipo, direction: ParameterDirection.Output);
+
+                        await dbConnection.ExecuteAsync(
+                           sql: StoredProcedureResources.sp_TiposUsuario_Buscar,
+                           transaction: transaction,
+                           param: parameters,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure);
+
+                        var idTipo = parameters.Get<int>(StoredProcedureResources.idTipo);
+
+                        parameters = new DynamicParameters();
                         parameters.Add(StoredProcedureResources.Usuario, request.usuario);
                         parameters.Add(StoredProcedureResources.Password, request.password);
-                        parameters.Add(StoredProcedureResources.idTipo, request.idTipo);
+                        parameters.Add(StoredProcedureResources.idTipo, idTipo);
                         parameters.Add(StoredProcedureResources.idNuevoUsuario, direction: ParameterDirection.Output);
 
 

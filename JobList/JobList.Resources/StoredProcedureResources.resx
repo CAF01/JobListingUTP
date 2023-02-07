@@ -456,4 +456,10 @@
   <data name="sp_Empresa_DatosContacto_Insertar" xml:space="preserve">
     <value>sp_Empresa_DatosContacto_Insertar</value>
   </data>
+  <data name="idTipoBuscado" xml:space="preserve">
+    <value>_idTipoBuscado</value>
+  </data>
+  <data name="sp_TiposUsuario_Buscar" xml:space="preserve">
+    <value>sp_TiposUsuario_Buscar</value>
+  </data>
 </root>
