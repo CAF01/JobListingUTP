@@ -1,5 +1,6 @@
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.AspNetCore;
+using JobList.Entities.Models;
 using JobList.Entities.Requests;
 using JobList.Framework.Validations.Administrador;
 using JobList.Handlers.Catalogs;
@@ -10,11 +11,15 @@ using JobList.Services.Implementation;
 using JobList.Services.Service;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 using System.Data;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +33,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-#region modificaciones de inyecci�n
+#region modificaciones de inyección
 
 builder.Services.AddMediatR(typeof(InsertDivisionRequest).Assembly);
 builder.Services.AddMediatR(typeof(InsertDivisionHandler).GetTypeInfo().Assembly);
@@ -36,7 +41,7 @@ builder.Services.AddMediatR(typeof(InsertDivisionHandler).GetTypeInfo().Assembly
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<InsertAdminValidation>();
 
-builder.Services.Configure<IOptions<JobList.Entities.Models.Options>>(Configuration.GetSection(ConfigResources.Strings));
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -49,9 +54,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(ConfigResources.Strings).Value.ToString()))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ConfigResources.keyJWT))
         };
     });
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+});
 
 
 Dictionary<string, IDbConnection> connections = new Dictionary<string, IDbConnection>

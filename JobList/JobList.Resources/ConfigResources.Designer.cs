@@ -70,6 +70,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Config.
+        /// </summary>
+        public static string Config {
+            get {
+                return ResourceManager.GetString("Config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DefaultConnection.
         /// </summary>
         public static string DefaultConnection {
@@ -115,6 +124,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to G5fLk7zm9n1h3t8cR0e6U2dM4oP6rT0cK3eY.
+        /// </summary>
+        public static string keyJWT {
+            get {
+                return ResourceManager.GetString("keyJWT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administrador.
         /// </summary>
         public static string RolAdmin {
@@ -156,15 +174,6 @@ namespace JobList.Resources {
         public static string SecondaryConnection {
             get {
                 return ResourceManager.GetString("SecondaryConnection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Strings.
-        /// </summary>
-        public static string Strings {
-            get {
-                return ResourceManager.GetString("Strings", resourceCulture);
             }
         }
     }
