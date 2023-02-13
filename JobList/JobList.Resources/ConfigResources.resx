@@ -120,6 +120,9 @@
   <data name="AdminAudience" xml:space="preserve">
     <value>ADM</value>
   </data>
+  <data name="Config" xml:space="preserve">
+    <value>Config</value>
+  </data>
   <data name="DefaultConnection" xml:space="preserve">
     <value>DefaultConnection</value>
   </data>
@@ -135,6 +138,9 @@
   <data name="Issuer" xml:space="preserve">
     <value>LoginServiceUTP2023</value>
   </data>
+  <data name="keyJWT" xml:space="preserve">
+    <value>G5fLk7zm9n1h3t8cR0e6U2dM4oP6rT0cK3eY</value>
+  </data>
   <data name="RolAdmin" xml:space="preserve">
     <value>Administrador</value>
   </data>
@@ -149,8 +155,5 @@
   </data>
   <data name="SecondaryConnection" xml:space="preserve">
     <value>SecondaryConnection</value>
-  </data>
-  <data name="Strings" xml:space="preserve">
-    <value>Strings</value>
   </data>
 </root>

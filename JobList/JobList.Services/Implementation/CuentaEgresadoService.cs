@@ -16,12 +16,10 @@
     public class CuentaEgresadoService : ICuentaEgresadoService
     {
         private readonly ICuentaEgresadoRepository cuentaEgresadoRepository;
-        private readonly IOptions<Entities.Models.Options> options;
 
-        public CuentaEgresadoService(ICuentaEgresadoRepository cuentaEgresadoRepository,IOptions<Entities.Models.Options> options)
+        public CuentaEgresadoService(ICuentaEgresadoRepository cuentaEgresadoRepository)
         {
             this.cuentaEgresadoRepository = cuentaEgresadoRepository;
-            this.options = options;
         }
 
         public async Task<int> addConocimientoEgresado(InsertConocimientoEgresadoRequest request)
@@ -46,6 +44,9 @@
             var result = await this.cuentaEgresadoRepository.findEgresado(request);
             if (result == null)
                 return null;
+            //Registrar ultimo acceso
+            await this.cuentaEgresadoRepository.updateUltimoAccesoSistema(result.idUsuario);
+
             //Crear token
             result.token = this.CreateToken(request.usuario.ToUpper(), result.idUsuario);
             return result;
@@ -55,7 +56,7 @@
         {
             var jti = Guid.NewGuid().ToString();
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(options.Value.ToString());
+            var key = Encoding.ASCII.GetBytes(ConfigResources.keyJWT);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

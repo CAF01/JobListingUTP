@@ -18,10 +18,10 @@
     {
         private readonly ICuentaDocenteRepository cuentaDocenteRepository;
 
-        public IOptions<Entities.Models.Options> Options { get; }
+        public IOptions<Entities.Models.ConfigModel> Options { get; }
 
         // Constructor
-        public CuentaDocenteService(ICuentaDocenteRepository cuentaDocenteRepository, IOptions<Entities.Models.Options> options)
+        public CuentaDocenteService(ICuentaDocenteRepository cuentaDocenteRepository, IOptions<Entities.Models.ConfigModel> options)
         {
             this.cuentaDocenteRepository = cuentaDocenteRepository;
             Options = options;
