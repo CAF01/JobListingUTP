@@ -70,5 +70,48 @@
             var createdToken = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(createdToken).ToString();
         }
+
+        // Historial de ofertas de un docente
+        public async Task<IEnumerable<ReadHistorialOfertasDocenteResponse>> readHistorialOfertasDocente(ReadHistorialOfertasDocenteRequest request)
+        {
+            return await this.cuentaDocenteRepository.readHistorialOfertasDocente(request);
+        }
+
+        // Listado de ofertas en revisión de un docente
+        public async Task<IEnumerable<ReadOfertasRevisionDocenteResponse>> readOfertasRevisionDocente(ReadOfertasRevisionDocenteRequest request)
+        {
+            return await this.cuentaDocenteRepository.readOfertasRevisionDocente(request);
+        }
+
+        // Listado de ofertas activas de un docente
+        public async Task<IEnumerable<ReadOfertasActivasDocenteResponse>> readOfertasActivasDocente(ReadOfertasActivasDocenteRequest request)
+        {
+            return await this.cuentaDocenteRepository.readOfertasActivasDocente(request);
+        }
+
+        // Consultar detalles de una oferta de trabajo
+        //public async Task<ReadDetallesOfertaResponse> readDetallesOferta(ReadDetallesOfertaRequest request)
+        //{
+        //    return await this.cuentaDocenteRepository.readDetallesOferta(request);
+        //}
+
+        // Eliminar una oferta activa
+        public async Task<bool> deleteOfertaActiva(DeleteOfertaActivaDocenteRequest request)
+        {
+            return await this.cuentaDocenteRepository.deleteOfertaActiva(request);
+        }
+
+        // Actualizar contraseña de la cuenta de un usuario docente
+        public async Task<UpdatePasswordDocenteResponse> updatePassword(UpdatePasswordDocenteRequest request)
+        {
+            request.password = PasswordEncryptor.GetMD5(request.password);
+            return await this.cuentaDocenteRepository.updatePassword(request);
+        }
+
+        // Lista de postulantes de una oferta publicada por un docente
+        public async Task<IEnumerable<ReadPostulacionesOfertaResponse>> readPostulacionesOferta(ReadPostulacionesOfertaRequest request)
+        {
+            return await this.cuentaDocenteRepository.readPostulacionesOferta(request);
+        }
     }
 }
