@@ -9,6 +9,5 @@
         public string nombreResponsable { get; set; } = default!;
         public int numeroPostulantes { get; set; }
         public string semaforo { get; set; } = default!;
-        public string estadoPostulacion { get; set; } = default!;
     }
 }

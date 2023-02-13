@@ -205,12 +205,8 @@
                         // verde: no tiene postulantes
                         if (oferta.numeroPostulantes == 0)
                             oferta.semaforo = "verde";
-                        // rojo: postulante contactado
-                        if (oferta.estadoPostulacion == "Aceptada")
-                            oferta.semaforo = "rojo";
                     }
                 }                
-
                 return result;
             }
             catch
