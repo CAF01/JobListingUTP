@@ -462,4 +462,112 @@
   <data name="sp_TiposUsuario_Buscar" xml:space="preserve">
     <value>sp_TiposUsuario_Buscar</value>
   </data>
+  <data name="Fecha" xml:space="preserve">
+    <value>_fecha</value>
+  </data>
+  <data name="sp_Egresados_UltimoAcceso_Actualizar" xml:space="preserve">
+    <value>sp_Egresados_UltimoAcceso_Actualizar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_EmpresaFallo_Eliminar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_EmpresaFallo_Eliminar</value>
+  </data>
+  <data name="NombreEmpresa" xml:space="preserve">
+    <value>_nombreEmpresa</value>
+  </data>
+  <data name="NombreResponsable" xml:space="preserve">
+    <value>_nombreResponsable</value>
+  </data>
+  <data name="sp_Empresa_crearCuenta" xml:space="preserve">
+    <value>sp_Empresa_crearCuenta</value>
+  </data>
+  <data name="_idEmpresa" xml:space="preserve">
+    <value>_idEmpresa</value>
+  </data>
+  <data name="ActividadPrincipal" xml:space="preserve">
+    <value>_actividadPrincipal</value>
+  </data>
+  <data name="CorreoEmpresa" xml:space="preserve">
+    <value>_correoEmpresa</value>
+  </data>
+  <data name="CorreoResponsable" xml:space="preserve">
+    <value>_correoResponsable</value>
+  </data>
+  <data name="CP" xml:space="preserve">
+    <value>_CP</value>
+  </data>
+  <data name="DescripcionEmpresa" xml:space="preserve">
+    <value>_descripcionEmpresa</value>
+  </data>
+  <data name="DomicilioFiscal" xml:space="preserve">
+    <value>_domicilioFiscal</value>
+  </data>
+  <data name="Giro" xml:space="preserve">
+    <value>_giro</value>
+  </data>
+  <data name="ImgUrl" xml:space="preserve">
+    <value>_imgUrl</value>
+  </data>
+  <data name="RFC" xml:space="preserve">
+    <value>_RFC</value>
+  </data>
+  <data name="sp_Empresa_ActualizarInfo" xml:space="preserve">
+    <value>sp_Empresa_ActualizarInfo</value>
+  </data>
+  <data name="Tamano" xml:space="preserve">
+    <value>_tamano</value>
+  </data>
+  <data name="TelefonoResponsable" xml:space="preserve">
+    <value>_telefonoResponsable</value>
+  </data>
+  <data name="Telefonos" xml:space="preserve">
+    <value>_telefonos</value>
+  </data>
+  <data name="Tipo" xml:space="preserve">
+    <value>_tipo</value>
+  </data>
+  <data name="sp_OfertasTrabajo_ActivasEmpresa_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_ActivasEmpresa_Consultar</value>
+  </data>
+  <data name="sp_OfertasTrabajoActivas_Cancelar" xml:space="preserve">
+    <value>sp_OfertasTrabajoActivas_Cancelar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_EnRevisionEmpresa_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_EnRevisionEmpresa_Consultar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_HistorialEmpresa_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_HistorialEmpresa_Consultar</value>
+  </data>
+  <data name="sp_BeneficiosOferta_Consultar" xml:space="preserve">
+    <value>sp_BeneficiosOferta_Consultar</value>
+  </data>
+  <data name="sp_ConocimientosOferta_Consultar" xml:space="preserve">
+    <value>sp_ConocimientosOferta_Consultar</value>
+  </data>
+  <data name="sp_HabilidadesOferta_Consultar" xml:space="preserve">
+    <value>sp_HabilidadesOferta_Consultar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_Detalles_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_Detalles_Consultar</value>
+  </data>
+  <data name="sp_ResponsabilidadesOferta_Consultar" xml:space="preserve">
+    <value>sp_ResponsabilidadesOferta_Consultar</value>
+  </data>
+  <data name="idUsuarioDocente" xml:space="preserve">
+    <value>_idUsuarioDocente</value>
+  </data>
+  <data name="sp_Docentes_Password_Actualizar" xml:space="preserve">
+    <value>sp_Docentes_Password_Actualizar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_ActivasDocente_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_ActivasDocente_Consultar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_EnRevisionDocente_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_EnRevisionDocente_Consultar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_HistorialDocente_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_HistorialDocente_Consultar</value>
+  </data>
+  <data name="sp_Postulaciones_Oferta_Consultar" xml:space="preserve">
+    <value>sp_Postulaciones_Oferta_Consultar</value>
+  </data>
 </root>

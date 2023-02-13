@@ -1,13 +1,11 @@
 ﻿namespace JobList.Services.Implementation
 {
-    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Entities.Responses;
     using JobList.Framework;
     using JobList.Repositories.Service;
     using JobList.Resources;
     using JobList.Services.Service;
-    using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
@@ -18,13 +16,10 @@
     {
         private readonly ICuentaDocenteRepository cuentaDocenteRepository;
 
-        public IOptions<Entities.Models.Options> Options { get; }
-
         // Constructor
-        public CuentaDocenteService(ICuentaDocenteRepository cuentaDocenteRepository, IOptions<Entities.Models.Options> options)
+        public CuentaDocenteService(ICuentaDocenteRepository cuentaDocenteRepository)
         {
             this.cuentaDocenteRepository = cuentaDocenteRepository;
-            Options = options;
         }
 
         // Insertar nueva cuenta de usuario para docente
@@ -53,7 +48,7 @@
         {
             var jti = Guid.NewGuid().ToString();
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(Options.Value.ToString());
+            var key = Encoding.ASCII.GetBytes(ConfigResources.keyJWT);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

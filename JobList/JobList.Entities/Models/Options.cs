@@ -1,7 +1,7 @@
 ﻿namespace JobList.Entities.Models
 {
-    public class Options
+    public class ConfigModel
     {
-        public string value { get; set; }
+        public string key { get; set; } = default!;
     }
 }

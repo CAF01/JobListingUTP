@@ -21,6 +21,6 @@
 
         public Task<IEnumerable<GetEgresadoPostulacionesResponse>> getPostulacionesEgresado(GetEgresadoPostulacionesRequest request);
         public Task<IEnumerable<GetEgresadoListaOfertasActivasResponse>> getOfertasActivasEgresado(GetEgresadoListaOfertasActivasRequest request);
-
+        public Task<bool> updateUltimoAccesoSistema(int idUsuario);
     }
 }

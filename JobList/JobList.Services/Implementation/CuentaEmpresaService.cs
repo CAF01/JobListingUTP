@@ -8,8 +8,8 @@
     using JobList.Repositories.Service;
     using JobList.Resources;
     using JobList.Services.Service;
-    using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
+    using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
@@ -17,13 +17,10 @@
     {
         private readonly ICuentaEmpresaRepository cuentaEmpresaRepository;
 
-        public IOptions<Entities.Models.Options> Options { get; }
-
         // Constructor
-        public CuentaEmpresaService(ICuentaEmpresaRepository cuentaEmpresaRepository, IOptions<Entities.Models.Options> options)
+        public CuentaEmpresaService(ICuentaEmpresaRepository cuentaEmpresaRepository)
         {
             this.cuentaEmpresaRepository = cuentaEmpresaRepository;
-            Options = options;
         }
 
         // Login
@@ -45,7 +42,7 @@
         {
             var jti = Guid.NewGuid().ToString();
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(Options.Value.ToString());
+            var key = Encoding.ASCII.GetBytes(ConfigResources.keyJWT);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
@@ -67,6 +64,42 @@
         {
             request.fechaCreacion = MexicoDateHelper.obtainDate();
             return await this.cuentaEmpresaRepository.insertOfertaTrabajo(request);
+        }
+
+        public async Task<InsertEmpresaResponse> insertCuentaEmpresa(InsertEmpresaRequest request)
+        {
+            return await this.cuentaEmpresaRepository.insertCuentaEmpresa(request);
+        }
+
+        public async Task<UpdateEmpresaDatosResponse> updateDatosEmpresa(UpdateEmpresaDatosRequest request)
+        {
+            //Procedimiento para subir imagen a servicio
+            return await this.cuentaEmpresaRepository.updateDatosEmpresa(request);
+        }
+
+        public async Task<IEnumerable<GetEmpresaListaOfertasActivasResponse>> getOfertasActivasEmpresa(GetEmpresaListaOfertasActivasRequest request)
+        {
+            return await this.cuentaEmpresaRepository.getOfertasActivasEmpresa(request);
+        }
+
+        public async Task<bool> SetStatusOfertaActivaBorrar(DeleteOfertaTrabajoActivaRequest request)
+        {
+            return await this.cuentaEmpresaRepository.SetStatusOfertaActivaBorrar(request);
+        }
+
+        public async Task<IEnumerable<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEmpresa(GetEmpresaOfertasRevisionRequest request)
+        {
+            return await this.cuentaEmpresaRepository.getOfertasRevisionEmpresa(request);
+        }
+
+        public async Task<IEnumerable<GetEmpresaOfertasHistorialResponse>> getOfertasHistorialEmpresa(GetEmpresaOfertasHistorialRequest request)
+        {
+            return await this.cuentaEmpresaRepository.getOfertasHistorialEmpresa(request);
+        }
+
+        public async Task<GetOfertasTrabajoDetalleResponse> GetDetallesOferta(GetOfertasTrabajoDetalleRequest request)
+        {
+            return await this.cuentaEmpresaRepository.GetDetallesOferta(request);
         }
     }
 }

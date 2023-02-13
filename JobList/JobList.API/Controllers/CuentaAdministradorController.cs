@@ -1,12 +1,13 @@
 ﻿using JobList.Entities.Helpers;
-using JobList.Entities.Models;
 using JobList.Entities.Requests;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace JobList.API.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     [SwaggerTag("Administrador")]
     [Route("api/[controller]")]
     [ApiController]
@@ -26,6 +27,7 @@ namespace JobList.API.Controllers
             return HelperResult.Result(result);
         }
 
+        [AllowAnonymous]
         [HttpPost("login-admin")]
         public async Task<IActionResult> PostLoginAdministrador(LoginAdminRequest request)
         {

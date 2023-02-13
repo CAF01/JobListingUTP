@@ -6,7 +6,6 @@
     using JobList.Repositories.Service;
     using JobList.Resources;
     using JobList.Services.Service;
-    using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
     using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
@@ -18,13 +17,11 @@
     {
         private readonly ICuentaAdministradorRepository cuentaAdministradorRepository;
 
-        public IOptions<Entities.Models.Options> Options { get; }
 
         // Constructor
-        public CuentaAdministradorService(ICuentaAdministradorRepository cuentaAdministradorRepository, IOptions<Entities.Models.Options> options)
+        public CuentaAdministradorService(ICuentaAdministradorRepository cuentaAdministradorRepository)
         {
             this.cuentaAdministradorRepository = cuentaAdministradorRepository;
-            Options = options;
         }
 
         // Insertar nuevo administrador
@@ -53,7 +50,7 @@
         {
             var jti = Guid.NewGuid().ToString();
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(Options.Value.ToString());
+            var key = Encoding.ASCII.GetBytes(ConfigResources.keyJWT);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
