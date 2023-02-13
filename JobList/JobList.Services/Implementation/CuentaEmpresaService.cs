@@ -8,7 +8,6 @@
     using JobList.Repositories.Service;
     using JobList.Resources;
     using JobList.Services.Service;
-    using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
     using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
@@ -18,13 +17,10 @@
     {
         private readonly ICuentaEmpresaRepository cuentaEmpresaRepository;
 
-        public IOptions<Entities.Models.ConfigModel> Options { get; }
-
         // Constructor
-        public CuentaEmpresaService(ICuentaEmpresaRepository cuentaEmpresaRepository, IOptions<Entities.Models.ConfigModel> options)
+        public CuentaEmpresaService(ICuentaEmpresaRepository cuentaEmpresaRepository)
         {
             this.cuentaEmpresaRepository = cuentaEmpresaRepository;
-            Options = options;
         }
 
         // Login
@@ -46,7 +42,7 @@
         {
             var jti = Guid.NewGuid().ToString();
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(Options.Value.ToString());
+            var key = Encoding.ASCII.GetBytes(ConfigResources.keyJWT);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

@@ -567,4 +567,7 @@
   <data name="sp_OfertasTrabajo_HistorialDocente_Consultar" xml:space="preserve">
     <value>sp_OfertasTrabajo_HistorialDocente_Consultar</value>
   </data>
+  <data name="sp_Postulaciones_Oferta_Consultar" xml:space="preserve">
+    <value>sp_Postulaciones_Oferta_Consultar</value>
+  </data>
 </root>

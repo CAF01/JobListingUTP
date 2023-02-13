@@ -1276,6 +1276,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_Postulaciones_Oferta_Consultar.
+        /// </summary>
+        public static string sp_Postulaciones_Oferta_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Postulaciones_Oferta_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_ResponsabilidadesOferta_Consultar.
         /// </summary>
         public static string sp_ResponsabilidadesOferta_Consultar {
