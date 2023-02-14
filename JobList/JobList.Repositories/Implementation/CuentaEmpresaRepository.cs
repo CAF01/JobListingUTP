@@ -9,6 +9,7 @@
     using JobList.Repositories.Service;
     using JobList.Entities.Responses;
     using System.Collections.Generic;
+    using Microsoft.AspNetCore.Mvc;
 
     public class CuentaEmpresaRepository : ICuentaEmpresaRepository
     {
@@ -450,21 +451,43 @@
         {
             try
             {
-                var response = new UpdateEmpresaDatosResponse();
+                var response = new DeleteOfertaTrabajoActivaResponse();
 
                 dbConnection.Open();
-                var parameters = new DynamicParameters();
-                parameters.Add(StoredProcedureResources.idOferta, request.idOferta);
+                using (var transaction = dbConnection.BeginTransaction()) 
+                {
+                    try
+                    {
+                        var parameters = new DynamicParameters();
+                        parameters.Add(StoredProcedureResources.idOferta, request.idOferta);
+                      
+                        var result = await dbConnection.ExecuteAsync(
+                                   sql: StoredProcedureResources.sp_OfertasTrabajoActivas_Cancelar,
+                                   param: parameters,
+                                   transaction: null,
+                                   commandTimeout: DatabaseHelper.TIMEOUT,
+                                   commandType: CommandType.StoredProcedure
+                                );
 
+                        if (result != null)
+                        {
+                            var result2 = await dbConnection.ExecuteAsync(
+                                  sql: StoredProcedureResources.sp_PostulacionesOfertaActivaCancelada_Estado_Actualizar,
+                                  param: parameters,
+                                  transaction: null,
+                                  commandTimeout: DatabaseHelper.TIMEOUT,
+                                  commandType: CommandType.StoredProcedure
+                            );
+                        }
 
-                var result = await dbConnection.ExecuteAsync(
-                           sql: StoredProcedureResources.sp_OfertasTrabajoActivas_Cancelar,
-                           param: parameters,
-                           transaction: null,
-                           commandTimeout: DatabaseHelper.TIMEOUT,
-                           commandType: CommandType.StoredProcedure
-                        );
-                return result > 0;
+                        transaction.Commit();
+                    }
+                    catch (Exception s)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+                return response.success=true;
             }
             catch
             {

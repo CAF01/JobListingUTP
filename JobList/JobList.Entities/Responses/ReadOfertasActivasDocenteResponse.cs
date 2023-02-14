@@ -15,5 +15,6 @@ namespace JobList.Entities.Responses
         public string division { get; set; }
         public int numeroPostulantes { get; set; }
         public string semaforo { get; set; }
+        public IEnumerable<PostulanteOferta> ListaPostulantes { get; set; } = default!;
     }
 }
