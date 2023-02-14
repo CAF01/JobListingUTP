@@ -13,6 +13,7 @@
         public const int ONEHUNDRED = 100;
         public const int TEN = 10;
         public const int SIX = 6;
+        public const int FOUR = 4;
         public const int FIVE = 5;
         public const int SIXTY = 60;
         public const int SEVENTYFIVE = 75;

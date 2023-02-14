@@ -1,5 +1,6 @@
 ﻿namespace JobList.Services.Implementation
 {
+    using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
     using JobList.Entities.Responses;
     using JobList.Framework;
@@ -37,6 +38,8 @@
             var result = await this.cuentaDocenteRepository.findDocente(userLogin);
             if (result == null)
                 return null;
+            //Registrar ultimo acceso
+            await this.cuentaDocenteRepository.updateUltimoAccesoSistema(result.idUsuario);
 
             //Crear token
             result.token = this.CreateToken(userLogin.usuario.ToUpper(), result.idUsuario);
@@ -82,19 +85,7 @@
         public async Task<IEnumerable<ReadOfertasActivasDocenteResponse>> readOfertasActivasDocente(ReadOfertasActivasDocenteRequest request)
         {
             return await this.cuentaDocenteRepository.readOfertasActivasDocente(request);
-        }
-
-        // Consultar detalles de una oferta de trabajo
-        //public async Task<ReadDetallesOfertaResponse> readDetallesOferta(ReadDetallesOfertaRequest request)
-        //{
-        //    return await this.cuentaDocenteRepository.readDetallesOferta(request);
-        //}
-
-        // Eliminar una oferta activa
-        public async Task<bool> deleteOfertaActiva(DeleteOfertaActivaDocenteRequest request)
-        {
-            return await this.cuentaDocenteRepository.deleteOfertaActiva(request);
-        }
+        }        
 
         // Actualizar contraseña de la cuenta de un usuario docente
         public async Task<UpdatePasswordDocenteResponse> updatePassword(UpdatePasswordDocenteRequest request)
@@ -103,10 +94,11 @@
             return await this.cuentaDocenteRepository.updatePassword(request);
         }
 
-        // Lista de postulantes de una oferta publicada por un docente
-        public async Task<IEnumerable<ReadPostulacionesOfertaResponse>> readPostulacionesOferta(ReadPostulacionesOfertaRequest request)
+        // Insertar una oferta de trabajo
+        public async Task<InsertOfertaTrabajoResponse> insertOfertaTrabajo(InsertOfertaTrabajoExternaRequest request)
         {
-            return await this.cuentaDocenteRepository.readPostulacionesOferta(request);
+            request.fechaCreacion = MexicoDateHelper.obtainDate();
+            return await this.cuentaDocenteRepository.insertOfertaTrabajo(request);
         }
     }
 }
