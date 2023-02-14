@@ -82,5 +82,13 @@ namespace JobList.API.Controllers
             var result = await this.mediator.Send(new ReadSeguimientosPostulacionEgresadosRequest());
             return HelperResult.Result(result);
         }
+
+        [HttpPut("validar-oferta")]
+        public async Task<IActionResult> PutEstadoOferta(UpdateAdministradorOfertaValidacionRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        
     }
 }

@@ -1,8 +1,8 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-
-namespace JobList.Repositories.Service
+﻿namespace JobList.Repositories.Service
 {
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+
     public interface ICuentaAdministradorRepository
     {
         public Task<int> addAdministrador(InsertAdminRequest request);
@@ -13,5 +13,6 @@ namespace JobList.Repositories.Service
         public Task<IEnumerable<ReadDetallesEmpresaResponse>> readDetallesEmpresa(ReadDetallesEmpresaRequest request);
         public Task<IEnumerable<ReadOfertasPublicadasEmpresaResponse>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request);
         public Task<IEnumerable<ReadSeguimientosPostulacionEgresadosResponse>> readSeguimientosPostulacionEgresados();
+        public Task<bool> UpdateOfertaTrabajoValida(UpdateAdministradorOfertaValidacionRequest request);
     }
 }

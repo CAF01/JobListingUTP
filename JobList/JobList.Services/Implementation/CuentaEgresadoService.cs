@@ -114,5 +114,15 @@
         {
             return await this.cuentaEgresadoRepository.getOfertasActivasEgresado(request);
         }
+
+        public async Task<IEnumerable<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEgresado(GetEgresadoOfertasRevisionRequest request)
+        {
+            return await this.cuentaEgresadoRepository.getOfertasRevisionEgresado(request);
+        }
+
+        public async Task<IEnumerable<GetEgresadoOfertasHistorialResponse>> getOfertasHistorialEgresado(GetEgresadoOfertasHistorialRequest request)
+        {
+            return await this.cuentaEgresadoRepository.getOfertasHistorialEgresado(request);
+        }
     }
 }
