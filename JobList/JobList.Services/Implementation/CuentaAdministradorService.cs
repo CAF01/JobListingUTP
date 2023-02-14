@@ -103,5 +103,10 @@
         {
             return await this.cuentaAdministradorRepository.readSeguimientosPostulacionEgresados();
         }
+
+        public async Task<bool> UpdateOfertaTrabajoValida(UpdateAdministradorOfertaValidacionRequest request)
+        {
+            return await this.cuentaAdministradorRepository.UpdateOfertaTrabajoValida(request);
+        }
     }
 }

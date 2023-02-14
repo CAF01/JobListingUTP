@@ -300,5 +300,39 @@
                 this.dbConnection?.Close();
             }
         }
+
+        public async Task<bool> UpdateOfertaTrabajoValida(UpdateAdministradorOfertaValidacionRequest request)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idOferta, request.idOferta);
+                parameters.Add(StoredProcedureResources.Status, request.estado);
+
+                var expirationDateCalculated = MexicoDateHelper.obtainDate().AddDays(28);
+                var actualDate = MexicoDateHelper.obtainDate();
+                parameters.Add(StoredProcedureResources.FechaCaducidad, expirationDateCalculated);
+                parameters.Add(StoredProcedureResources.FechaPublicacion, actualDate);
+
+                var result = await dbConnection.ExecuteAsync(
+                           sql: StoredProcedureResources.sp_Administrador_EstadoOferta_Actualizar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                this.dbConnection?.Close();
+            }
+        }
     }
 }
