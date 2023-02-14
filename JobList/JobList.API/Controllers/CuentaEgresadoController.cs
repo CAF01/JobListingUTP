@@ -91,7 +91,7 @@
             var result = await this.mediator.Send(new GetEgresadoListaOfertasActivasRequest() { idUsuario = idUsuario });
             return HelperResult.Result(result);
         }
-
+        
         [HttpGet("get-detalles-oferta")]
         public async Task<IActionResult> GetDetallesOferta(int idOferta)
         {
@@ -113,6 +113,19 @@
             return HelperResult.Result(result);
         }
         
+        [HttpPost("crear-oferta")]
+        public async Task<IActionResult> PostOfertaEmpresa(InsertOfertaTrabajoExternaRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
 
+        [HttpPut("borrar-oferta-activa")]
+        public async Task<IActionResult> PutDeleteOfertaActiva(DeleteOfertaTrabajoActivaRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        
     }
 }
