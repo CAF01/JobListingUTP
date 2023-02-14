@@ -570,4 +570,37 @@
   <data name="sp_Postulaciones_Oferta_Consultar" xml:space="preserve">
     <value>sp_Postulaciones_Oferta_Consultar</value>
   </data>
+  <data name="sp_Administrador_EstadoOferta_Actualizar" xml:space="preserve">
+    <value>sp_Administrador_EstadoOferta_Actualizar</value>
+  </data>
+  <data name="FechaCaducidad" xml:space="preserve">
+    <value>_fechaCaducidad</value>
+  </data>
+  <data name="FechaPublicacion" xml:space="preserve">
+    <value>_fechaPublicacion</value>
+  </data>
+  <data name="sp_OfertasTrabajo_EnRevisionEgresado_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_EnRevisionEgresado_Consultar</value>
+  </data>
+  <data name="sp_OfertasTrabajo_HistorialEgresado_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_HistorialEgresado_Consultar</value>
+  </data>
+  <data name="ActividadEmpresa" xml:space="preserve">
+    <value>_actividadEmpresa</value>
+  </data>
+  <data name="Domicilio" xml:space="preserve">
+    <value>_domicilio</value>
+  </data>
+  <data name="sp_DatosContacto_Insertar" xml:space="preserve">
+    <value>sp_DatosContacto_Insertar</value>
+  </data>
+  <data name="sp_DetallesContacto_Insertar" xml:space="preserve">
+    <value>sp_DetallesContacto_Insertar</value>
+  </data>
+  <data name="sp_Docentes_UltimoAcceso_Actualizar" xml:space="preserve">
+    <value>sp_Docentes_UltimoAcceso_Actualizar</value>
+  </data>
+  <data name="sp_PostulacionesOfertaActivaCancelada_Estado_Actualizar" xml:space="preserve">
+    <value>sp_PostulacionesOfertaActivaCancelada_Estado_Actualizar</value>
+  </data>
 </root>

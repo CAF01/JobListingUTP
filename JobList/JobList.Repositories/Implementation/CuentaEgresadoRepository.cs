@@ -6,8 +6,6 @@
     using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
-    using MediatR;
-    using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Data;
     using System.Threading.Tasks;
@@ -358,6 +356,68 @@
                         transaction.Rollback();
                     }
                 }
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<IEnumerable<GetEgresadoOfertasHistorialResponse>> getOfertasHistorialEgresado(GetEgresadoOfertasHistorialRequest request)
+        {
+            try
+            {
+                IEnumerable<GetEgresadoOfertasHistorialResponse> result = null;
+
+                dbConnection.Open();
+
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                result = await dbConnection.QueryAsync<GetEgresadoOfertasHistorialResponse>(
+                    sql: StoredProcedureResources.sp_OfertasTrabajo_HistorialEgresado_Consultar,
+                    transaction: null,
+                    param: parameters,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure
+                    );
+
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<IEnumerable<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEgresado(GetEgresadoOfertasRevisionRequest request)
+        {
+            try
+            {
+                IEnumerable<GetEmpresaOfertasRevisionResponse> result = null;
+
+                dbConnection.Open();
+
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                result = await dbConnection.QueryAsync<GetEmpresaOfertasRevisionResponse>(
+                    sql: StoredProcedureResources.sp_OfertasTrabajo_EnRevisionEgresado_Consultar,
+                    transaction: null,
+                    param: parameters,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure
+                    );
+
                 return result;
             }
             catch

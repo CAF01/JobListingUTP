@@ -257,7 +257,7 @@
                             parameters.Add(StoredProcedureResources.idDatoContacto, direction: ParameterDirection.Output);
 
                             await dbConnection.ExecuteAsync(
-                                           sql: StoredProcedureResources.sp_DatosContacto_Insertar_Correccion,
+                                           sql: StoredProcedureResources.sp_DatosContacto_Insertar,
                                            transaction: transaction,
                                            param: parameters,
                                            commandTimeout: DatabaseHelper.TIMEOUT,
@@ -269,9 +269,9 @@
                             {
                                 parameters = new DynamicParameters();
                                 parameters.Add(StoredProcedureResources.Empresa, request.detallesContacto.empresa);
-                                parameters.Add(StoredProcedureResources.actividadEmpresa, request.detallesContacto.actividadEmpresa);
+                                parameters.Add(StoredProcedureResources.ActividadEmpresa, request.detallesContacto.actividadEmpresa);
                                 parameters.Add(StoredProcedureResources.idDatoContacto, idDatoContacto);
-                                parameters.Add(StoredProcedureResources.domicilio, request.detallesContacto.domicilio);
+                                parameters.Add(StoredProcedureResources.Domicilio, request.detallesContacto.domicilio);
                                 parameters.Add(StoredProcedureResources.CP, request.detallesContacto.CP);
                                 parameters.Add(StoredProcedureResources.Telefonos, request.detallesContacto.telefonos);
                                 parameters.Add(StoredProcedureResources.CorreoEmpresa, request.detallesContacto.correoEmpresa);

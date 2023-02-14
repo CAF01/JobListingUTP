@@ -90,11 +90,11 @@
             return HelperResult.Result(result);
         }
 
-        [HttpPut("borrar-oferta-activa")]
-        public async Task<IActionResult> PutDeleteOfertaActiva(DeleteOfertaTrabajoActivaRequest request)
-        {
-            var result = await this.mediator.Send(request);
-            return HelperResult.Result(result);
-        }
+        //[HttpPut("borrar-oferta-activa")]
+        //public async Task<IActionResult> PutDeleteOfertaActiva(DeleteOfertaTrabajoActivaRequest request)
+        //{
+        //    var result = await this.mediator.Send(request);
+        //    return HelperResult.Result(result);
+        //}
     }
 }
