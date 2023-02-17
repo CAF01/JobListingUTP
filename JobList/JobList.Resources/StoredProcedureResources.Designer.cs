@@ -718,6 +718,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _sexo.
+        /// </summary>
+        public static string Sexo {
+            get {
+                return ResourceManager.GetString("Sexo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _skip.
         /// </summary>
         public static string Skip {
