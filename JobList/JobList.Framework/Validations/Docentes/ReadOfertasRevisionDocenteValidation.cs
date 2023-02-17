@@ -1,14 +1,9 @@
-﻿using FluentValidation;
-using JobList.Entities.Helpers;
-using JobList.Entities.Requests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Framework.Validations.Docentes
+﻿namespace JobList.Framework.Validations.Docentes
 {
+    using FluentValidation;
+    using JobList.Entities.Helpers;
+    using JobList.Entities.Requests;
+
     public class ReadOfertasRevisionDocenteValidation : AbstractValidator<ReadOfertasRevisionDocenteRequest>
     {
         public ReadOfertasRevisionDocenteValidation()

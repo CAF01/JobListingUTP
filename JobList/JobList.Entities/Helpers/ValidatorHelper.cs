@@ -12,6 +12,8 @@
         public const int FORTYFIVE = 45;
         public const int ONEHUNDRED = 100;
         public const int TEN = 10;
+        public const int NINE = 9;
+        public const int SEVEN = 7;
         public const int SIX = 6;
         public const int FOUR = 4;
         public const int FIVE = 5;
@@ -29,5 +31,6 @@
         public const int THREE = 3;
         public const int ONEHUNDREDFIFTY = 150;
         public const int THIRTY = 30;
+        public const int FIVEHUNDRED = 500;
     }
 }

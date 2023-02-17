@@ -70,6 +70,11 @@ namespace JobList.API.Controllers
             var result = await this.mediator.Send(new GetOfertasTrabajoDetalleRequest() { idOferta = idOferta });
             return HelperResult.Result(result);
         }
-
+        [HttpPut("actualizar-estado-postulacion")]
+        public async Task<IActionResult> PutEstadoPostulacion(UpdateEstadoPostulacionRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
     }
 }

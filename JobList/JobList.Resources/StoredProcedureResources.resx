@@ -603,4 +603,13 @@
   <data name="sp_PostulacionesOfertaActivaCancelada_Estado_Actualizar" xml:space="preserve">
     <value>sp_PostulacionesOfertaActivaCancelada_Estado_Actualizar</value>
   </data>
+  <data name="sp_Postulaciones_Estado_Actualizar" xml:space="preserve">
+    <value>sp_Postulaciones_Estado_Actualizar</value>
+  </data>
+  <data name="AccionEstadoPostulacion" xml:space="preserve">
+    <value>_accionestadopostulacion</value>
+  </data>
+  <data name="sp_OfertasTrabajo_FiltroEgresado_Consultar" xml:space="preserve">
+    <value>sp_OfertasTrabajo_FiltroEgresado_Consultar</value>
+  </data>
 </root>

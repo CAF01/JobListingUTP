@@ -12,7 +12,6 @@ namespace JobList.Services.Service
         public Task<UpdatePasswordEgresadoResponse> updatePassword(UpdatePasswordEgresadoRequest request);
         public Task<bool> updateDatosPersonales(UpdateEgresadoDatosPersonalesRequest request);
         public Task<int> addExperienciaLaboral(InsertEgresadoExpLaboralRequest request);
-
         public Task<UpdatePerfilEgresadoResponse> updatePerfil(UpdatePerfilEgresadoRequest request);
         public Task<GetEgresadoInfoPersonalResponse> getInfoEgresado(GetEgresadoInfoPersonalRequest request);
         public Task<GetEgresadoInfoPerfilResponse> getInfoPerfilEgresado(GetEgresadoInfoPerfilRequest request);
@@ -20,5 +19,6 @@ namespace JobList.Services.Service
         public Task<IEnumerable<GetEgresadoListaOfertasActivasResponse>> getOfertasActivasEgresado(GetEgresadoListaOfertasActivasRequest request);
         public Task<IEnumerable<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEgresado(GetEgresadoOfertasRevisionRequest request);
         public Task<IEnumerable<GetEgresadoOfertasHistorialResponse>> getOfertasHistorialEgresado(GetEgresadoOfertasHistorialRequest request);
+        public Task<IEnumerable<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request);
     }
 }

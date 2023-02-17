@@ -117,6 +117,108 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ageNotEmpty" xml:space="preserve">
+    <value>La edad no puede estar vacía</value>
+  </data>
+  <data name="ageRequired" xml:space="preserve">
+    <value>La edad es requerida</value>
+  </data>
+  <data name="companyActivityMaxLength" xml:space="preserve">
+    <value>La actividad de la empresa no puede superar los 75 caracteres</value>
+  </data>
+  <data name="companyActivityMinLength" xml:space="preserve">
+    <value>La actividad de la empresa requiere 5 caracteres</value>
+  </data>
+  <data name="companyActivityNotEmpty" xml:space="preserve">
+    <value>La actividad de la empresa no puede estar vacía</value>
+  </data>
+  <data name="companyActivityRequired" xml:space="preserve">
+    <value>La actividad de la empresa es requerida</value>
+  </data>
+  <data name="companyAddressMaxLength" xml:space="preserve">
+    <value>El domicilio de la empresa no puede superar los 150 caracteres</value>
+  </data>
+  <data name="companyAddressMinLength" xml:space="preserve">
+    <value>El domicilio de la empresa requiere 10 caracteres</value>
+  </data>
+  <data name="companyAddressNotEmpty" xml:space="preserve">
+    <value>El domicilio de la empresa no puede estar vacío</value>
+  </data>
+  <data name="companyAddressRequired" xml:space="preserve">
+    <value>El domicilio de la empresa es requerido</value>
+  </data>
+  <data name="companyDescriptionMaxLength" xml:space="preserve">
+    <value>La descripcion de la empresa no puede superar los 500 caracteres</value>
+  </data>
+  <data name="companyDescriptionMinLength" xml:space="preserve">
+    <value> La descripcion de la empresa requiere 100 caracteres</value>
+  </data>
+  <data name="companyDescriptionNotEmpty" xml:space="preserve">
+    <value>La descripcion de la empresa no puede estar vacía</value>
+  </data>
+  <data name="companyDescriptionRequired" xml:space="preserve">
+    <value>La descripcion de la empresa es requerida</value>
+  </data>
+  <data name="companymailMaxLength" xml:space="preserve">
+    <value>El correo de la empresa no puede superar los 85 caracteres</value>
+  </data>
+  <data name="companymailMinLength" xml:space="preserve">
+    <value>El correo de la empresa requiere 10 caracteres</value>
+  </data>
+  <data name="companymailNotEmpty" xml:space="preserve">
+    <value>El correo de la empresa no puede estar vacío</value>
+  </data>
+  <data name="companymailRequired" xml:space="preserve">
+    <value>El correo de la empresa es requerido</value>
+  </data>
+  <data name="companyMaxLength" xml:space="preserve">
+    <value>Empresa no puede superar los 100 caracteres</value>
+  </data>
+  <data name="companyMinLength" xml:space="preserve">
+    <value>Empresa requiere 5 caracteres</value>
+  </data>
+  <data name="companyNotEmpty" xml:space="preserve">
+    <value>Empresa no puede estar vacía</value>
+  </data>
+  <data name="companyRequired" xml:space="preserve">
+    <value>Empresa es requerida</value>
+  </data>
+  <data name="companyTelephoneMaxLength" xml:space="preserve">
+    <value>Los teléfonos de la empresa no pueden superar los 45 caracteres</value>
+  </data>
+  <data name="companyTelephoneMinLength" xml:space="preserve">
+    <value>Los teléfonos de la empresa requieren 10 caracteres</value>
+  </data>
+  <data name="companyTelephoneNotEmpty" xml:space="preserve">
+    <value>Los teléfonos de la empresa no pueden estar vacíos</value>
+  </data>
+  <data name="companyTelephoneRequired" xml:space="preserve">
+    <value>Los teléfonos de la empresa son requeridos</value>
+  </data>
+  <data name="contractPeriodMaxLenght" xml:space="preserve">
+    <value>El periodo de contrato no puede superar los 30 caracteres</value>
+  </data>
+  <data name="contractPeriodMinLength" xml:space="preserve">
+    <value>El periodo de contrato requiere 5 caracteres</value>
+  </data>
+  <data name="contractPeriodNotEmpty" xml:space="preserve">
+    <value>El periodo de contrato no puede estar vacío</value>
+  </data>
+  <data name="contractPeriodRequired" xml:space="preserve">
+    <value>El periodo de contrato es requerido</value>
+  </data>
+  <data name="CPMaxLength" xml:space="preserve">
+    <value>El código postal no puede superar los 5 caracteres</value>
+  </data>
+  <data name="CPMinLength" xml:space="preserve">
+    <value>El código postal requiere 5 caracteres</value>
+  </data>
+  <data name="CPNotEmpty" xml:space="preserve">
+    <value>El código postal no puede estar vacío</value>
+  </data>
+  <data name="CPRequired" xml:space="preserve">
+    <value>El código postal es requerido</value>
+  </data>
   <data name="descriptionMaxLength" xml:space="preserve">
     <value>El máximo de carácteres es: </value>
   </data>
@@ -140,6 +242,60 @@
   </data>
   <data name="failUpdate" xml:space="preserve">
     <value>Error al modificar registro.</value>
+  </data>
+  <data name="generationMaxLegth" xml:space="preserve">
+    <value>La generacion no puede superar los 12 caracteres</value>
+  </data>
+  <data name="generationMinLength" xml:space="preserve">
+    <value>La generación requiere 9 caracteres</value>
+  </data>
+  <data name="generationNotEmpty" xml:space="preserve">
+    <value>La generación no puede estar vacía</value>
+  </data>
+  <data name="generationRequired" xml:space="preserve">
+    <value>La generación es requerida</value>
+  </data>
+  <data name="graduatedNameMaxLength" xml:space="preserve">
+    <value>El nombre no puede superar los 50 caracteres</value>
+  </data>
+  <data name="graduatedNameMinLength" xml:space="preserve">
+    <value>El nombre requiere 3 caracteres</value>
+  </data>
+  <data name="imgUrlMaxLength" xml:space="preserve">
+    <value>La imagen no puede superar los 100 caracteres</value>
+  </data>
+  <data name="lastNameMaxLength" xml:space="preserve">
+    <value>Apellido no puede superar los 50 caracteres</value>
+  </data>
+  <data name="lastNameMinLength" xml:space="preserve">
+    <value>Apellido requiere 3 caracteres</value>
+  </data>
+  <data name="lastNameNotEmpty" xml:space="preserve">
+    <value>Apellido no puede estar vacío</value>
+  </data>
+  <data name="lastNameRequired" xml:space="preserve">
+    <value>Apellido es requerido</value>
+  </data>
+  <data name="listKnowledgeRequired" xml:space="preserve">
+    <value>Debe seleccionar conocimientos</value>
+  </data>
+  <data name="listResponsibilitiesRequired" xml:space="preserve">
+    <value>Debe seleccionar responsabilidades del puesto</value>
+  </data>
+  <data name="listSkillsRequired" xml:space="preserve">
+    <value>Debe seleccionar habilidades</value>
+  </data>
+  <data name="mailMaxLength" xml:space="preserve">
+    <value>El correo no puede superar los 85 caracteres</value>
+  </data>
+  <data name="mailMinLength" xml:space="preserve">
+    <value>El correo requiere 10 caracteres</value>
+  </data>
+  <data name="mailNotEmpty" xml:space="preserve">
+    <value>El correo no puede estar vacío</value>
+  </data>
+  <data name="mailRequired" xml:space="preserve">
+    <value>El correo es requerido</value>
   </data>
   <data name="nameMaxLength" xml:space="preserve">
     <value>Nombre no puede superar 85 carácteres</value>
@@ -168,6 +324,90 @@
   <data name="passwordRequired" xml:space="preserve">
     <value>Contraseña es requerido</value>
   </data>
+  <data name="periodMaxLength" xml:space="preserve">
+    <value>Puesto no puede superar los 60 caracteres</value>
+  </data>
+  <data name="periodMinLength" xml:space="preserve">
+    <value>Periodo requiere 4 caracteres</value>
+  </data>
+  <data name="periodNotEmpty" xml:space="preserve">
+    <value>Periodo no puede estar vacío</value>
+  </data>
+  <data name="periodRequired" xml:space="preserve">
+    <value>Periodo es requerido</value>
+  </data>
+  <data name="placeMaxLength" xml:space="preserve">
+    <value>El lugar no puede superar los 150 caracteres</value>
+  </data>
+  <data name="placeMinLength" xml:space="preserve">
+    <value>El lugar requiere 10 caracteres</value>
+  </data>
+  <data name="placeNotEmpty" xml:space="preserve">
+    <value>El lugar no puede estar vacío</value>
+  </data>
+  <data name="placeRequired" xml:space="preserve">
+    <value>El lugar es requerido</value>
+  </data>
+  <data name="positionMaxLength" xml:space="preserve">
+    <value>Puesto no puede superar los 80 caracteres</value>
+  </data>
+  <data name="positionMinLength" xml:space="preserve">
+    <value>Puesto requiere 5 caracteres</value>
+  </data>
+  <data name="positionNotEmpty" xml:space="preserve">
+    <value>Puesto no puede estar vacío</value>
+  </data>
+  <data name="positionRequired" xml:space="preserve">
+    <value>Puesto es requerido</value>
+  </data>
+  <data name="resMailMaxLength" xml:space="preserve">
+    <value>El correo del responsable no puede superar los 85 caracteres</value>
+  </data>
+  <data name="resMailMinLength" xml:space="preserve">
+    <value>El correo del responsable requiere 10 caracteres</value>
+  </data>
+  <data name="resMailNotEmpty" xml:space="preserve">
+    <value>El correo del responsable no puede estar vacío</value>
+  </data>
+  <data name="resMailRequired" xml:space="preserve">
+    <value>El correo del responsable es requerido</value>
+  </data>
+  <data name="resNameMaxLegth" xml:space="preserve">
+    <value>El nombre del responsable no puede superar los 85 caracteres</value>
+  </data>
+  <data name="resNameMinLength" xml:space="preserve">
+    <value>El nombre del responsable requiere 10 caracteres</value>
+  </data>
+  <data name="resNameNotEmpty" xml:space="preserve">
+    <value>El nombre del responsable no puede estar vacío</value>
+  </data>
+  <data name="resNameRequired" xml:space="preserve">
+    <value>El nombre del responsable es requerido</value>
+  </data>
+  <data name="resTelephoneMaxLength" xml:space="preserve">
+    <value>El teléfono del responsable no puede superar los 10 caracteres</value>
+  </data>
+  <data name="resTelephoneMinLength" xml:space="preserve">
+    <value>El teléfono del responsable requiere 10 caracteres</value>
+  </data>
+  <data name="resTelephoneNotEmpty" xml:space="preserve">
+    <value>El teléfono del responsable no puede estar vacío</value>
+  </data>
+  <data name="resTelephoneRequired" xml:space="preserve">
+    <value>El teléfono del responsable es requerido</value>
+  </data>
+  <data name="RFCMaxLegth" xml:space="preserve">
+    <value>El RFC no puede superar los 13 caracteres</value>
+  </data>
+  <data name="RFCMinLength" xml:space="preserve">
+    <value>El RFC requiere 12 caracteres</value>
+  </data>
+  <data name="RFCNotEmpty" xml:space="preserve">
+    <value>El RFC no puede estar vacío</value>
+  </data>
+  <data name="RFCRequired" xml:space="preserve">
+    <value>El RFC es requerido</value>
+  </data>
   <data name="successDelete" xml:space="preserve">
     <value>Registro eliminado correctamente.</value>
   </data>
@@ -176,6 +416,12 @@
   </data>
   <data name="successUpdate" xml:space="preserve">
     <value>Registro actualizado correctamente.</value>
+  </data>
+  <data name="telephoneMaxLength" xml:space="preserve">
+    <value>El teléfono no puede superar los 10 caracteres</value>
+  </data>
+  <data name="telephoneMinLength" xml:space="preserve">
+    <value>El teléfono requiere 10 caracteres</value>
   </data>
   <data name="userMaxLength" xml:space="preserve">
     <value>Usuario no puede superar 15 carácteres</value>
@@ -188,5 +434,17 @@
   </data>
   <data name="userRequired" xml:space="preserve">
     <value>Usuario es requerido</value>
+  </data>
+  <data name="workingHoursMaxLength" xml:space="preserve">
+    <value>El horario de trabajo no puede superar los 30 caracteres</value>
+  </data>
+  <data name="workingHoursMinLength" xml:space="preserve">
+    <value>El horario de trabajo requiere 7 caracteres</value>
+  </data>
+  <data name="workingHoursNotEmpty" xml:space="preserve">
+    <value>El horario de trabajo no puede estar vacío</value>
+  </data>
+  <data name="workingHoursRequired" xml:space="preserve">
+    <value>El horario de trabajo es requerido</value>
   </data>
 </root>

@@ -91,7 +91,14 @@
             var result = await this.mediator.Send(new GetEgresadoListaOfertasActivasRequest() { idUsuario = idUsuario });
             return HelperResult.Result(result);
         }
-        
+
+        [HttpGet("get-ofertas-activas-filtro")]
+        public async Task<IActionResult> GetOfertasActivasFiltroEgresado(int idUsuario)
+        {
+            var result = await this.mediator.Send(new ReadOfertasActivasFiltroEgresadoRequest() { idUsuarioEgresado = idUsuario });
+            return HelperResult.Result(result);
+        }
+
         [HttpGet("get-detalles-oferta")]
         public async Task<IActionResult> GetDetallesOferta(int idOferta)
         {
@@ -126,6 +133,12 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
-        
+
+        [HttpPut("actualizar-estado-postulacion")]
+        public async Task<IActionResult> PutEstadoPostulacion(UpdateEstadoPostulacionRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
     }
 }

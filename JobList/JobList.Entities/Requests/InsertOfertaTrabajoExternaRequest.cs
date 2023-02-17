@@ -11,7 +11,7 @@
         public string modalidad { get; set; } = default!;
         public string horarioTrabajo { get; set; } = default!;
         public float sueldoMinEstimado { get; set; }
-        public float suelodMaxEstimado { get; set; }
+        public float sueldoMaxEstimado { get; set; }
         public string lugar { get; set; } = default!;
         public DateTime fechaCreacion { get; set; }
         public IEnumerable<HabilidadOferta> habilidades { get; set; } = default!;
