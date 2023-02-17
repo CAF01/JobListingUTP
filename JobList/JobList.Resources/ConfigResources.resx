@@ -141,6 +141,9 @@
   <data name="keyJWT" xml:space="preserve">
     <value>G5fLk7zm9n1h3t8cR0e6U2dM4oP6rT0cK3eY</value>
   </data>
+  <data name="PaginationConfig" xml:space="preserve">
+    <value>PaginationConfig</value>
+  </data>
   <data name="RolAdmin" xml:space="preserve">
     <value>Administrador</value>
   </data>

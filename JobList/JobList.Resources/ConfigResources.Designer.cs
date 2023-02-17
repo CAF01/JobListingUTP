@@ -133,6 +133,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PaginationConfig.
+        /// </summary>
+        public static string PaginationConfig {
+            get {
+                return ResourceManager.GetString("PaginationConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administrador.
         /// </summary>
         public static string RolAdmin {

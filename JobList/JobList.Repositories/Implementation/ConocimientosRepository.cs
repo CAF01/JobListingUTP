@@ -2,10 +2,12 @@
 {
     using Dapper;
     using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
+    using Microsoft.Extensions.Options;
     using System.Data;
     using System.Threading.Tasks;
 
@@ -13,12 +15,14 @@
     {
         private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
+        private readonly ConfigurationPaging configuration;
 
         // Constructor
-        public ConocimientosRepository(Dictionary<string, IDbConnection> connections)
+        public ConocimientosRepository(Dictionary<string, IDbConnection> connections, IOptions<ConfigurationPaging> configuration)
         {
             this.connections = connections;
             this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.configuration = configuration.Value;
         }
 
         // Insertar un conocimiento

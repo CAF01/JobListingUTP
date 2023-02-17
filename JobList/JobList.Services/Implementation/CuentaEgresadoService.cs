@@ -105,22 +105,22 @@
             return await this.cuentaEgresadoRepository.getInfoPerfilEgresado(request);
         }
 
-        public async Task<IEnumerable<GetEgresadoPostulacionesResponse>> getPostulacionesEgresado(GetEgresadoPostulacionesRequest request)
+        public async Task<PaginationListResponse<GetEgresadoPostulacionesResponse>> getPostulacionesEgresado(GetEgresadoPostulacionesRequest request)
         {
             return await this.cuentaEgresadoRepository.getPostulacionesEgresado(request);
         }
 
-        public async Task<IEnumerable<GetEgresadoListaOfertasActivasResponse>> getOfertasActivasEgresado(GetEgresadoListaOfertasActivasRequest request)
+        public async Task<PaginationListResponse<GetEgresadoListaOfertasActivasResponse>> getOfertasActivasEgresado(GetEgresadoListaOfertasActivasRequest request)
         {
             return await this.cuentaEgresadoRepository.getOfertasActivasEgresado(request);
         }
 
-        public async Task<IEnumerable<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEgresado(GetEgresadoOfertasRevisionRequest request)
+        public async Task<PaginationListResponse<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEgresado(GetEgresadoOfertasRevisionRequest request)
         {
             return await this.cuentaEgresadoRepository.getOfertasRevisionEgresado(request);
         }
 
-        public async Task<IEnumerable<GetEgresadoOfertasHistorialResponse>> getOfertasHistorialEgresado(GetEgresadoOfertasHistorialRequest request)
+        public async Task<PaginationListResponse<GetEgresadoOfertasHistorialResponse>> getOfertasHistorialEgresado(GetEgresadoOfertasHistorialRequest request)
         {
             return await this.cuentaEgresadoRepository.getOfertasHistorialEgresado(request);
         }

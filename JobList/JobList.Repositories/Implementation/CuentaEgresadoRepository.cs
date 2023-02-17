@@ -7,18 +7,22 @@
     using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
+    using Microsoft.Extensions.Options;
     using System.Collections.Generic;
     using System.Data;
+    using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
 
     public class CuentaEgresadoRepository : ICuentaEgresadoRepository
     {
         private readonly Dictionary<string, IDbConnection> connections;
+        private readonly ConfigurationPaging configuration;
         private readonly IDbConnection dbConnection;
 
-        public CuentaEgresadoRepository(Dictionary<string, IDbConnection> connections)
+        public CuentaEgresadoRepository(Dictionary<string, IDbConnection> connections,IOptions<ConfigurationPaging> options)
         {
             this.connections = connections;
+            this.configuration = options.Value;
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
@@ -305,12 +309,11 @@
             }
         }
 
-        public async Task<IEnumerable<GetEgresadoListaOfertasActivasResponse>> getOfertasActivasEgresado(GetEgresadoListaOfertasActivasRequest request)
+        public async Task<PaginationListResponse<GetEgresadoListaOfertasActivasResponse>> getOfertasActivasEgresado(GetEgresadoListaOfertasActivasRequest request)
         {
             try
             {
-                IEnumerable<GetEgresadoListaOfertasActivasResponse> result=null;
-
+                PaginationListResponse<GetEgresadoListaOfertasActivasResponse> paginator = null;
                 dbConnection.Open();
                 using (var transaction = dbConnection.BeginTransaction())
                 {
@@ -318,8 +321,10 @@
                     {
                         var parameters = new DynamicParameters();
                         parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                        parameters.Add(StoredProcedureResources.Skip,request.Skip);
+                        parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                        result = await dbConnection.QueryAsync<GetEgresadoListaOfertasActivasResponse>(
+                        var result = await dbConnection.QueryMultipleAsync(
                             sql: StoredProcedureResources.sp_OfertasTrabajo_ActivasEgresado_Consultar,
                             transaction: transaction,
                             param: parameters,
@@ -327,9 +332,13 @@
                             commandType: CommandType.StoredProcedure
                             );
 
-                        if(result!= null && result.ToList().Count>0)
+                        var dynamicResult = result.Read<GetEgresadoListaOfertasActivasResponse>();
+
+                        paginator = new PaginationListResponse<GetEgresadoListaOfertasActivasResponse>(dynamicResult, dynamicResult.Count(), configuration.PageSize);
+
+                        if(result!= null && paginator.Data!=null && paginator.Data.Count()>0)
                         {
-                            foreach (var ofertaActiva in result)
+                            foreach (var ofertaActiva in paginator.Data)
                             {
                                 if(ofertaActiva.postulantes>0)
                                 {
@@ -357,7 +366,7 @@
                         transaction.Rollback();
                     }
                 }
-                return result;
+                return paginator;
             }
             catch
             {
@@ -369,18 +378,18 @@
             }
         }
 
-        public async Task<IEnumerable<GetEgresadoOfertasHistorialResponse>> getOfertasHistorialEgresado(GetEgresadoOfertasHistorialRequest request)
+        public async Task<PaginationListResponse<GetEgresadoOfertasHistorialResponse>> getOfertasHistorialEgresado(GetEgresadoOfertasHistorialRequest request)
         {
             try
             {
-                IEnumerable<GetEgresadoOfertasHistorialResponse> result = null;
-
                 dbConnection.Open();
 
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                result = await dbConnection.QueryAsync<GetEgresadoOfertasHistorialResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                     sql: StoredProcedureResources.sp_OfertasTrabajo_HistorialEgresado_Consultar,
                     transaction: null,
                     param: parameters,
@@ -388,7 +397,8 @@
                     commandType: CommandType.StoredProcedure
                     );
 
-                return result;
+                var dynamicResult = result.Read<GetEgresadoOfertasHistorialResponse>();
+                return new PaginationListResponse<GetEgresadoOfertasHistorialResponse>(dynamicResult,dynamicResult.Count(),configuration.PageSize);
             }
             catch
             {
@@ -400,18 +410,18 @@
             }
         }
 
-        public async Task<IEnumerable<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEgresado(GetEgresadoOfertasRevisionRequest request)
+        public async Task<PaginationListResponse<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEgresado(GetEgresadoOfertasRevisionRequest request)
         {
             try
             {
-                IEnumerable<GetEmpresaOfertasRevisionResponse> result = null;
-
                 dbConnection.Open();
 
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                result = await dbConnection.QueryAsync<GetEmpresaOfertasRevisionResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                     sql: StoredProcedureResources.sp_OfertasTrabajo_EnRevisionEgresado_Consultar,
                     transaction: null,
                     param: parameters,
@@ -419,7 +429,8 @@
                     commandType: CommandType.StoredProcedure
                     );
 
-                return result;
+                var dynamicResult = result.Read<GetEmpresaOfertasRevisionResponse>();
+                return new PaginationListResponse<GetEmpresaOfertasRevisionResponse>(dynamicResult, dynamicResult.Count(), configuration.PageSize);
             }
             catch
             {
@@ -431,11 +442,11 @@
             }
         }
 
-        public async Task<IEnumerable<GetEgresadoPostulacionesResponse>> getPostulacionesEgresado(GetEgresadoPostulacionesRequest request)
+        public async Task<PaginationListResponse<GetEgresadoPostulacionesResponse>> getPostulacionesEgresado(GetEgresadoPostulacionesRequest request)
         {
             try
             {
-                IEnumerable<GetEgresadoPostulacionesResponse> result;
+                PaginationListResponse<GetEgresadoPostulacionesResponse> pagination = null;
                 dbConnection.Open();
                 using (var transaction = dbConnection.BeginTransaction())
                 {
@@ -443,16 +454,22 @@
                     {
                         var parameters = new DynamicParameters();
                         parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                        parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                        parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                        result = await dbConnection.QueryAsync<GetEgresadoPostulacionesResponse>(
+                        var result = await dbConnection.QueryMultipleAsync(
                             sql: StoredProcedureResources.sp_Postulaciones_Egresado_Consultar,
                             param: parameters,
                             transaction: transaction,
                             commandTimeout: DatabaseHelper.TIMEOUT,
                             commandType: CommandType.StoredProcedure);
-                        if (result != null && result.Count() > 0)
+
+                        var dynamicResult = result.Read<GetEgresadoPostulacionesResponse>();
+                        pagination = new PaginationListResponse<GetEgresadoPostulacionesResponse>(dynamicResult, dynamicResult.Count(), configuration.PageSize);
+
+                        if (result != null && pagination.Data!=null && pagination.Data.Count() > 0)
                         {
-                            foreach (var datoContacto in result.ToList())
+                            foreach (var datoContacto in pagination.Data)
                             {
                                 if (datoContacto.estadoPostulacion == StoredProcedureResources.OfertaAceptada)
                                 {
@@ -475,7 +492,7 @@
                         transaction.Rollback();
                         return null;
                     }
-                    return result;
+                    return pagination;
                 }
             }
             catch (Exception)

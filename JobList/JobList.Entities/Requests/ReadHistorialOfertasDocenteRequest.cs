@@ -1,14 +1,9 @@
-﻿using JobList.Entities.Responses;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobList.Entities.Requests
+﻿namespace JobList.Entities.Requests
 {
-    public class ReadHistorialOfertasDocenteRequest : IRequest<List<ReadHistorialOfertasDocenteResponse>>
+    using JobList.Entities.Models;
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class ReadHistorialOfertasDocenteRequest : Pagination, IRequest<PaginationListResponse<ReadHistorialOfertasDocenteResponse>>
     {
         public int idUsuarioDocente { get; set; }
     }

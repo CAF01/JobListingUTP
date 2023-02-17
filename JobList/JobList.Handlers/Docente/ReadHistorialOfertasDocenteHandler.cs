@@ -1,12 +1,11 @@
-﻿using JobList.Entities.Requests;
-using JobList.Entities.Responses;
-using JobList.Repositories.Service;
-using JobList.Services.Service;
-using MediatR;
-
-namespace JobList.Handlers.Docente
+﻿namespace JobList.Handlers.Docente
 {
-    public class ReadHistorialOfertasDocenteHandler : IRequestHandler<ReadHistorialOfertasDocenteRequest, List<ReadHistorialOfertasDocenteResponse>>
+    using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
+    using JobList.Services.Service;
+    using MediatR;
+
+    public class ReadHistorialOfertasDocenteHandler : IRequestHandler<ReadHistorialOfertasDocenteRequest, PaginationListResponse<ReadHistorialOfertasDocenteResponse>>
     {
         private readonly ICuentaDocenteService cuentaDocenteService;
 
@@ -15,10 +14,9 @@ namespace JobList.Handlers.Docente
             this.cuentaDocenteService = cuentaDocenteService;
         }
 
-        public async Task<List<ReadHistorialOfertasDocenteResponse>> Handle(ReadHistorialOfertasDocenteRequest request, CancellationToken cancellationToken)
+        public async Task<PaginationListResponse<ReadHistorialOfertasDocenteResponse>> Handle(ReadHistorialOfertasDocenteRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<ReadHistorialOfertasDocenteResponse> listHistorialOfertas = await this.cuentaDocenteService.readHistorialOfertasDocente(request);
-            return listHistorialOfertas.ToList();
+            return await this.cuentaDocenteService.readHistorialOfertasDocente(request);
         }
     }
 }
