@@ -8,6 +8,8 @@
         public string password { get; set; } = default!;
         public string nombre { get; set; } = default!;
         public string apellido { get; set; } = default!;
+        public bool sexo { get; set; }
+        public string generacion { get; set; } = default!;
         public int idArea { get; set; }
     }
 }
