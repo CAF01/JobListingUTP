@@ -1,9 +1,9 @@
-﻿using JobList.Entities.Responses;
-using MediatR;
-
-namespace JobList.Entities.Requests
+﻿namespace JobList.Entities.Requests
 {
-    public class ReadOfertasActivasDocenteRequest : IRequest<IEnumerable<ReadOfertasActivasDocenteResponse>>
+    using JobList.Entities.Models;
+    using JobList.Entities.Responses;
+    using MediatR;
+    public class ReadOfertasActivasDocenteRequest : Pagination, IRequest<PaginationListResponse<ReadOfertasActivasDocenteResponse>>
     {
         public int idUsuarioDocente { get; set; }
     }

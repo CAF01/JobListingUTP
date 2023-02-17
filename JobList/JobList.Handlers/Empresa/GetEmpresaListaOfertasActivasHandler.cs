@@ -4,7 +4,7 @@
     using JobList.Entities.Responses;
     using JobList.Services.Service;
     using MediatR;
-    public class GetEmpresaListaOfertasActivasHandler : IRequestHandler<GetEmpresaListaOfertasActivasRequest, IEnumerable<GetEmpresaListaOfertasActivasResponse>>
+    public class GetEmpresaListaOfertasActivasHandler : IRequestHandler<GetEmpresaListaOfertasActivasRequest, PaginationListResponse<GetEmpresaListaOfertasActivasResponse>>
     {
         private readonly ICuentaEmpresaService cuentaEmpresaService;
 
@@ -12,7 +12,7 @@
         {
             this.cuentaEmpresaService = cuentaEmpresaService;
         }
-        public async Task<IEnumerable<GetEmpresaListaOfertasActivasResponse>> Handle(GetEmpresaListaOfertasActivasRequest request, CancellationToken cancellationToken)
+        public async Task<PaginationListResponse<GetEmpresaListaOfertasActivasResponse>> Handle(GetEmpresaListaOfertasActivasRequest request, CancellationToken cancellationToken)
         {
             return await this.cuentaEmpresaService.getOfertasActivasEmpresa(request);
         }

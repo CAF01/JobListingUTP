@@ -1,9 +1,11 @@
 ﻿namespace JobList.API.Controllers
 {
     using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
     using Swashbuckle.AspNetCore.Annotations;
 
     [SwaggerTag("CuentaEgresado")]
@@ -12,10 +14,12 @@
     public class CuentaEgresadoController : ControllerBase
     {
         private readonly IMediator mediator;
+        private readonly ConfigurationPaging options;
 
-        public CuentaEgresadoController(IMediator mediator)
+        public CuentaEgresadoController(IMediator mediator, IOptions<ConfigurationPaging> options)
         {
             this.mediator = mediator;
+            this.options = options.Value;
         }
 
         [HttpPost("add-account-egresado")]
@@ -81,14 +85,27 @@
         [HttpGet("get-postulaciones-egresado")]
         public async Task<IActionResult> GetPostulacionEgresado(int idUsuario)
         {
-            var result = await this.mediator.Send(new GetEgresadoPostulacionesRequest() { idUsuario= idUsuario });
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
+            var result = await this.mediator.Send(new GetEgresadoPostulacionesRequest() {
+                idUsuario = idUsuario,
+                Skip = skip,
+                Take = take
+            });
             return HelperResult.Result(result);
         }
         
         [HttpGet("get-ofertas-activas")]
         public async Task<IActionResult> GetListaOfertasActivas(int idUsuario)
         {
-            var result = await this.mediator.Send(new GetEgresadoListaOfertasActivasRequest() { idUsuario = idUsuario });
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
+            var result = await this.mediator.Send(new GetEgresadoListaOfertasActivasRequest() 
+            {
+                idUsuario = idUsuario,
+                Skip = skip,
+                Take = take
+            });
             return HelperResult.Result(result);
         }
         
@@ -102,14 +119,28 @@
         [HttpGet("obtener-ofertas-revision")]
         public async Task<IActionResult> GetOfertasRevision(int idUsuario)
         {
-            var result = await this.mediator.Send(new GetEgresadoOfertasRevisionRequest() { idUsuario = idUsuario });
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
+            var result = await this.mediator.Send(new GetEgresadoOfertasRevisionRequest()
+            {
+                idUsuario = idUsuario,
+                Skip = skip,
+                Take = take
+            });
             return HelperResult.Result(result);
         }
 
         [HttpGet("obtener-ofertas-historial")]
         public async Task<IActionResult> GetOfertasHistorial(int idUsuario)
         {
-            var result = await this.mediator.Send(new GetEgresadoOfertasHistorialRequest() { idUsuario = idUsuario });
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
+            var result = await this.mediator.Send(new GetEgresadoOfertasHistorialRequest()
+            {
+                idUsuario = idUsuario,
+                Skip = skip,
+                Take = take
+            });
             return HelperResult.Result(result);
         }
         

@@ -5,7 +5,7 @@
     using JobList.Services.Service;
     using MediatR;
 
-    public class GetEgresadoListaOfertasHistorialHandler : IRequestHandler<GetEgresadoOfertasHistorialRequest, IEnumerable<GetEgresadoOfertasHistorialResponse>>
+    public class GetEgresadoListaOfertasHistorialHandler : IRequestHandler<GetEgresadoOfertasHistorialRequest, PaginationListResponse<GetEgresadoOfertasHistorialResponse>>
     {
         private readonly ICuentaEgresadoService cuentaEgresadoService;
 
@@ -13,7 +13,7 @@
         {
             this.cuentaEgresadoService = cuentaEgresadoService;
         }
-        public async Task<IEnumerable<GetEgresadoOfertasHistorialResponse>> Handle(GetEgresadoOfertasHistorialRequest request, CancellationToken cancellationToken)
+        public async Task<PaginationListResponse<GetEgresadoOfertasHistorialResponse>> Handle(GetEgresadoOfertasHistorialRequest request, CancellationToken cancellationToken)
         {
             return await this.cuentaEgresadoService.getOfertasHistorialEgresado(request);
         }
