@@ -100,6 +100,8 @@
                             parameters.Add(StoredProcedureResources.Nombre, request.nombre);
                             parameters.Add(StoredProcedureResources.Apellido, request.apellido);
                             parameters.Add(StoredProcedureResources.idArea, request.idArea);
+                            parameters.Add(StoredProcedureResources.Sexo, request.sexo);
+                            parameters.Add(StoredProcedureResources.Generacion, request.generacion);
                             parameters.Add(StoredProcedureResources.idNuevoEgresado, direction: ParameterDirection.Output);
 
 

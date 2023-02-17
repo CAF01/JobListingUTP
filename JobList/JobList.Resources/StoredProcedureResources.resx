@@ -609,4 +609,7 @@
   <data name="Take" xml:space="preserve">
     <value>_take</value>
   </data>
+  <data name="Sexo" xml:space="preserve">
+    <value>_sexo</value>
+  </data>
 </root>
