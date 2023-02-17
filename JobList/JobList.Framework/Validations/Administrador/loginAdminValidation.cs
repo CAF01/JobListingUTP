@@ -1,10 +1,10 @@
-﻿using FluentValidation;
-using JobList.Entities.Helpers;
-using JobList.Entities.Requests;
-using JobList.Resources;
-
-namespace JobList.Framework.Validations.Administrador
+﻿namespace JobList.Framework.Validations.Administrador
 {
+    using FluentValidation;
+    using JobList.Entities.Helpers;
+    using JobList.Entities.Requests;
+    using JobList.Resources;
+
     public class LoginAdminValidation : AbstractValidator<LoginAdminRequest>
     {
         public LoginAdminValidation()

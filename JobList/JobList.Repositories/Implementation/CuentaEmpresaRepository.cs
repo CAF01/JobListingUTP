@@ -650,5 +650,36 @@
                 dbConnection?.Close();
             }
         }
+
+        public async Task<bool> updateEstadoPostulacion(UpdateEstadoPostulacionRequest request)
+        {
+            try
+            {
+                var response = new UpdateEstadoPostulacionResponse();
+
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idPostulacion, request.idPostulacion);
+                parameters.Add(StoredProcedureResources.AccionEstadoPostulacion, request.accion);
+
+
+                var result = await dbConnection.ExecuteAsync(
+                           sql: StoredProcedureResources.sp_Postulaciones_Estado_Actualizar,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return response.success = true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
     }
 }

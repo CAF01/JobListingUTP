@@ -61,6 +61,312 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La edad no puede estar vacía.
+        /// </summary>
+        public static string ageNotEmpty {
+            get {
+                return ResourceManager.GetString("ageNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La edad es requerida.
+        /// </summary>
+        public static string ageRequired {
+            get {
+                return ResourceManager.GetString("ageRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La actividad de la empresa no puede superar los 75 caracteres.
+        /// </summary>
+        public static string companyActivityMaxLength {
+            get {
+                return ResourceManager.GetString("companyActivityMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La actividad de la empresa requiere 5 caracteres.
+        /// </summary>
+        public static string companyActivityMinLength {
+            get {
+                return ResourceManager.GetString("companyActivityMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La actividad de la empresa no puede estar vacía.
+        /// </summary>
+        public static string companyActivityNotEmpty {
+            get {
+                return ResourceManager.GetString("companyActivityNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La actividad de la empresa es requerida.
+        /// </summary>
+        public static string companyActivityRequired {
+            get {
+                return ResourceManager.GetString("companyActivityRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El domicilio de la empresa no puede superar los 150 caracteres.
+        /// </summary>
+        public static string companyAddressMaxLength {
+            get {
+                return ResourceManager.GetString("companyAddressMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El domicilio de la empresa requiere 10 caracteres.
+        /// </summary>
+        public static string companyAddressMinLength {
+            get {
+                return ResourceManager.GetString("companyAddressMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El domicilio de la empresa no puede estar vacío.
+        /// </summary>
+        public static string companyAddressNotEmpty {
+            get {
+                return ResourceManager.GetString("companyAddressNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El domicilio de la empresa es requerido.
+        /// </summary>
+        public static string companyAddressRequired {
+            get {
+                return ResourceManager.GetString("companyAddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La descripcion de la empresa no puede superar los 500 caracteres.
+        /// </summary>
+        public static string companyDescriptionMaxLength {
+            get {
+                return ResourceManager.GetString("companyDescriptionMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  La descripcion de la empresa requiere 100 caracteres.
+        /// </summary>
+        public static string companyDescriptionMinLength {
+            get {
+                return ResourceManager.GetString("companyDescriptionMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La descripcion de la empresa no puede estar vacía.
+        /// </summary>
+        public static string companyDescriptionNotEmpty {
+            get {
+                return ResourceManager.GetString("companyDescriptionNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La descripcion de la empresa es requerida.
+        /// </summary>
+        public static string companyDescriptionRequired {
+            get {
+                return ResourceManager.GetString("companyDescriptionRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo de la empresa no puede superar los 85 caracteres.
+        /// </summary>
+        public static string companymailMaxLength {
+            get {
+                return ResourceManager.GetString("companymailMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo de la empresa requiere 10 caracteres.
+        /// </summary>
+        public static string companymailMinLength {
+            get {
+                return ResourceManager.GetString("companymailMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo de la empresa no puede estar vacío.
+        /// </summary>
+        public static string companymailNotEmpty {
+            get {
+                return ResourceManager.GetString("companymailNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo de la empresa es requerido.
+        /// </summary>
+        public static string companymailRequired {
+            get {
+                return ResourceManager.GetString("companymailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empresa no puede superar los 100 caracteres.
+        /// </summary>
+        public static string companyMaxLength {
+            get {
+                return ResourceManager.GetString("companyMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empresa requiere 5 caracteres.
+        /// </summary>
+        public static string companyMinLength {
+            get {
+                return ResourceManager.GetString("companyMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empresa no puede estar vacía.
+        /// </summary>
+        public static string companyNotEmpty {
+            get {
+                return ResourceManager.GetString("companyNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empresa es requerida.
+        /// </summary>
+        public static string companyRequired {
+            get {
+                return ResourceManager.GetString("companyRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Los teléfonos de la empresa no pueden superar los 45 caracteres.
+        /// </summary>
+        public static string companyTelephoneMaxLength {
+            get {
+                return ResourceManager.GetString("companyTelephoneMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Los teléfonos de la empresa requieren 10 caracteres.
+        /// </summary>
+        public static string companyTelephoneMinLength {
+            get {
+                return ResourceManager.GetString("companyTelephoneMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Los teléfonos de la empresa no pueden estar vacíos.
+        /// </summary>
+        public static string companyTelephoneNotEmpty {
+            get {
+                return ResourceManager.GetString("companyTelephoneNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Los teléfonos de la empresa son requeridos.
+        /// </summary>
+        public static string companyTelephoneRequired {
+            get {
+                return ResourceManager.GetString("companyTelephoneRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El periodo de contrato no puede superar los 30 caracteres.
+        /// </summary>
+        public static string contractPeriodMaxLenght {
+            get {
+                return ResourceManager.GetString("contractPeriodMaxLenght", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El periodo de contrato requiere 5 caracteres.
+        /// </summary>
+        public static string contractPeriodMinLength {
+            get {
+                return ResourceManager.GetString("contractPeriodMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El periodo de contrato no puede estar vacío.
+        /// </summary>
+        public static string contractPeriodNotEmpty {
+            get {
+                return ResourceManager.GetString("contractPeriodNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El periodo de contrato es requerido.
+        /// </summary>
+        public static string contractPeriodRequired {
+            get {
+                return ResourceManager.GetString("contractPeriodRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El código postal no puede superar los 5 caracteres.
+        /// </summary>
+        public static string CPMaxLength {
+            get {
+                return ResourceManager.GetString("CPMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El código postal requiere 5 caracteres.
+        /// </summary>
+        public static string CPMinLength {
+            get {
+                return ResourceManager.GetString("CPMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El código postal no puede estar vacío.
+        /// </summary>
+        public static string CPNotEmpty {
+            get {
+                return ResourceManager.GetString("CPNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El código postal es requerido.
+        /// </summary>
+        public static string CPRequired {
+            get {
+                return ResourceManager.GetString("CPRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El máximo de carácteres es: .
         /// </summary>
         public static string descriptionMaxLength {
@@ -129,6 +435,168 @@ namespace JobList.Resources {
         public static string failUpdate {
             get {
                 return ResourceManager.GetString("failUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La generacion no puede superar los 12 caracteres.
+        /// </summary>
+        public static string generationMaxLegth {
+            get {
+                return ResourceManager.GetString("generationMaxLegth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La generación requiere 9 caracteres.
+        /// </summary>
+        public static string generationMinLength {
+            get {
+                return ResourceManager.GetString("generationMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La generación no puede estar vacía.
+        /// </summary>
+        public static string generationNotEmpty {
+            get {
+                return ResourceManager.GetString("generationNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La generación es requerida.
+        /// </summary>
+        public static string generationRequired {
+            get {
+                return ResourceManager.GetString("generationRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El nombre no puede superar los 50 caracteres.
+        /// </summary>
+        public static string graduatedNameMaxLength {
+            get {
+                return ResourceManager.GetString("graduatedNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El nombre requiere 3 caracteres.
+        /// </summary>
+        public static string graduatedNameMinLength {
+            get {
+                return ResourceManager.GetString("graduatedNameMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La imagen no puede superar los 100 caracteres.
+        /// </summary>
+        public static string imgUrlMaxLength {
+            get {
+                return ResourceManager.GetString("imgUrlMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellido no puede superar los 50 caracteres.
+        /// </summary>
+        public static string lastNameMaxLength {
+            get {
+                return ResourceManager.GetString("lastNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellido requiere 3 caracteres.
+        /// </summary>
+        public static string lastNameMinLength {
+            get {
+                return ResourceManager.GetString("lastNameMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellido no puede estar vacío.
+        /// </summary>
+        public static string lastNameNotEmpty {
+            get {
+                return ResourceManager.GetString("lastNameNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellido es requerido.
+        /// </summary>
+        public static string lastNameRequired {
+            get {
+                return ResourceManager.GetString("lastNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debe seleccionar conocimientos.
+        /// </summary>
+        public static string listKnowledgeRequired {
+            get {
+                return ResourceManager.GetString("listKnowledgeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debe seleccionar responsabilidades del puesto.
+        /// </summary>
+        public static string listResponsibilitiesRequired {
+            get {
+                return ResourceManager.GetString("listResponsibilitiesRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debe seleccionar habilidades.
+        /// </summary>
+        public static string listSkillsRequired {
+            get {
+                return ResourceManager.GetString("listSkillsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo no puede superar los 85 caracteres.
+        /// </summary>
+        public static string mailMaxLength {
+            get {
+                return ResourceManager.GetString("mailMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo requiere 10 caracteres.
+        /// </summary>
+        public static string mailMinLength {
+            get {
+                return ResourceManager.GetString("mailMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo no puede estar vacío.
+        /// </summary>
+        public static string mailNotEmpty {
+            get {
+                return ResourceManager.GetString("mailNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo es requerido.
+        /// </summary>
+        public static string mailRequired {
+            get {
+                return ResourceManager.GetString("mailRequired", resourceCulture);
             }
         }
         
@@ -214,6 +682,258 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Puesto no puede superar los 60 caracteres.
+        /// </summary>
+        public static string periodMaxLength {
+            get {
+                return ResourceManager.GetString("periodMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Periodo requiere 4 caracteres.
+        /// </summary>
+        public static string periodMinLength {
+            get {
+                return ResourceManager.GetString("periodMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Periodo no puede estar vacío.
+        /// </summary>
+        public static string periodNotEmpty {
+            get {
+                return ResourceManager.GetString("periodNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Periodo es requerido.
+        /// </summary>
+        public static string periodRequired {
+            get {
+                return ResourceManager.GetString("periodRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El lugar no puede superar los 150 caracteres.
+        /// </summary>
+        public static string placeMaxLength {
+            get {
+                return ResourceManager.GetString("placeMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El lugar requiere 10 caracteres.
+        /// </summary>
+        public static string placeMinLength {
+            get {
+                return ResourceManager.GetString("placeMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El lugar no puede estar vacío.
+        /// </summary>
+        public static string placeNotEmpty {
+            get {
+                return ResourceManager.GetString("placeNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El lugar es requerido.
+        /// </summary>
+        public static string placeRequired {
+            get {
+                return ResourceManager.GetString("placeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Puesto no puede superar los 80 caracteres.
+        /// </summary>
+        public static string positionMaxLength {
+            get {
+                return ResourceManager.GetString("positionMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Puesto requiere 5 caracteres.
+        /// </summary>
+        public static string positionMinLength {
+            get {
+                return ResourceManager.GetString("positionMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Puesto no puede estar vacío.
+        /// </summary>
+        public static string positionNotEmpty {
+            get {
+                return ResourceManager.GetString("positionNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Puesto es requerido.
+        /// </summary>
+        public static string positionRequired {
+            get {
+                return ResourceManager.GetString("positionRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo del responsable no puede superar los 85 caracteres.
+        /// </summary>
+        public static string resMailMaxLength {
+            get {
+                return ResourceManager.GetString("resMailMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo del responsable requiere 10 caracteres.
+        /// </summary>
+        public static string resMailMinLength {
+            get {
+                return ResourceManager.GetString("resMailMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo del responsable no puede estar vacío.
+        /// </summary>
+        public static string resMailNotEmpty {
+            get {
+                return ResourceManager.GetString("resMailNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El correo del responsable es requerido.
+        /// </summary>
+        public static string resMailRequired {
+            get {
+                return ResourceManager.GetString("resMailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El nombre del responsable no puede superar los 85 caracteres.
+        /// </summary>
+        public static string resNameMaxLegth {
+            get {
+                return ResourceManager.GetString("resNameMaxLegth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El nombre del responsable requiere 10 caracteres.
+        /// </summary>
+        public static string resNameMinLength {
+            get {
+                return ResourceManager.GetString("resNameMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El nombre del responsable no puede estar vacío.
+        /// </summary>
+        public static string resNameNotEmpty {
+            get {
+                return ResourceManager.GetString("resNameNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El nombre del responsable es requerido.
+        /// </summary>
+        public static string resNameRequired {
+            get {
+                return ResourceManager.GetString("resNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El teléfono del responsable no puede superar los 10 caracteres.
+        /// </summary>
+        public static string resTelephoneMaxLength {
+            get {
+                return ResourceManager.GetString("resTelephoneMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El teléfono del responsable requiere 10 caracteres.
+        /// </summary>
+        public static string resTelephoneMinLength {
+            get {
+                return ResourceManager.GetString("resTelephoneMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El teléfono del responsable no puede estar vacío.
+        /// </summary>
+        public static string resTelephoneNotEmpty {
+            get {
+                return ResourceManager.GetString("resTelephoneNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El teléfono del responsable es requerido.
+        /// </summary>
+        public static string resTelephoneRequired {
+            get {
+                return ResourceManager.GetString("resTelephoneRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El RFC no puede superar los 13 caracteres.
+        /// </summary>
+        public static string RFCMaxLegth {
+            get {
+                return ResourceManager.GetString("RFCMaxLegth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El RFC requiere 12 caracteres.
+        /// </summary>
+        public static string RFCMinLength {
+            get {
+                return ResourceManager.GetString("RFCMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El RFC no puede estar vacío.
+        /// </summary>
+        public static string RFCNotEmpty {
+            get {
+                return ResourceManager.GetString("RFCNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El RFC es requerido.
+        /// </summary>
+        public static string RFCRequired {
+            get {
+                return ResourceManager.GetString("RFCRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registro eliminado correctamente..
         /// </summary>
         public static string successDelete {
@@ -237,6 +957,24 @@ namespace JobList.Resources {
         public static string successUpdate {
             get {
                 return ResourceManager.GetString("successUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El teléfono no puede superar los 10 caracteres.
+        /// </summary>
+        public static string telephoneMaxLength {
+            get {
+                return ResourceManager.GetString("telephoneMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El teléfono requiere 10 caracteres.
+        /// </summary>
+        public static string telephoneMinLength {
+            get {
+                return ResourceManager.GetString("telephoneMinLength", resourceCulture);
             }
         }
         
@@ -273,6 +1011,42 @@ namespace JobList.Resources {
         public static string userRequired {
             get {
                 return ResourceManager.GetString("userRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El horario de trabajo no puede superar los 30 caracteres.
+        /// </summary>
+        public static string workingHoursMaxLength {
+            get {
+                return ResourceManager.GetString("workingHoursMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El horario de trabajo requiere 7 caracteres.
+        /// </summary>
+        public static string workingHoursMinLength {
+            get {
+                return ResourceManager.GetString("workingHoursMinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El horario de trabajo no puede estar vacío.
+        /// </summary>
+        public static string workingHoursNotEmpty {
+            get {
+                return ResourceManager.GetString("workingHoursNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El horario de trabajo es requerido.
+        /// </summary>
+        public static string workingHoursRequired {
+            get {
+                return ResourceManager.GetString("workingHoursRequired", resourceCulture);
             }
         }
     }

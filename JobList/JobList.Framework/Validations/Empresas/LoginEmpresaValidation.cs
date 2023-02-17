@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace JobList.Framework.Validations.Empresas
 {
-    public class LoginEmpresaValidator : AbstractValidator<LoginEmpresaRequest>
+    public class LoginEmpresaValidation : AbstractValidator<LoginEmpresaRequest>
     {
-        public LoginEmpresaValidator()
+        public LoginEmpresaValidation()
         {
             RuleFor(data => data.usuario).NotNull().WithMessage(ValidationResources.userRequired).NotEmpty()
                 .WithMessage(ValidationResources.userNotEmpty).MinimumLength(ValidatorHelper.FIVE).WithMessage(ValidationResources.userMinLength)

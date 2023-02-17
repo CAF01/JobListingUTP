@@ -148,7 +148,7 @@
                         parameters.Add(StoredProcedureResources.Modalidad, request.modalidad);
                         parameters.Add(StoredProcedureResources.HorarioTrabajo, request.horarioTrabajo);
                         parameters.Add(StoredProcedureResources.SueldoMinEstimado, request.sueldoMinEstimado);
-                        parameters.Add(StoredProcedureResources.SueldoMaxEstimado, request.suelodMaxEstimado);
+                        parameters.Add(StoredProcedureResources.SueldoMaxEstimado, request.sueldoMaxEstimado);
                         parameters.Add(StoredProcedureResources.Lugar, request.lugar);
                         parameters.Add(StoredProcedureResources.FechaCreacion, request.fechaCreacion);
 

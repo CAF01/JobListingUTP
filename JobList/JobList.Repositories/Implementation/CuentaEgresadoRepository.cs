@@ -507,6 +507,50 @@
             }
         }
 
+        public async Task<IEnumerable<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request)
+        {
+            try
+            {
+                IEnumerable < ReadOfertasActivasFiltroEgresadoResponse> result = null;
+
+                dbConnection.Open();
+
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuarioEgresado, request.idUsuarioEgresado);
+
+                result = await dbConnection.QueryAsync<ReadOfertasActivasFiltroEgresadoResponse>(
+                    sql: StoredProcedureResources.sp_OfertasTrabajo_FiltroEgresado_Consultar,
+                    transaction: null,
+                    param: parameters,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure
+                    );
+
+                if (result != null)
+                {
+                    foreach (ReadOfertasActivasFiltroEgresadoResponse oferta in result)
+                    {
+                        // amarillo: a partir de un postulante
+                        if (oferta.postulantes >= 1)
+                            oferta.semaforo = "amarillo";
+                        // verde: no tiene postulantes
+                        if (oferta.postulantes == 0)
+                            oferta.semaforo = "verde";
+                    }
+                }
+
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
         public async Task<bool> updateDatosPersonales(UpdateEgresadoDatosPersonalesRequest request)
         {
             try

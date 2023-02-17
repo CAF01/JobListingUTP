@@ -101,5 +101,10 @@
         {
             return await this.cuentaEmpresaRepository.GetDetallesOferta(request);
         }
+
+        public async Task<bool> updateEstadoPostulacion(UpdateEstadoPostulacionRequest request)
+        {
+            return await this.cuentaEmpresaRepository.updateEstadoPostulacion(request);
+        }
     }
 }
