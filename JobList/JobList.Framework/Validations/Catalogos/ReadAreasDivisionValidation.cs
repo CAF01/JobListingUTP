@@ -1,9 +1,9 @@
-﻿using FluentValidation;
-using JobList.Entities.Helpers;
-using JobList.Entities.Requests;
-
-namespace JobList.Framework.Validations.Catalogos
+﻿namespace JobList.Framework.Validations.Catalogos
 {
+    using FluentValidation;
+    using JobList.Entities.Helpers;
+    using JobList.Entities.Requests;
+
     public class ReadAreasDivisionValidation : AbstractValidator<ReadAreasDivisionRequest>
     {
         public ReadAreasDivisionValidation()

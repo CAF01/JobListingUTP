@@ -12,10 +12,10 @@ namespace JobList.Services.Service
         public Task<UpdatePasswordEgresadoResponse> updatePassword(UpdatePasswordEgresadoRequest request);
         public Task<bool> updateDatosPersonales(UpdateEgresadoDatosPersonalesRequest request);
         public Task<int> addExperienciaLaboral(InsertEgresadoExpLaboralRequest request);
-
         public Task<UpdatePerfilEgresadoResponse> updatePerfil(UpdatePerfilEgresadoRequest request);
         public Task<GetEgresadoInfoPersonalResponse> getInfoEgresado(GetEgresadoInfoPersonalRequest request);
         public Task<GetEgresadoInfoPerfilResponse> getInfoPerfilEgresado(GetEgresadoInfoPerfilRequest request);
+        public Task<IEnumerable<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request);
         public Task<PaginationListResponse<GetEgresadoPostulacionesResponse>> getPostulacionesEgresado(GetEgresadoPostulacionesRequest request);
         public Task<PaginationListResponse<GetEgresadoListaOfertasActivasResponse>> getOfertasActivasEgresado(GetEgresadoListaOfertasActivasRequest request);
         public Task<PaginationListResponse<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEgresado(GetEgresadoOfertasRevisionRequest request);
