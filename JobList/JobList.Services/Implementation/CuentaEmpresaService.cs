@@ -77,7 +77,7 @@
             return await this.cuentaEmpresaRepository.updateDatosEmpresa(request);
         }
 
-        public async Task<IEnumerable<GetEmpresaListaOfertasActivasResponse>> getOfertasActivasEmpresa(GetEmpresaListaOfertasActivasRequest request)
+        public async Task<PaginationListResponse<GetEmpresaListaOfertasActivasResponse>> getOfertasActivasEmpresa(GetEmpresaListaOfertasActivasRequest request)
         {
             return await this.cuentaEmpresaRepository.getOfertasActivasEmpresa(request);
         }
@@ -87,12 +87,12 @@
             return await this.cuentaEmpresaRepository.SetStatusOfertaActivaBorrar(request);
         }
 
-        public async Task<IEnumerable<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEmpresa(GetEmpresaOfertasRevisionRequest request)
+        public async Task<PaginationListResponse<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEmpresa(GetEmpresaOfertasRevisionRequest request)
         {
             return await this.cuentaEmpresaRepository.getOfertasRevisionEmpresa(request);
         }
 
-        public async Task<IEnumerable<GetEmpresaOfertasHistorialResponse>> getOfertasHistorialEmpresa(GetEmpresaOfertasHistorialRequest request)
+        public async Task<PaginationListResponse<GetEmpresaOfertasHistorialResponse>> getOfertasHistorialEmpresa(GetEmpresaOfertasHistorialRequest request)
         {
             return await this.cuentaEmpresaRepository.getOfertasHistorialEmpresa(request);
         }

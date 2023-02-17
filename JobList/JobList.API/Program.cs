@@ -74,6 +74,8 @@ Dictionary<string, IDbConnection> connections = new Dictionary<string, IDbConnec
 
 builder.Services.AddSingleton(connections);
 
+builder.Services.Configure<ConfigurationPaging>(Configuration.GetSection(ConfigResources.PaginationConfig));
+
 #endregion
 
 

@@ -9,17 +9,19 @@
     using JobList.Repositories.Service;
     using JobList.Entities.Responses;
     using System.Collections.Generic;
-    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
 
     public class CuentaEmpresaRepository : ICuentaEmpresaRepository
     {
         private readonly Dictionary<string, IDbConnection> connections;
+        private readonly ConfigurationPaging configuration;
         private readonly IDbConnection dbConnection;
 
         // Constructor
-        public CuentaEmpresaRepository(Dictionary<string, IDbConnection> connections)
+        public CuentaEmpresaRepository(Dictionary<string, IDbConnection> connections, IOptions<ConfigurationPaging> options)
         {
             this.connections = connections;
+            this.configuration = options.Value;
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
@@ -383,11 +385,11 @@
             }
         }
 
-        public async Task<IEnumerable<GetEmpresaListaOfertasActivasResponse>> getOfertasActivasEmpresa(GetEmpresaListaOfertasActivasRequest request)
+        public async Task<PaginationListResponse<GetEmpresaListaOfertasActivasResponse>> getOfertasActivasEmpresa(GetEmpresaListaOfertasActivasRequest request)
         {
             try
             {
-                IEnumerable<GetEmpresaListaOfertasActivasResponse> result = null;
+                PaginationListResponse<GetEmpresaListaOfertasActivasResponse> paginator = null;
 
                 dbConnection.Open();
                 using (var transaction = dbConnection.BeginTransaction())
@@ -396,18 +398,24 @@
                     {
                         var parameters = new DynamicParameters();
                         parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                        parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                        parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                        result = await dbConnection.QueryAsync<GetEmpresaListaOfertasActivasResponse>(
+                        var result = await dbConnection.QueryMultipleAsync(
                             sql: StoredProcedureResources.sp_OfertasTrabajo_ActivasEmpresa_Consultar,
                             transaction: transaction,
                             param: parameters,
                             commandTimeout: DatabaseHelper.TIMEOUT,
                             commandType: CommandType.StoredProcedure
-                            );
+                        );
 
-                        if (result != null && result.ToList().Count > 0)
+                        var dynamicResult = result.Read<GetEmpresaListaOfertasActivasResponse>();
+
+                        paginator = new PaginationListResponse<GetEmpresaListaOfertasActivasResponse>(dynamicResult, dynamicResult.Count(), configuration.PageSize);
+
+                        if (paginator != null && paginator.Data != null && paginator.Data.ToList().Count > 0)
                         {
-                            foreach (var ofertaActiva in result)
+                            foreach (var ofertaActiva in paginator.Data)
                             {
                                 if (ofertaActiva.postulantes > 0)
                                 {
@@ -435,7 +443,7 @@
                         transaction.Rollback();
                     }
                 }
-                return result;
+                return paginator;
             }
             catch
             {
@@ -499,18 +507,18 @@
             }
         }
 
-        public async Task<IEnumerable<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEmpresa(GetEmpresaOfertasRevisionRequest request)
+        public async Task<PaginationListResponse<GetEmpresaOfertasRevisionResponse>> getOfertasRevisionEmpresa(GetEmpresaOfertasRevisionRequest request)
         {
             try
             {
-                IEnumerable<GetEmpresaOfertasRevisionResponse> result = null;
-
                 dbConnection.Open();
 
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                result = await dbConnection.QueryAsync<GetEmpresaOfertasRevisionResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                     sql: StoredProcedureResources.sp_OfertasTrabajo_EnRevisionEmpresa_Consultar,
                     transaction: null,
                     param: parameters,
@@ -518,7 +526,9 @@
                     commandType: CommandType.StoredProcedure
                     );
 
-                return result;
+                var dynamicResult = result.Read<GetEmpresaOfertasRevisionResponse>();
+
+                return new PaginationListResponse<GetEmpresaOfertasRevisionResponse>(dynamicResult, dynamicResult.Count(), configuration.PageSize);
             }
             catch
             {
@@ -530,18 +540,19 @@
             }
         }
 
-        public async Task<IEnumerable<GetEmpresaOfertasHistorialResponse>> getOfertasHistorialEmpresa(GetEmpresaOfertasHistorialRequest request)
+        public async Task<PaginationListResponse<GetEmpresaOfertasHistorialResponse>> getOfertasHistorialEmpresa(GetEmpresaOfertasHistorialRequest request)
         {
             try
             {
-                IEnumerable<GetEmpresaOfertasHistorialResponse> result = null;
 
                 dbConnection.Open();
 
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                result = await dbConnection.QueryAsync<GetEmpresaOfertasHistorialResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                     sql: StoredProcedureResources.sp_OfertasTrabajo_HistorialEmpresa_Consultar,
                     transaction: null,
                     param: parameters,
@@ -549,7 +560,9 @@
                     commandType: CommandType.StoredProcedure
                     );
 
-                return result;
+                var dynamicResult = result.Read<GetEmpresaOfertasHistorialResponse>();
+
+                return new PaginationListResponse<GetEmpresaOfertasHistorialResponse>(dynamicResult, dynamicResult.Count(), configuration.PageSize);
             }
             catch
             {

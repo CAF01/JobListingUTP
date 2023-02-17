@@ -1,9 +1,11 @@
 ﻿namespace JobList.API.Controllers
 {
     using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
     using Swashbuckle.AspNetCore.Annotations;
 
     [SwaggerTag("CuentaDocente")]
@@ -12,10 +14,12 @@
     public class CuentaDocenteController : ControllerBase
     {
         private readonly IMediator mediator;
+        private readonly ConfigurationPaging options;
 
-        public CuentaDocenteController(IMediator mediator)
+        public CuentaDocenteController(IMediator mediator, IOptions<ConfigurationPaging> options)
         {
             this.mediator = mediator;
+            this.options = options.Value;
         }
 
         [HttpPost("add-docente")]
@@ -35,9 +39,13 @@
         [HttpGet("list-historial-ofertas-docente")]
         public async Task<IActionResult> GetHistorialOfertas(int idUsuarioDocente)
         {
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
             var result = await this.mediator.Send(new ReadHistorialOfertasDocenteRequest()
             {
-                idUsuarioDocente = idUsuarioDocente
+                idUsuarioDocente = idUsuarioDocente,
+                Skip = skip,
+                Take = take
             });
             return HelperResult.Result(result);
         }
@@ -45,9 +53,13 @@
         [HttpGet("list-ofertas-revision-docente")]
         public async Task<IActionResult> GetOfertasRevision(int idUsuarioDocente)
         {
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
             var result = await this.mediator.Send(new ReadOfertasRevisionDocenteRequest()
             {
-                idUsuarioDocente = idUsuarioDocente
+                idUsuarioDocente = idUsuarioDocente,
+                Skip = skip,
+                Take = take
             });
             return HelperResult.Result(result);
         }
@@ -55,9 +67,13 @@
         [HttpGet("list-ofertas-activas-docente")]
         public async Task<IActionResult> GetOfertasActivas(int idUsuarioDocente)
         {
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
             var result = await this.mediator.Send(new ReadOfertasActivasDocenteRequest()
             {
-                idUsuarioDocente = idUsuarioDocente
+                idUsuarioDocente = idUsuarioDocente,
+                Skip = skip,
+                Take = take
             });
             return HelperResult.Result(result);
         }
@@ -89,12 +105,5 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
-
-        //[HttpPut("borrar-oferta-activa")]
-        //public async Task<IActionResult> PutDeleteOfertaActiva(DeleteOfertaTrabajoActivaRequest request)
-        //{
-        //    var result = await this.mediator.Send(request);
-        //    return HelperResult.Result(result);
-        //}
     }
 }

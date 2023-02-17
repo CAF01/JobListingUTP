@@ -709,6 +709,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _skip.
+        /// </summary>
+        public static string Skip {
+            get {
+                return ResourceManager.GetString("Skip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_adminAreasUTP.
         /// </summary>
         public static string sp_adminAreasUTP {
@@ -1461,6 +1470,15 @@ namespace JobList.Resources {
         public static string SueldoMinEstimado {
             get {
                 return ResourceManager.GetString("SueldoMinEstimado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _take.
+        /// </summary>
+        public static string Take {
+            get {
+                return ResourceManager.GetString("Take", resourceCulture);
             }
         }
         

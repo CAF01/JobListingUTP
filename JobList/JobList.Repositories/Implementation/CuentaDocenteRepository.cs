@@ -7,19 +7,21 @@
     using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
+    using Microsoft.Extensions.Options;
     using System.Data;
-    using System.Reflection.Metadata;
     using System.Threading.Tasks;
 
     public class CuentaDocenteRepository : ICuentaDocenteRepository
     {
         private readonly Dictionary<string, IDbConnection> connections;
+        private readonly ConfigurationPaging configuration;
         private readonly IDbConnection dbConnection;
 
         // Constructor
-        public CuentaDocenteRepository(Dictionary<string, IDbConnection> connections)
+        public CuentaDocenteRepository(Dictionary<string, IDbConnection> connections, IOptions<ConfigurationPaging> options)
         {
             this.connections = connections;
+            this.configuration = options.Value;
             this.dbConnection = connections[ConfigResources.DefaultConnection];
         }
 
@@ -351,22 +353,27 @@
         }
 
         // Historial de ofertas de un docente
-        public async Task<IEnumerable<ReadHistorialOfertasDocenteResponse>> readHistorialOfertasDocente(ReadHistorialOfertasDocenteRequest request)
+        public async Task<PaginationListResponse<ReadHistorialOfertasDocenteResponse>> readHistorialOfertasDocente(ReadHistorialOfertasDocenteRequest request)
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuarioDocente, request.idUsuarioDocente);
+                parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                var result = await dbConnection.QueryAsync<ReadHistorialOfertasDocenteResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                            sql: StoredProcedureResources.sp_OfertasTrabajo_HistorialDocente_Consultar,
                            param: parameters,
                            transaction: null,
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return result;
+
+                var dynamicResult = result.Read<ReadHistorialOfertasDocenteResponse>();
+
+                return new PaginationListResponse<ReadHistorialOfertasDocenteResponse>(dynamicResult,dynamicResult.Count(),configuration.PageSize);
             }
             catch
             {
@@ -379,11 +386,11 @@
         }
 
         // Listado de ofertas activas de un docente
-        public async Task<IEnumerable<ReadOfertasActivasDocenteResponse>> readOfertasActivasDocente(ReadOfertasActivasDocenteRequest request)
+        public async Task<PaginationListResponse<ReadOfertasActivasDocenteResponse>> readOfertasActivasDocente(ReadOfertasActivasDocenteRequest request)
         {
             try
             {
-                IEnumerable<ReadOfertasActivasDocenteResponse> result = null;
+                PaginationListResponse<ReadOfertasActivasDocenteResponse> pagination = null;
                 dbConnection.Open();
                 using (var transaction = dbConnection.BeginTransaction())
                 {
@@ -391,8 +398,10 @@
                     {
                         var parameters = new DynamicParameters();
                         parameters.Add(StoredProcedureResources.idUsuarioDocente, request.idUsuarioDocente);
+                        parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                        parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                        result = await dbConnection.QueryAsync<ReadOfertasActivasDocenteResponse>(
+                        var result = await dbConnection.QueryMultipleAsync(
                                    sql: StoredProcedureResources.sp_OfertasTrabajo_ActivasDocente_Consultar,
                                    param: parameters,
                                    transaction: null,
@@ -400,24 +409,16 @@
                                    commandType: CommandType.StoredProcedure
                                 );
 
-                        if (result != null && result.ToList().Count > 0)
-                        {
-                            //foreach (ReadOfertasActivasDocenteResponse oferta in result)
-                            //{
-                            //    // amarillo: a partir de un postulante
-                            //    if (oferta.numeroPostulantes >= 1)
-                            //        oferta.semaforo = "amarillo";
-                            //    // verde: no tiene postulantes
-                            //    if (oferta.numeroPostulantes == 0)
-                            //        oferta.semaforo = "verde";
-                            //}
+                        var dynamicResult = result.Read<ReadOfertasActivasDocenteResponse>();
 
-                            foreach (var ofertaActiva in result)
+                        pagination = new PaginationListResponse<ReadOfertasActivasDocenteResponse>(dynamicResult, dynamicResult.Count(), configuration.PageSize);
+
+                        if (result != null && pagination.Data!=null && pagination.Data.Count() > 0)
+                        {
+                            foreach (var ofertaActiva in pagination.Data)
                             {
-                                // amarillo: a partir de un postulante
                                 if (ofertaActiva.numeroPostulantes >= 1)
                                     ofertaActiva.semaforo = "amarillo";
-                                // verde: no tiene postulantes
                                 if (ofertaActiva.numeroPostulantes == 0)
                                     ofertaActiva.semaforo = "verde";
                                 if (ofertaActiva.numeroPostulantes > 0)
@@ -442,7 +443,7 @@
                         transaction.Rollback();
                     }
                 }
-                return result;
+                return pagination;
             }
             catch
             {
@@ -455,22 +456,26 @@
         }
 
         // Listado de ofertas en revisión de un docente
-        public async Task<IEnumerable<ReadOfertasRevisionDocenteResponse>> readOfertasRevisionDocente(ReadOfertasRevisionDocenteRequest request)
+        public async Task<PaginationListResponse<ReadOfertasRevisionDocenteResponse>> readOfertasRevisionDocente(ReadOfertasRevisionDocenteRequest request)
         {
             try
             {
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuarioDocente, request.idUsuarioDocente);
+                parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                var result = await dbConnection.QueryAsync<ReadOfertasRevisionDocenteResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                            sql: StoredProcedureResources.sp_OfertasTrabajo_EnRevisionDocente_Consultar,
                            param: parameters,
                            transaction: null,
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return result;
+
+                var dynamicResult = result.Read<ReadOfertasRevisionDocenteResponse>();
+                return new PaginationListResponse<ReadOfertasRevisionDocenteResponse>(dynamicResult,dynamicResult.Count(),configuration.PageSize); 
             }
             catch
             {

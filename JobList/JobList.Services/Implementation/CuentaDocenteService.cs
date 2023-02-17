@@ -70,19 +70,19 @@
         }
 
         // Historial de ofertas de un docente
-        public async Task<IEnumerable<ReadHistorialOfertasDocenteResponse>> readHistorialOfertasDocente(ReadHistorialOfertasDocenteRequest request)
+        public async Task<PaginationListResponse<ReadHistorialOfertasDocenteResponse>> readHistorialOfertasDocente(ReadHistorialOfertasDocenteRequest request)
         {
             return await this.cuentaDocenteRepository.readHistorialOfertasDocente(request);
         }
 
         // Listado de ofertas en revisión de un docente
-        public async Task<IEnumerable<ReadOfertasRevisionDocenteResponse>> readOfertasRevisionDocente(ReadOfertasRevisionDocenteRequest request)
+        public async Task<PaginationListResponse<ReadOfertasRevisionDocenteResponse>> readOfertasRevisionDocente(ReadOfertasRevisionDocenteRequest request)
         {
             return await this.cuentaDocenteRepository.readOfertasRevisionDocente(request);
         }
 
         // Listado de ofertas activas de un docente
-        public async Task<IEnumerable<ReadOfertasActivasDocenteResponse>> readOfertasActivasDocente(ReadOfertasActivasDocenteRequest request)
+        public async Task<PaginationListResponse<ReadOfertasActivasDocenteResponse>> readOfertasActivasDocente(ReadOfertasActivasDocenteRequest request)
         {
             return await this.cuentaDocenteRepository.readOfertasActivasDocente(request);
         }        

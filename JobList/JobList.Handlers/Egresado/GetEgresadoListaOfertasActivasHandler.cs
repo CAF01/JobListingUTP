@@ -7,7 +7,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class GetEgresadoListaOfertasActivasHandler : IRequestHandler<GetEgresadoListaOfertasActivasRequest, IEnumerable<GetEgresadoListaOfertasActivasResponse>>
+    public class GetEgresadoListaOfertasActivasHandler : IRequestHandler<GetEgresadoListaOfertasActivasRequest, PaginationListResponse<GetEgresadoListaOfertasActivasResponse>>
     {
         private readonly ICuentaEgresadoService cuentaEgresadoService;
 
@@ -16,7 +16,7 @@
             this.cuentaEgresadoService = cuentaEgresadoService;
         }
 
-        public async Task<IEnumerable<GetEgresadoListaOfertasActivasResponse>> Handle(GetEgresadoListaOfertasActivasRequest request, CancellationToken cancellationToken)
+        public async Task<PaginationListResponse<GetEgresadoListaOfertasActivasResponse>> Handle(GetEgresadoListaOfertasActivasRequest request, CancellationToken cancellationToken)
         {
             return await this.cuentaEgresadoService.getOfertasActivasEgresado(request);
         }
