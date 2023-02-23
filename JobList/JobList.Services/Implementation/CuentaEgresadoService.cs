@@ -125,7 +125,7 @@
             return await this.cuentaEgresadoRepository.getOfertasHistorialEgresado(request);
         }
 
-        public async Task<IEnumerable<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request)
+        public async Task<PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request)
         {
             return await this.cuentaEgresadoRepository.readOfertasActivasFiltroEgresado(request);
         }

@@ -1,16 +1,10 @@
 ﻿using JobList.Entities.Models;
 using JobList.Entities.Requests;
-using JobList.Services.Service;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace JobList.Handlers.Administrador
 {
-    public class ReadDetallesEmpresaHandler : IRequestHandler<ReadDetallesEmpresaRequest, List<ReadDetallesEmpresaResponse>>
+    using JobList.Services.Service;
+    using MediatR;
+    public class ReadDetallesEmpresaHandler : IRequestHandler<ReadDetallesEmpresaRequest, ReadDetallesEmpresaResponse>
     {
         private readonly ICuentaAdministradorService cuentaAdministradorService;
 
@@ -21,10 +15,9 @@ namespace JobList.Handlers.Administrador
         }
 
         // Consultar detalles de una empresa
-        public async Task<List<ReadDetallesEmpresaResponse>> Handle(ReadDetallesEmpresaRequest request, CancellationToken cancellationToken)
+        public async Task<ReadDetallesEmpresaResponse> Handle(ReadDetallesEmpresaRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<ReadDetallesEmpresaResponse> listDetallesEmpresa = await this.cuentaAdministradorService.readDetallesEmpresa(request);
-            return listDetallesEmpresa.ToList();
+            return await this.cuentaAdministradorService.readDetallesEmpresa(request);
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using JobList.Entities.Helpers;
 using JobList.Entities.Requests;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace JobList.API.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     [SwaggerTag("AreasUTP")]
     [Route("api/[controller]")]
     [ApiController]
@@ -33,6 +35,7 @@ namespace JobList.API.Controllers
             return HelperResult.Result(result);
         }
 
+        [AllowAnonymous]
         [HttpGet("list-divisiones")]
         public async Task<IActionResult> GetDivisiones()
         {
@@ -40,6 +43,7 @@ namespace JobList.API.Controllers
             return HelperResult.Result(result);
         }
 
+        [AllowAnonymous]
         [HttpGet("list-areasdivision")]
         public async Task<IActionResult> GetAreasDivision(int idDivision)
         {

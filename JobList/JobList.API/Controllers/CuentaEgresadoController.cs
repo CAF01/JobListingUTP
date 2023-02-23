@@ -4,10 +4,11 @@
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using MediatR;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using Swashbuckle.AspNetCore.Annotations;
-
+    [Authorize(Roles = "RolEgresado")]
     [SwaggerTag("CuentaEgresado")]
     [Route("api/[controller]")]
     [ApiController]
@@ -40,6 +41,7 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+        [AllowAnonymous]
         [HttpPost("login-account-egresado")]
         public async Task<IActionResult> LoginEgresado(LoginEgresadoRequest request)
         {
@@ -112,7 +114,14 @@
         [HttpGet("get-ofertas-activas-filtro")]
         public async Task<IActionResult> GetOfertasActivasFiltroEgresado(int idUsuario)
         {
-            var result = await this.mediator.Send(new ReadOfertasActivasFiltroEgresadoRequest() { idUsuarioEgresado = idUsuario });
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
+            var result = await this.mediator.Send(new ReadOfertasActivasFiltroEgresadoRequest()
+            {
+                idUsuarioEgresado = idUsuario,
+                Skip = skip,
+                Take = take
+            });
             return HelperResult.Result(result);
         }
 

@@ -3,9 +3,10 @@
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
     using MediatR;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
-
+    [Authorize(Roles = "Administrador")]
     [SwaggerTag("Estados")]
     [Route("api/[controller]")]
     [ApiController]
