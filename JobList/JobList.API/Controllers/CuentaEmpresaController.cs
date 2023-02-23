@@ -33,6 +33,7 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+        [AllowAnonymous]
         [HttpPost("crear-cuenta-empresa")]
         public async Task<IActionResult> PostEmpresa(InsertEmpresaRequest request)
         {
