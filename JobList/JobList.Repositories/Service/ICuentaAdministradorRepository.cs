@@ -2,17 +2,18 @@
 {
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
 
     public interface ICuentaAdministradorRepository
     {
         public Task<int> addAdministrador(InsertAdminRequest request);
         public Task<AdminInfo> findAdministrador(LoginAdminRequest userLogin);
-        public Task<IEnumerable<ReadOfertasNuevasAdministradorResponse>> readOfertasNuevasAdministrador();
-        public Task<IEnumerable<ReadOfertasActivasAdministradorResponse>> readOfertasActivasAdministrador();
-        public Task<IEnumerable<ReadEmpresasAfiliadasResponse>> readEmpresasAfiliadas();
-        public Task<IEnumerable<ReadDetallesEmpresaResponse>> readDetallesEmpresa(ReadDetallesEmpresaRequest request);
-        public Task<IEnumerable<ReadOfertasPublicadasEmpresaResponse>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request);
-        public Task<IEnumerable<ReadSeguimientosPostulacionEgresadosResponse>> readSeguimientosPostulacionEgresados();
+        public Task<PaginationListResponse<ReadOfertasNuevasAdministradorResponse>> readOfertasNuevasAdministrador();
+        public Task<PaginationListResponse<ReadOfertasActivasAdministradorResponse>> readOfertasActivasAdministrador();
+        public Task<PaginationListResponse<ReadEmpresasAfiliadasResponse>> readEmpresasAfiliadas();
+        public Task<ReadDetallesEmpresaResponse> readDetallesEmpresa(ReadDetallesEmpresaRequest request);
+        public Task<PaginationListResponse<ReadOfertasPublicadasEmpresaResponse>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request);
+        public Task<PaginationListResponse<ReadSeguimientosPostulacionEgresadosResponse>> readSeguimientosPostulacionEgresados();
         public Task<bool> UpdateOfertaTrabajoValida(UpdateAdministradorOfertaValidacionRequest request);
     }
 }

@@ -120,6 +120,11 @@ app.UseSwagger();
 app.UseSwaggerUI();
 //}
 
+
+//app.UseCors("CorsPolicy");
+
+//app.UseHttpsRedirection();
+
 app.UseRouting(); //agregados
 app.UseAuthentication(); //agregado JWT
 app.UseAuthorization(); //ya estaba

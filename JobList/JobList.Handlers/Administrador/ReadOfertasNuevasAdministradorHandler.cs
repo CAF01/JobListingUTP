@@ -2,10 +2,11 @@
 {
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
     using JobList.Services.Service;
     using MediatR;
 
-    public class ReadOfertasNuevasAdministradorHandler : IRequestHandler<ReadOfertasNuevasAdministradorRequest, List<ReadOfertasNuevasAdministradorResponse>>
+    public class ReadOfertasNuevasAdministradorHandler : IRequestHandler<ReadOfertasNuevasAdministradorRequest, PaginationListResponse<ReadOfertasNuevasAdministradorResponse>>
     {
         private readonly ICuentaAdministradorService cuentaAdministradorService;
 
@@ -16,10 +17,9 @@
         }
 
         // Listado de ofertas nuevas, esperando a ser validadas por el administrador
-        public async Task<List<ReadOfertasNuevasAdministradorResponse>> Handle(ReadOfertasNuevasAdministradorRequest request, CancellationToken cancellationToken)
+        public async Task<PaginationListResponse<ReadOfertasNuevasAdministradorResponse>> Handle(ReadOfertasNuevasAdministradorRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<ReadOfertasNuevasAdministradorResponse> listOfertasNuevasAdministardor = await this.cuentaAdministradorService.readOfertasNuevasAdministrador();
-            return listOfertasNuevasAdministardor.ToList();
+            return await this.cuentaAdministradorService.readOfertasNuevasAdministrador();
         }
     }
 }

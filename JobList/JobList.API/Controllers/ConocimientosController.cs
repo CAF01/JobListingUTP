@@ -3,8 +3,10 @@
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
     using MediatR;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
+    [Authorize(Roles = "Administrador")]
     [SwaggerTag("Conocimientos")]
     [Route("api/[controller]")]
     [ApiController]
@@ -38,6 +40,7 @@
             return HelperResult.Result(result);
         }
 
+        [AllowAnonymous]
         [HttpGet("list-conocimientos")]
         public async Task<IActionResult> GetConocimientos()
         {

@@ -13,5 +13,6 @@ namespace JobList.Entities.Responses
         public string nombre { get; set; } = default!;
         public string token { get; set; } = default!;
         public bool success { get; set; }
+
     }
 }

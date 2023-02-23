@@ -1,5 +1,6 @@
 ﻿using JobList.Entities.Requests;
 using JobList.Entities.Responses;
+using JobList.Resources;
 using JobList.Services.Service;
 using MediatR;
 

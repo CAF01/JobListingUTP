@@ -5,7 +5,7 @@ using MediatR;
 
 namespace JobList.Handlers.Egresado
 {
-    public class ReadOfertasActivasFiltroEgresadoHandler : IRequestHandler<ReadOfertasActivasFiltroEgresadoRequest, IEnumerable<ReadOfertasActivasFiltroEgresadoResponse>>
+    public class ReadOfertasActivasFiltroEgresadoHandler : IRequestHandler<ReadOfertasActivasFiltroEgresadoRequest, PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse>>
     {
         private readonly ICuentaEgresadoService cuentaEgresadoService;
 
@@ -14,7 +14,7 @@ namespace JobList.Handlers.Egresado
             this.cuentaEgresadoService = cuentaEgresadoService;
         }
 
-        public async Task<IEnumerable<ReadOfertasActivasFiltroEgresadoResponse>> Handle(ReadOfertasActivasFiltroEgresadoRequest request, CancellationToken cancellationToken)
+        public async Task<PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse>> Handle(ReadOfertasActivasFiltroEgresadoRequest request, CancellationToken cancellationToken)
         {
             return await this.cuentaEgresadoService.readOfertasActivasFiltroEgresado(request);
         }

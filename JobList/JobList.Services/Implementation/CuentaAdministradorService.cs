@@ -2,12 +2,12 @@
 {
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
     using JobList.Framework;
     using JobList.Repositories.Service;
     using JobList.Resources;
     using JobList.Services.Service;
     using Microsoft.IdentityModel.Tokens;
-    using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
@@ -69,37 +69,37 @@
         }
 
         // Listado de nuevas ofertas, esperando a ser validadas por el administrador
-        public async Task<IEnumerable<ReadOfertasNuevasAdministradorResponse>> readOfertasNuevasAdministrador()
+        public async Task<PaginationListResponse<ReadOfertasNuevasAdministradorResponse>> readOfertasNuevasAdministrador()
         {
             return await this.cuentaAdministradorRepository.readOfertasNuevasAdministrador();
         }
 
         // Listado de ofertas activas (de todos los usuarios)
-        public async Task<IEnumerable<ReadOfertasActivasAdministradorResponse>> readOfertasActivasAdministrador()
+        public async Task<PaginationListResponse<ReadOfertasActivasAdministradorResponse>> readOfertasActivasAdministrador()
         {
             return await this.cuentaAdministradorRepository.readOfertasActivasAdministrador();
         }
 
         // Listado de empresas afiliadas
-        public async Task<IEnumerable<ReadEmpresasAfiliadasResponse>> readEmpresasAfiliadas()
+        public async Task<PaginationListResponse<ReadEmpresasAfiliadasResponse>> readEmpresasAfiliadas()
         {
             return await this.cuentaAdministradorRepository.readEmpresasAfiliadas();
         }
 
         // Consultar los detalles de una empresa
-        public async Task<IEnumerable<ReadDetallesEmpresaResponse>> readDetallesEmpresa(ReadDetallesEmpresaRequest request)
+        public async Task<ReadDetallesEmpresaResponse> readDetallesEmpresa(ReadDetallesEmpresaRequest request)
         {
             return await this.cuentaAdministradorRepository.readDetallesEmpresa(request);
         }
 
         // Listado de ofertas publicadas por una empresa (parte de los detalles de la empresa)
-        public async Task<IEnumerable<ReadOfertasPublicadasEmpresaResponse>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request)
+        public async Task<PaginationListResponse<ReadOfertasPublicadasEmpresaResponse>> readOfertasPublicadasEmpresa(ReadOfertasPublicadasEmpresaRequest request)
         {
             return await this.cuentaAdministradorRepository.readOfertasPublicadasEmpresa(request);
         }
 
         // Listado de seguimientos de postulaciones de todos los egresados
-        public async Task<IEnumerable<ReadSeguimientosPostulacionEgresadosResponse>> readSeguimientosPostulacionEgresados()
+        public async Task<PaginationListResponse<ReadSeguimientosPostulacionEgresadosResponse>> readSeguimientosPostulacionEgresados()
         {
             return await this.cuentaAdministradorRepository.readSeguimientosPostulacionEgresados();
         }

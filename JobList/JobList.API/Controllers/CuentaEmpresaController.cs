@@ -1,12 +1,13 @@
-﻿using JobList.Entities.Helpers;
-using JobList.Entities.Models;
-using JobList.Entities.Requests;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-
-namespace JobList.API.Controllers
+﻿namespace JobList.API.Controllers
 {
+    using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
+    using MediatR;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
+    [Authorize(Roles = "Empresa")]
     [Route("api/[controller]")]
     [ApiController]
     public class CuentaEmpresaController : ControllerBase
@@ -19,7 +20,7 @@ namespace JobList.API.Controllers
             this.mediator = mediator;
             this.options = options.Value;
         }
-
+        [AllowAnonymous]
         [HttpPost("login-empresa")]
         public async Task<IActionResult> PostLoginEmpresa(LoginEmpresaRequest request)
         {

@@ -10,7 +10,6 @@
     using Microsoft.Extensions.Options;
     using System.Collections.Generic;
     using System.Data;
-    using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
 
     public class CuentaEgresadoRepository : ICuentaEgresadoRepository
@@ -507,18 +506,19 @@
             }
         }
 
-        public async Task<IEnumerable<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request)
+        public async Task<PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request)
         {
             try
             {
-                IEnumerable < ReadOfertasActivasFiltroEgresadoResponse> result = null;
-
+                PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse> pagination = null;
                 dbConnection.Open();
 
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuarioEgresado, request.idUsuarioEgresado);
+                parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                result = await dbConnection.QueryAsync<ReadOfertasActivasFiltroEgresadoResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                     sql: StoredProcedureResources.sp_OfertasTrabajo_FiltroEgresado_Consultar,
                     transaction: null,
                     param: parameters,
@@ -526,9 +526,13 @@
                     commandType: CommandType.StoredProcedure
                     );
 
-                if (result != null)
+                var dynamicResult = result.Read<ReadOfertasActivasFiltroEgresadoResponse>();
+
+                pagination = new PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse>(dynamicResult, dynamicResult.Count(), configuration.PageSize);
+
+                if (result != null && pagination!=null && pagination.Data!=null && pagination.Data.Count()>0)
                 {
-                    foreach (ReadOfertasActivasFiltroEgresadoResponse oferta in result)
+                    foreach (ReadOfertasActivasFiltroEgresadoResponse oferta in pagination.Data)
                     {
                         // amarillo: a partir de un postulante
                         if (oferta.postulantes >= 1)
@@ -539,7 +543,7 @@
                     }
                 }
 
-                return result;
+                return pagination;
             }
             catch
             {
