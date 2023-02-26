@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JobList.Entities.Requests
 {
-    public class ReadHabilidadesRequest : IRequest<List<ReadHabilidadesResponse>>
+    public class ReadHabilidadesRequest : IRequest<IEnumerable<ReadHabilidadesResponse>>
     {
     }
 }

@@ -39,6 +39,7 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+
         [AllowAnonymous]
         [HttpGet("list-habilidades")]
         public async Task<IActionResult> GetHabilidades()

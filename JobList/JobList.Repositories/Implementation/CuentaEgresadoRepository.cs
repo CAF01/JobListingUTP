@@ -8,21 +8,18 @@
     using JobList.Repositories.Service;
     using JobList.Resources;
     using Microsoft.Extensions.Options;
-    using System.Collections.Generic;
     using System.Data;
     using System.Threading.Tasks;
 
     public class CuentaEgresadoRepository : ICuentaEgresadoRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly ConfigurationPaging configuration;
         private readonly IDbConnection dbConnection;
 
-        public CuentaEgresadoRepository(Dictionary<string, IDbConnection> connections,IOptions<ConfigurationPaging> options)
+        public CuentaEgresadoRepository(IDbConnection connections,IOptions<ConfigurationPaging> options)
         {
-            this.connections = connections;
             this.configuration = options.Value;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
         }
 
         public async Task<int> addConocimientoEgresado(InsertConocimientoEgresadoRequest request)

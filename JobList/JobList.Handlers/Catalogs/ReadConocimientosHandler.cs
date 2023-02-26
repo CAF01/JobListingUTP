@@ -4,7 +4,7 @@
     using JobList.Entities.Responses;
     using JobList.Services.Service;
     using MediatR;
-    public class ReadConocimientosHandler : IRequestHandler<ReadConocimientosRequest, List<ReadConocimientosResponse>>
+    public class ReadConocimientosHandler : IRequestHandler<ReadConocimientosRequest, IEnumerable<ReadConocimientosResponse>>
     {
         private readonly IConocimientosService conocimientosService;
 
@@ -14,10 +14,9 @@
         }
 
         // Obtener lista de conocimientos
-        public async Task<List<ReadConocimientosResponse>> Handle(ReadConocimientosRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ReadConocimientosResponse>> Handle(ReadConocimientosRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<ReadConocimientosResponse> listConocimientos = await this.conocimientosService.readConocimientos();
-            return listConocimientos.ToList();
+            return await this.conocimientosService.readConocimientos();
         }
     }
 }

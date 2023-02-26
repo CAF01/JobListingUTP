@@ -13,16 +13,14 @@
 
     public class CuentaDocenteRepository : ICuentaDocenteRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly ConfigurationPaging configuration;
         private readonly IDbConnection dbConnection;
 
         // Constructor
-        public CuentaDocenteRepository(Dictionary<string, IDbConnection> connections, IOptions<ConfigurationPaging> options)
+        public CuentaDocenteRepository(IDbConnection connections, IOptions<ConfigurationPaging> options)
         {
-            this.connections = connections;
             this.configuration = options.Value;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
         }
 
         // Insertar un docente

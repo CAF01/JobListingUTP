@@ -123,6 +123,9 @@
   <data name="Config" xml:space="preserve">
     <value>Config</value>
   </data>
+  <data name="CorsPolicy" xml:space="preserve">
+    <value>CorsPolicy</value>
+  </data>
   <data name="DefaultConnection" xml:space="preserve">
     <value>DefaultConnection</value>
   </data>

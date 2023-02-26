@@ -65,14 +65,7 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 });
 
-
-Dictionary<string, IDbConnection> connections = new Dictionary<string, IDbConnection>
-    {
-        { ConfigResources.DefaultConnection, new MySqlConnection(Configuration.GetConnectionString(ConfigResources.DefaultConnection)) },
-        { ConfigResources.SecondaryConnection, new MySqlConnection(Configuration.GetConnectionString(ConfigResources.SecondaryConnection)) }
-    };
-
-builder.Services.AddSingleton(connections);
+builder.Services.AddScoped<IDbConnection>(db => new MySqlConnection(Configuration.GetConnectionString(ConfigResources.DefaultConnection)));
 
 builder.Services.Configure<ConfigurationPaging>(Configuration.GetSection(ConfigResources.PaginationConfig));
 
@@ -110,6 +103,16 @@ builder.Services.AddScoped<ICuentaEmpresaRepository, CuentaEmpresaRepository>();
 
 #endregion
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(ConfigResources.CorsPolicy,
+        builder => builder.WithOrigins("http://localhost:4200", "http://localhost:3000")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+
+});
+
 var app = builder.Build();
 
 
@@ -121,9 +124,9 @@ app.UseSwaggerUI();
 //}
 
 
-//app.UseCors("CorsPolicy");
+app.UseCors(ConfigResources.CorsPolicy);
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseRouting(); //agregados
 app.UseAuthentication(); //agregado JWT

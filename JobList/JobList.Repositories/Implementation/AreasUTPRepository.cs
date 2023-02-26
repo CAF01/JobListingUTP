@@ -11,14 +11,12 @@
 
     public class AreasUTPRepository : IAreasUTPRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
 
         // Constructor
-        public AreasUTPRepository(Dictionary<string, IDbConnection> connections)
+        public AreasUTPRepository(IDbConnection connections)
         {
-            this.connections = connections;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
         }
 
         // Insertar un área
@@ -90,14 +88,15 @@
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<ReadDivisionesResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                            sql: StoredProcedureResources.sp_DivisionesUTP_Consultar,
                            param: parameters,
                            transaction: null,
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return result;
+                var dynamicResult = result.Read<ReadDivisionesResponse>();
+                return dynamicResult;
             }
             catch
             {
@@ -118,14 +117,16 @@
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idDivision, request.idDivision);
 
-                var result = await dbConnection.QueryAsync<ReadAreasDivisionResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                            sql: StoredProcedureResources.sp_AreasDivision_Consultar,
                            param: parameters,
                            transaction: null,
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return result;
+
+                var dynamicResult = result.Read<ReadAreasDivisionResponse>();
+                return dynamicResult;
             }
             catch
             {
