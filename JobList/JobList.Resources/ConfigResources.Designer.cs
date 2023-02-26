@@ -79,6 +79,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CorsPolicy.
+        /// </summary>
+        public static string CorsPolicy {
+            get {
+                return ResourceManager.GetString("CorsPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DefaultConnection.
         /// </summary>
         public static string DefaultConnection {

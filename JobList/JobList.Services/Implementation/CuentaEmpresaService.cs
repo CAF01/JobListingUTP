@@ -68,6 +68,7 @@
 
         public async Task<InsertEmpresaResponse> insertCuentaEmpresa(InsertEmpresaRequest request)
         {
+            request.password = PasswordEncryptor.GetMD5(request.password);
             return await this.cuentaEmpresaRepository.insertCuentaEmpresa(request);
         }
 

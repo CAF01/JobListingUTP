@@ -2,7 +2,7 @@
 {
     using JobList.Entities.Responses;
     using MediatR;
-    public class ReadConocimientosRequest : IRequest<List<ReadConocimientosResponse>>
+    public class ReadConocimientosRequest : IRequest<IEnumerable<ReadConocimientosResponse>>
     {
     }
 }

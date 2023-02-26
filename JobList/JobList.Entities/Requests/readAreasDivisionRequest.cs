@@ -4,7 +4,7 @@ using MediatR;
 
 namespace JobList.Entities.Requests
 {
-    public class ReadAreasDivisionRequest : IRequest<List<ReadAreasDivisionResponse>>
+    public class ReadAreasDivisionRequest : IRequest<IEnumerable<ReadAreasDivisionResponse>>
     {
         public int idDivision { get; set; }
     }

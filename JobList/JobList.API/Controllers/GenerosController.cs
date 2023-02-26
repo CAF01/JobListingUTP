@@ -16,6 +16,7 @@
         {
             this.mediator = mediator;
         }
+
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetGeneros()

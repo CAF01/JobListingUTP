@@ -10,13 +10,11 @@
 
     public class EstadosOfertaRepository : IEstadosOfertaRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
 
-        public EstadosOfertaRepository(Dictionary<string, IDbConnection> connections)
+        public EstadosOfertaRepository(IDbConnection connections)
         {
-            this.connections = connections;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
         }
 
         public async Task<int> addEstadoOferta(InsertEstadoOfertaRequest request)

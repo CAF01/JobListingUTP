@@ -42,7 +42,6 @@ namespace JobList.API.Controllers
             var result = await this.mediator.Send(new ReadDivisionesRequest());
             return HelperResult.Result(result);
         }
-
         [AllowAnonymous]
         [HttpGet("list-areasdivision")]
         public async Task<IActionResult> GetAreasDivision(int idDivision)

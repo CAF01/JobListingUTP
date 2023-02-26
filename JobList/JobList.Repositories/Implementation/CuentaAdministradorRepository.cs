@@ -15,16 +15,14 @@
 
     public class CuentaAdministradorRepository : ICuentaAdministradorRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly ConfigurationPaging configuration;
         private readonly IDbConnection dbConnection;
 
         // Constructor
-        public CuentaAdministradorRepository(Dictionary<string, IDbConnection> connections, IOptions<ConfigurationPaging> options)
+        public CuentaAdministradorRepository(IDbConnection connections, IOptions<ConfigurationPaging> options)
         {
-            this.connections = connections;
             this.configuration = options.Value;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
         }
 
         // Insertar una cuenta de usuario administrador

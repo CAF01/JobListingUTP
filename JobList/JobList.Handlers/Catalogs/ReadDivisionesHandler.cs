@@ -4,7 +4,7 @@
     using JobList.Entities.Requests;
     using JobList.Services.Service;
     using MediatR;
-    public class ReadDivisionesHandler : IRequestHandler<ReadDivisionesRequest, List<ReadDivisionesResponse>>
+    public class ReadDivisionesHandler : IRequestHandler<ReadDivisionesRequest, IEnumerable<ReadDivisionesResponse>>
     {
         private readonly IAreasUTPService areasUTPService;
 
@@ -14,10 +14,9 @@
         }
 
         // Tarea para obtener lista de divisiones
-        public async Task<List<ReadDivisionesResponse>> Handle(ReadDivisionesRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ReadDivisionesResponse>> Handle(ReadDivisionesRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<ReadDivisionesResponse> listDivisiones = await this.areasUTPService.readDivisiones();
-            return listDivisiones.ToList();
+            return await this.areasUTPService.readDivisiones();
         }
     }
 }
