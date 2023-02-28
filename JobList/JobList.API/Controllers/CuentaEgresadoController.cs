@@ -78,6 +78,14 @@
             var result = await this.mediator.Send(new GetEgresadoInfoPersonalRequest() { idUsuario=idUsuario});
             return HelperResult.Result(result);
         }
+
+        [HttpGet("get-informacion-basica")]
+        public async Task<IActionResult> GetInformacionBasica(int idUsuario)
+        {
+            var result = await this.mediator.Send(new GetEgresadoBasicInfoRequest() { idUsuario = idUsuario });
+            return HelperResult.Result(result);
+        }
+        
         [HttpGet("get-info-completo")]
         public async Task<IActionResult> GetPerfilCompleto(int idUsuario)
         {
