@@ -200,12 +200,39 @@
                 parameters.Add(StoredProcedureResources.Usuario, request.usuario);
                 parameters.Add(StoredProcedureResources.Password, request.password);
 
-                return await dbConnection.QueryFirstAsync<LoginEgresadoResponse>(
+                var result = await dbConnection.QueryFirstAsync<LoginEgresadoResponse>(
                     sql: StoredProcedureResources.sp_LoginEgresado,
                     param: parameters,
                     transaction: null,
                     commandTimeout: DatabaseHelper.TIMEOUT,
                     commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<GetEgresadoBasicInfoResponse> GetBasicInfo(GetEgresadoBasicInfoRequest request)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                var result = await dbConnection.QueryFirstAsync<GetEgresadoBasicInfoResponse>(
+                    sql: StoredProcedureResources.sp_Egresado_Informacion_Basica_Consultar,
+                    param: parameters,
+                    transaction: null,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure);
+                return result;
             }
             catch
             {
@@ -645,6 +672,7 @@
                         parameters.Add(StoredProcedureResources.idArea, request.idArea);
                         parameters.Add(StoredProcedureResources.Nombre, request.nombre);
                         parameters.Add(StoredProcedureResources.Apellido, request.apellido);
+                        parameters.Add(StoredProcedureResources.ImgUrl, request.imgUrl);
                         parameters.Add(StoredProcedureResources.Generacion, request.generacion);
 
                         var registrosModificados = await dbConnection.ExecuteAsync(
@@ -690,6 +718,7 @@
                         }
                         if (request.ListExperienciaLaboralNuevas.Count > 0)
                         {
+                            result.successExperiencias = true;
                             foreach (var nuevaExperiencia in request.ListExperienciaLaboralNuevas)
                             {
                                 parameters = new DynamicParameters(); //Añadir nuevas experiencias
@@ -698,14 +727,18 @@
                                 parameters.Add(StoredProcedureResources.Salario, nuevaExperiencia.salario);
                                 parameters.Add(StoredProcedureResources.Periodo, nuevaExperiencia.periodo);
                                 parameters.Add(StoredProcedureResources.idUsuarioEgresado, nuevaExperiencia.idUsuarioEgresado);
+                                parameters.Add(StoredProcedureResources.idNuevaExperiencia, direction:ParameterDirection.Output);
                                 await dbConnection.ExecuteAsync(
                                    sql: StoredProcedureResources.sp_Egresado_ExLa_Insertar,
                                    transaction: transaction,
                                    param: parameters,
                                    commandTimeout: DatabaseHelper.TIMEOUT,
                                    commandType: CommandType.StoredProcedure);
+                                var idNuevaExperiencia = parameters.Get<int>(StoredProcedureResources.idNuevaExperiencia);
+                                if (idNuevaExperiencia < 1)
+                                    result.successExperiencias = false;
                             }
-                            result.successExperiencias = true;
+                            
                         }
                         if (request.ListHabilidadesBorrar.Count > 0)
                         {

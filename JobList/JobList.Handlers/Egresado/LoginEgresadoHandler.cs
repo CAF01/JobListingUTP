@@ -39,6 +39,7 @@ namespace JobList.Handlers.Egresado
                 statusPassword = result.statusPassword,
                 token = result.token,
                 success = true,
+                camposVacios= result.camposVacios,
                 usuario = request.usuario
             };
         }

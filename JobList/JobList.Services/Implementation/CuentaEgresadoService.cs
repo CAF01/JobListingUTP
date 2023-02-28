@@ -129,5 +129,10 @@
         {
             return await this.cuentaEgresadoRepository.readOfertasActivasFiltroEgresado(request);
         }
+
+        public async Task<GetEgresadoBasicInfoResponse> GetBasicInfo(GetEgresadoBasicInfoRequest request)
+        {
+            return await this.cuentaEgresadoRepository.GetBasicInfo(request);
+        }
     }
 }

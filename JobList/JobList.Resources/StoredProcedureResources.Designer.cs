@@ -1006,6 +1006,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_Egresado_Informacion_Basica_Consultar.
+        /// </summary>
+        public static string sp_Egresado_Informacion_Basica_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Egresado_Informacion_Basica_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_Egresados_Agregar.
         /// </summary>
         public static string sp_Egresados_Agregar {

@@ -24,14 +24,14 @@
 
             RuleFor(data => data.descripcionEgresado).NotNull().WithMessage(ValidationResources.descriptionRequired)
                  .NotEmpty().WithMessage(ValidationResources.descriptionNotEmpty)
-                 .MinimumLength(ValidatorHelper.FIFTY).WithMessage($"{ValidationResources.descriptionMinLength}{ValidatorHelper.FIFTY}")
+                 .MinimumLength(ValidatorHelper.FIVETEEN).WithMessage($"{ValidationResources.descriptionMinLength}{ValidatorHelper.FIFTY}")
                  .MaximumLength(ValidatorHelper.FIVEHUNDRED).WithMessage($"{ValidationResources.descriptionMinLength}{ValidatorHelper.FIVEHUNDRED}");
 
             RuleFor(data => data.imgUrl).MaximumLength(ValidatorHelper.ONEHUNDRED).WithMessage(ValidationResources.imgUrlMaxLength);
 
             RuleFor(data => data.nombre).NotNull().WithMessage(ValidationResources.nameRequired)
                  .NotEmpty().WithMessage(ValidationResources.nameNotEmpty)
-                 .MinimumLength(ValidatorHelper.TEN).WithMessage(ValidationResources.nameMinLength)
+                 .MinimumLength(ValidatorHelper.THREE).WithMessage(ValidationResources.nameMinLength)
                  .MaximumLength(ValidatorHelper.EIGHTYFIVE).WithMessage(ValidationResources.nameMaxLength);
 
             RuleFor(data => data.apellido).NotNull().WithMessage(ValidationResources.lastNameRequired)
