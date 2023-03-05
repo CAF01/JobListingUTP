@@ -7,6 +7,7 @@
     using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
+    using MediatR;
     using Microsoft.Extensions.Options;
     using System.Data;
     using System.Threading.Tasks;
@@ -530,6 +531,32 @@
             }
         }
 
+        public async Task<string> getUrlById(int idUsuario)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, idUsuario);
+
+                var result = await dbConnection.QueryFirstAsync<string>(
+                    sql: StoredProcedureResources.sp_Egresados_get_imgUrl,
+                    param: parameters,
+                    transaction: null,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
         public async Task<PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request)
         {
             try
@@ -608,6 +635,34 @@
             catch
             {
                 return false;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<updateEgresadoFotoResponse> updateFoto(updateEgresadoFotoRequest request)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                parameters.Add(StoredProcedureResources.ImgUrl, request.path);
+
+                var result = await dbConnection.ExecuteAsync(
+                           sql: StoredProcedureResources.sp_updateFotoEgresado,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return new updateEgresadoFotoResponse() { success = (result > 0) };
+            }
+            catch
+            {
+                return null;
             }
             finally
             {

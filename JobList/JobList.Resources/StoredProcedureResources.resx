@@ -624,4 +624,10 @@
   <data name="sp_Egresado_Informacion_Basica_Consultar" xml:space="preserve">
     <value>sp_Egresado_Informacion_Basica_Consultar</value>
   </data>
+  <data name="sp_updateFotoEgresado" xml:space="preserve">
+    <value>sp_updateFotoEgresado</value>
+  </data>
+  <data name="sp_Egresados_get_imgUrl" xml:space="preserve">
+    <value>sp_Egresados_get_imgUrl</value>
+  </data>
 </root>

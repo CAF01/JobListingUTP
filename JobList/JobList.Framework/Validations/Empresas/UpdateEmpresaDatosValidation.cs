@@ -55,8 +55,8 @@
 
             RuleFor(data => data.nombreResponsable).NotNull().WithMessage(ValidationResources.resTelephoneRequired)
                 .NotEmpty().WithMessage(ValidationResources.resTelephoneNotEmpty)
-                .MinimumLength(ValidatorHelper.TEN).WithMessage(ValidationResources.resTelephoneMinLength)
-                .MaximumLength(ValidatorHelper.TEN).WithMessage(ValidationResources.resTelephoneMaxLength);
+                .MinimumLength(ValidatorHelper.SIX).WithMessage(ValidationResources.nameMinLength)
+                .MaximumLength(ValidatorHelper.EIGHTYFIVE).WithMessage(ValidationResources.nameMaxLength);
 
             RuleFor(data => data.telefonoResponsable).NotNull().WithMessage(ValidationResources.resTelephoneRequired)
                 .NotEmpty().WithMessage(ValidationResources.resTelephoneNotEmpty)

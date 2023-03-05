@@ -15,6 +15,9 @@
 
         public Task<UpdatePerfilEgresadoResponse> updatePerfil(UpdatePerfilEgresadoRequest request);
 
+        public Task<updateEgresadoFotoResponse> updateFoto(updateEgresadoFotoRequest request);
+        public Task<string> getUrlById(int idUsuario);
+
         public Task<GetEgresadoInfoPersonalResponse> getInfoEgresado(GetEgresadoInfoPersonalRequest request);
 
         public Task<GetEgresadoInfoPerfilResponse> getInfoPerfilEgresado(GetEgresadoInfoPerfilRequest request);

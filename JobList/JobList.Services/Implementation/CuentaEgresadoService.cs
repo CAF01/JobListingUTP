@@ -134,5 +134,15 @@
         {
             return await this.cuentaEgresadoRepository.GetBasicInfo(request);
         }
+
+        public async Task<updateEgresadoFotoResponse> updateFoto(updateEgresadoFotoRequest request)
+        {
+            return await this.cuentaEgresadoRepository.updateFoto(request);
+        }
+
+        public async Task<string> getUrlById(int idUsuario)
+        {
+            return await this.cuentaEgresadoRepository.getUrlById(idUsuario);
+        }
     }
 }

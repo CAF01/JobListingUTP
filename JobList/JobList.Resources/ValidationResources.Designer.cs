@@ -610,7 +610,7 @@ namespace JobList.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nombre requiere 10 carácteres.
+        ///   Looks up a localized string similar to Nombre requiere 6 carácteres.
         /// </summary>
         public static string nameMinLength {
             get {
