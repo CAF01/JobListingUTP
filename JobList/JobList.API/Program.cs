@@ -90,6 +90,7 @@ builder.Services.AddScoped<ICuentaDocenteService, CuentaDocenteService>();
 builder.Services.AddScoped<ICuentaDocenteRepository, CuentaDocenteRepository>();
 builder.Services.AddScoped<ICuentaEgresadoService, CuentaEgresadoService>();
 builder.Services.AddScoped<ICuentaEgresadoRepository, CuentaEgresadoRepository>();
+builder.Services.AddScoped<IFilesService,FilesService>();
 
 
 

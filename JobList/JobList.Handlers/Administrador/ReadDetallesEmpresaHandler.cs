@@ -1,9 +1,9 @@
-﻿using JobList.Entities.Models;
-using JobList.Entities.Requests;
-namespace JobList.Handlers.Administrador
+﻿namespace JobList.Handlers.Administrador
 {
     using JobList.Services.Service;
     using MediatR;
+    using JobList.Entities.Models;
+    using JobList.Entities.Requests;
     public class ReadDetallesEmpresaHandler : IRequestHandler<ReadDetallesEmpresaRequest, ReadDetallesEmpresaResponse>
     {
         private readonly ICuentaAdministradorService cuentaAdministradorService;

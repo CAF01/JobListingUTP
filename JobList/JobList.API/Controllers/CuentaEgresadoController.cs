@@ -188,5 +188,18 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+        [AllowAnonymous]
+        [HttpPost("upload-image")]
+        public async Task<IActionResult> PostImage(IFormFile formFile)
+        {
+            var idUsuario = Convert.ToInt32(HttpContext.Request.Query["idusuario"]);
+            if (idUsuario < 1)
+                return null;
+            PostEgresadoImageRequest request = new PostEgresadoImageRequest();
+            request.idUsuario = idUsuario;
+            request.file= formFile;
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
     }
 }

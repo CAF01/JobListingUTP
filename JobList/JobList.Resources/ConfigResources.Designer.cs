@@ -70,6 +70,42 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CLOUDINARY_URL=cloudinary://468428955365374:baEPQFmHldObF-Qu0kceqdvoN9E@drtcnv1st.
+        /// </summary>
+        public static string APIEV {
+            get {
+                return ResourceManager.GetString("APIEV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 468428955365374.
+        /// </summary>
+        public static string APK {
+            get {
+                return ResourceManager.GetString("APK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to baEPQFmHldObF-Qu0kceqdvoN9E.
+        /// </summary>
+        public static string APS {
+            get {
+                return ResourceManager.GetString("APS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to drtcnv1st.
+        /// </summary>
+        public static string CName {
+            get {
+                return ResourceManager.GetString("CName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Config.
         /// </summary>
         public static string Config {
