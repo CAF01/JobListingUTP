@@ -7,23 +7,20 @@
     using JobList.Entities.Responses;
     using JobList.Repositories.Service;
     using JobList.Resources;
+    using MediatR;
     using Microsoft.Extensions.Options;
-    using System.Collections.Generic;
     using System.Data;
-    using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
 
     public class CuentaEgresadoRepository : ICuentaEgresadoRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly ConfigurationPaging configuration;
         private readonly IDbConnection dbConnection;
 
-        public CuentaEgresadoRepository(Dictionary<string, IDbConnection> connections,IOptions<ConfigurationPaging> options)
+        public CuentaEgresadoRepository(IDbConnection connections,IOptions<ConfigurationPaging> options)
         {
-            this.connections = connections;
             this.configuration = options.Value;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
         }
 
         public async Task<int> addConocimientoEgresado(InsertConocimientoEgresadoRequest request)
@@ -204,12 +201,39 @@
                 parameters.Add(StoredProcedureResources.Usuario, request.usuario);
                 parameters.Add(StoredProcedureResources.Password, request.password);
 
-                return await dbConnection.QueryFirstAsync<LoginEgresadoResponse>(
+                var result = await dbConnection.QueryFirstAsync<LoginEgresadoResponse>(
                     sql: StoredProcedureResources.sp_LoginEgresado,
                     param: parameters,
                     transaction: null,
                     commandTimeout: DatabaseHelper.TIMEOUT,
                     commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<GetEgresadoBasicInfoResponse> GetBasicInfo(GetEgresadoBasicInfoRequest request)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                var result = await dbConnection.QueryFirstAsync<GetEgresadoBasicInfoResponse>(
+                    sql: StoredProcedureResources.sp_Egresado_Informacion_Basica_Consultar,
+                    param: parameters,
+                    transaction: null,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure);
+                return result;
             }
             catch
             {
@@ -507,18 +531,45 @@
             }
         }
 
-        public async Task<IEnumerable<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request)
+        public async Task<string> getUrlById(int idUsuario)
         {
             try
             {
-                IEnumerable < ReadOfertasActivasFiltroEgresadoResponse> result = null;
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, idUsuario);
 
+                var result = await dbConnection.QueryFirstAsync<string>(
+                    sql: StoredProcedureResources.sp_Egresados_get_imgUrl,
+                    param: parameters,
+                    transaction: null,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse>> readOfertasActivasFiltroEgresado(ReadOfertasActivasFiltroEgresadoRequest request)
+        {
+            try
+            {
+                PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse> pagination = null;
                 dbConnection.Open();
 
                 var parameters = new DynamicParameters();
                 parameters.Add(StoredProcedureResources.idUsuarioEgresado, request.idUsuarioEgresado);
+                parameters.Add(StoredProcedureResources.Skip, request.Skip);
+                parameters.Add(StoredProcedureResources.Take, request.Take);
 
-                result = await dbConnection.QueryAsync<ReadOfertasActivasFiltroEgresadoResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                     sql: StoredProcedureResources.sp_OfertasTrabajo_FiltroEgresado_Consultar,
                     transaction: null,
                     param: parameters,
@@ -526,9 +577,13 @@
                     commandType: CommandType.StoredProcedure
                     );
 
-                if (result != null)
+                var dynamicResult = result.Read<ReadOfertasActivasFiltroEgresadoResponse>();
+
+                pagination = new PaginationListResponse<ReadOfertasActivasFiltroEgresadoResponse>(dynamicResult, dynamicResult.Count(), configuration.PageSize);
+
+                if (result != null && pagination!=null && pagination.Data!=null && pagination.Data.Count()>0)
                 {
-                    foreach (ReadOfertasActivasFiltroEgresadoResponse oferta in result)
+                    foreach (ReadOfertasActivasFiltroEgresadoResponse oferta in pagination.Data)
                     {
                         // amarillo: a partir de un postulante
                         if (oferta.postulantes >= 1)
@@ -539,7 +594,7 @@
                     }
                 }
 
-                return result;
+                return pagination;
             }
             catch
             {
@@ -580,6 +635,34 @@
             catch
             {
                 return false;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<updateEgresadoFotoResponse> updateFoto(updateEgresadoFotoRequest request)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                parameters.Add(StoredProcedureResources.ImgUrl, request.path);
+
+                var result = await dbConnection.ExecuteAsync(
+                           sql: StoredProcedureResources.sp_updateFotoEgresado,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return new updateEgresadoFotoResponse() { success = (result > 0) };
+            }
+            catch
+            {
+                return null;
             }
             finally
             {
@@ -644,6 +727,7 @@
                         parameters.Add(StoredProcedureResources.idArea, request.idArea);
                         parameters.Add(StoredProcedureResources.Nombre, request.nombre);
                         parameters.Add(StoredProcedureResources.Apellido, request.apellido);
+                        parameters.Add(StoredProcedureResources.ImgUrl, request.imgUrl);
                         parameters.Add(StoredProcedureResources.Generacion, request.generacion);
 
                         var registrosModificados = await dbConnection.ExecuteAsync(
@@ -689,6 +773,7 @@
                         }
                         if (request.ListExperienciaLaboralNuevas.Count > 0)
                         {
+                            result.successExperiencias = true;
                             foreach (var nuevaExperiencia in request.ListExperienciaLaboralNuevas)
                             {
                                 parameters = new DynamicParameters(); //Añadir nuevas experiencias
@@ -697,14 +782,18 @@
                                 parameters.Add(StoredProcedureResources.Salario, nuevaExperiencia.salario);
                                 parameters.Add(StoredProcedureResources.Periodo, nuevaExperiencia.periodo);
                                 parameters.Add(StoredProcedureResources.idUsuarioEgresado, nuevaExperiencia.idUsuarioEgresado);
+                                parameters.Add(StoredProcedureResources.idNuevaExperiencia, direction:ParameterDirection.Output);
                                 await dbConnection.ExecuteAsync(
                                    sql: StoredProcedureResources.sp_Egresado_ExLa_Insertar,
                                    transaction: transaction,
                                    param: parameters,
                                    commandTimeout: DatabaseHelper.TIMEOUT,
                                    commandType: CommandType.StoredProcedure);
+                                var idNuevaExperiencia = parameters.Get<int>(StoredProcedureResources.idNuevaExperiencia);
+                                if (idNuevaExperiencia < 1)
+                                    result.successExperiencias = false;
                             }
-                            result.successExperiencias = true;
+                            
                         }
                         if (request.ListHabilidadesBorrar.Count > 0)
                         {

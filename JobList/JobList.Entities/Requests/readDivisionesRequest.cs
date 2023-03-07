@@ -2,7 +2,7 @@
 {
     using JobList.Entities.Models;
     using MediatR;
-    public class ReadDivisionesRequest : IRequest<List<ReadDivisionesResponse>>
+    public class ReadDivisionesRequest : IRequest<IEnumerable<ReadDivisionesResponse>>
     {
 
     }

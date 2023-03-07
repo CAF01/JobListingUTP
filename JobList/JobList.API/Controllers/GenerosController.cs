@@ -1,11 +1,11 @@
-﻿using JobList.Entities.Helpers;
-using JobList.Entities.Requests;
-using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace JobList.API.Controllers
+﻿namespace JobList.API.Controllers
 {
+    using JobList.Entities.Helpers;
+    using JobList.Entities.Requests;
+    using MediatR;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    [Authorize(Roles = "Administrador")]
     [Route("api/[controller]")]
     [ApiController]
     public class GenerosController : ControllerBase
@@ -17,6 +17,7 @@ namespace JobList.API.Controllers
             this.mediator = mediator;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetGeneros()
         {

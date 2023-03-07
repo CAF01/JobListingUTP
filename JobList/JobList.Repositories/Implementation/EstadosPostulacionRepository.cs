@@ -10,13 +10,11 @@
 
     public class EstadosPostulacionRepository : IEstadosPostulacionRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
 
-        public EstadosPostulacionRepository(Dictionary<string, IDbConnection> connections)
+        public EstadosPostulacionRepository(IDbConnection connections)
         {
-            this.connections = connections;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
         }
         public async Task<int> addEstadoPostulacion(InsertEstadoPostulacionRequest request)
         {

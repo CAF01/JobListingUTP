@@ -15,13 +15,11 @@ namespace JobList.Repositories.Implementation
 {
     public class TiposUsuarioRepository : ITiposUsuarioRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
 
-        public TiposUsuarioRepository(Dictionary<string, IDbConnection> connections)
+        public TiposUsuarioRepository(IDbConnection connections)
         {
-            this.connections = connections;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
         }
 
         // Tarea para devolver lista de tipos de usuario

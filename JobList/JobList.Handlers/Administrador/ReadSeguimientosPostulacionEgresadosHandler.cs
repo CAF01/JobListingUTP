@@ -2,9 +2,10 @@
 {
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
+    using JobList.Entities.Responses;
     using JobList.Services.Service;
     using MediatR;
-    public class ReadSeguimientosPostulacionEgresadosHandler : IRequestHandler<ReadSeguimientosPostulacionEgresadosRequest, List<ReadSeguimientosPostulacionEgresadosResponse>>
+    public class ReadSeguimientosPostulacionEgresadosHandler : IRequestHandler<ReadSeguimientosPostulacionEgresadosRequest, PaginationListResponse<ReadSeguimientosPostulacionEgresadosResponse>>
     {
         private readonly ICuentaAdministradorService cuentaAdministradorService;
 
@@ -15,10 +16,9 @@
         }
 
         // Listado de seguimientos de postulaciones de todos los egresados
-        public async Task<List<ReadSeguimientosPostulacionEgresadosResponse>> Handle(ReadSeguimientosPostulacionEgresadosRequest request, CancellationToken cancellationToken)
+        public async Task<PaginationListResponse<ReadSeguimientosPostulacionEgresadosResponse>> Handle(ReadSeguimientosPostulacionEgresadosRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<ReadSeguimientosPostulacionEgresadosResponse> listSeguimientos = await this.cuentaAdministradorService.readSeguimientosPostulacionEgresados();
-            return listSeguimientos.ToList();
+            return await this.cuentaAdministradorService.readSeguimientosPostulacionEgresados();
         }
     }
 }

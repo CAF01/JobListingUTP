@@ -11,14 +11,12 @@
 
     public class HabilidadesRepository : IHabilidadesRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
 
         // Constructor
-        public HabilidadesRepository(Dictionary<string, IDbConnection> connections)
+        public HabilidadesRepository(IDbConnection connections)
         {
-                this.connections = connections;
-                this.dbConnection = connections[ConfigResources.DefaultConnection];
+                this.dbConnection = connections;
             
         }
 
@@ -117,14 +115,15 @@
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<ReadHabilidadesResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                            sql: StoredProcedureResources.sp_Habilidades_Consultar,
                            param: parameters,
                            transaction: null,
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return result;
+                var dynamicResult = result.Read<ReadHabilidadesResponse>();
+                return dynamicResult;
             }
             catch
             {

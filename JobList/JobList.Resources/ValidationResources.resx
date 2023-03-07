@@ -301,7 +301,7 @@
     <value>Nombre no puede superar 85 carácteres</value>
   </data>
   <data name="nameMinLength" xml:space="preserve">
-    <value>Nombre requiere 10 carácteres</value>
+    <value>Nombre requiere 6 carácteres</value>
   </data>
   <data name="nameNotEmpty" xml:space="preserve">
     <value>Nombre no puede estar vacío</value>

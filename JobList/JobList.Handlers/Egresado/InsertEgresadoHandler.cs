@@ -22,16 +22,16 @@
                 {
                     idUsuario = result,
                     nombre = $"{request.nombre} {request.apellido}",
-                    mensaje = ValidationResources.failInsert,
+                    mensaje = ValidationResources.successInsert,
                     usuario = request.usuario
                 };
             }
             return new InsertEgresadoResponse()
             {
                 idUsuario = result,
-                nombre = $"{request.nombre} {request.apellido}",
-                mensaje = ValidationResources.successInsert,
-                usuario = request.usuario
+                nombre = string.Empty,
+                mensaje = ValidationResources.failInsert,
+                usuario = string.Empty
             };
         }
     }

@@ -13,15 +13,13 @@
 
     public class ConocimientosRepository : IConocimientosRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly IDbConnection dbConnection;
         private readonly ConfigurationPaging configuration;
 
         // Constructor
-        public ConocimientosRepository(Dictionary<string, IDbConnection> connections, IOptions<ConfigurationPaging> configuration)
+        public ConocimientosRepository(IDbConnection connections, IOptions<ConfigurationPaging> configuration)
         {
-            this.connections = connections;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
             this.configuration = configuration.Value;
         }
 
@@ -120,14 +118,16 @@
                 dbConnection.Open();
                 var parameters = new DynamicParameters();
 
-                var result = await dbConnection.QueryAsync<ReadConocimientosResponse>(
+                var result = await dbConnection.QueryMultipleAsync(
                            sql: StoredProcedureResources.sp_Conocimientos_Consultar,
                            param: parameters,
                            transaction: null,
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return result;
+
+                var dynamicResult = result.Read<ReadConocimientosResponse>();
+                return dynamicResult;
             }
             catch
             {

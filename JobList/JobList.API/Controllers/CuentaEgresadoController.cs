@@ -4,10 +4,11 @@
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using MediatR;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using Swashbuckle.AspNetCore.Annotations;
-
+    [Authorize(Roles = "RolEgresado")]
     [SwaggerTag("CuentaEgresado")]
     [Route("api/[controller]")]
     [ApiController]
@@ -40,6 +41,7 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+        [AllowAnonymous]
         [HttpPost("login-account-egresado")]
         public async Task<IActionResult> LoginEgresado(LoginEgresadoRequest request)
         {
@@ -76,6 +78,14 @@
             var result = await this.mediator.Send(new GetEgresadoInfoPersonalRequest() { idUsuario=idUsuario});
             return HelperResult.Result(result);
         }
+
+        [HttpGet("get-informacion-basica")]
+        public async Task<IActionResult> GetInformacionBasica(int idUsuario)
+        {
+            var result = await this.mediator.Send(new GetEgresadoBasicInfoRequest() { idUsuario = idUsuario });
+            return HelperResult.Result(result);
+        }
+        
         [HttpGet("get-info-completo")]
         public async Task<IActionResult> GetPerfilCompleto(int idUsuario)
         {
@@ -112,7 +122,14 @@
         [HttpGet("get-ofertas-activas-filtro")]
         public async Task<IActionResult> GetOfertasActivasFiltroEgresado(int idUsuario)
         {
-            var result = await this.mediator.Send(new ReadOfertasActivasFiltroEgresadoRequest() { idUsuarioEgresado = idUsuario });
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
+            var result = await this.mediator.Send(new ReadOfertasActivasFiltroEgresadoRequest()
+            {
+                idUsuarioEgresado = idUsuario,
+                Skip = skip,
+                Take = take
+            });
             return HelperResult.Result(result);
         }
 
@@ -168,6 +185,19 @@
         [HttpPut("actualizar-estado-postulacion")]
         public async Task<IActionResult> PutEstadoPostulacion(UpdateEstadoPostulacionRequest request)
         {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        [AllowAnonymous]
+        [HttpPost("upload-image")]
+        public async Task<IActionResult> PostImage(IFormFile formFile)
+        {
+            var idUsuario = Convert.ToInt32(HttpContext.Request.Query["idusuario"]);
+            if (idUsuario < 1)
+                return null;
+            PostEgresadoImageRequest request = new PostEgresadoImageRequest();
+            request.idUsuario = idUsuario;
+            request.file= formFile;
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }

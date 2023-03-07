@@ -120,8 +120,23 @@
   <data name="AdminAudience" xml:space="preserve">
     <value>ADM</value>
   </data>
+  <data name="APIEV" xml:space="preserve">
+    <value>CLOUDINARY_URL=cloudinary://468428955365374:baEPQFmHldObF-Qu0kceqdvoN9E@drtcnv1st</value>
+  </data>
+  <data name="APK" xml:space="preserve">
+    <value>468428955365374</value>
+  </data>
+  <data name="APS" xml:space="preserve">
+    <value>baEPQFmHldObF-Qu0kceqdvoN9E</value>
+  </data>
+  <data name="CName" xml:space="preserve">
+    <value>drtcnv1st</value>
+  </data>
   <data name="Config" xml:space="preserve">
     <value>Config</value>
+  </data>
+  <data name="CorsPolicy" xml:space="preserve">
+    <value>CorsPolicy</value>
   </data>
   <data name="DefaultConnection" xml:space="preserve">
     <value>DefaultConnection</value>

@@ -1,5 +1,6 @@
 ﻿using JobList.Entities.Requests;
 using JobList.Entities.Responses;
+using JobList.Resources;
 using JobList.Services.Service;
 using MediatR;
 
@@ -38,6 +39,7 @@ namespace JobList.Handlers.Egresado
                 statusPassword = result.statusPassword,
                 token = result.token,
                 success = true,
+                camposVacios= result.camposVacios,
                 usuario = request.usuario
             };
         }

@@ -3,9 +3,10 @@
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
     using MediatR;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
-
+    [Authorize(Roles = "Administrador")]
     [SwaggerTag("Habilidades")]
     [Route("api/[controller]")]
     [ApiController]
@@ -39,6 +40,7 @@
             return HelperResult.Result(result);
         }
 
+        [AllowAnonymous]
         [HttpGet("list-habilidades")]
         public async Task<IActionResult> GetHabilidades()
         {

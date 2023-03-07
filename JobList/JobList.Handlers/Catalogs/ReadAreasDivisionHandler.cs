@@ -5,7 +5,7 @@ using MediatR;
 
 namespace JobList.Handlers.Catalogs
 {
-    public class ReadAreasDivisionHandler : IRequestHandler<ReadAreasDivisionRequest, List<ReadAreasDivisionResponse>>
+    public class ReadAreasDivisionHandler : IRequestHandler<ReadAreasDivisionRequest, IEnumerable<ReadAreasDivisionResponse>>
     {
         private readonly IAreasUTPService areasUTPService;
 
@@ -14,10 +14,9 @@ namespace JobList.Handlers.Catalogs
             this.areasUTPService = areasUTPService;
         }
 
-        public async Task<List<ReadAreasDivisionResponse>> Handle(ReadAreasDivisionRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ReadAreasDivisionResponse>> Handle(ReadAreasDivisionRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<ReadAreasDivisionResponse> listAreas = await this.areasUTPService.readAreasDivision(request);
-            return listAreas.ToList();
+            return await this.areasUTPService.readAreasDivision(request);
         }
     }
 }

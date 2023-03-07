@@ -8,21 +8,18 @@
     using System.Data;
     using JobList.Repositories.Service;
     using JobList.Entities.Responses;
-    using System.Collections.Generic;
     using Microsoft.Extensions.Options;
 
     public class CuentaEmpresaRepository : ICuentaEmpresaRepository
     {
-        private readonly Dictionary<string, IDbConnection> connections;
         private readonly ConfigurationPaging configuration;
         private readonly IDbConnection dbConnection;
 
         // Constructor
-        public CuentaEmpresaRepository(Dictionary<string, IDbConnection> connections, IOptions<ConfigurationPaging> options)
+        public CuentaEmpresaRepository(IDbConnection connections, IOptions<ConfigurationPaging> options)
         {
-            this.connections = connections;
             this.configuration = options.Value;
-            this.dbConnection = connections[ConfigResources.DefaultConnection];
+            this.dbConnection = connections;
         }
 
         // Encontrar la cuenta de usuario de una empresa

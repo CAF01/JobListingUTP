@@ -4,10 +4,11 @@
     using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using MediatR;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using Swashbuckle.AspNetCore.Annotations;
-
+    [Authorize(Roles = "Docente")]
     [SwaggerTag("CuentaDocente")]
     [Route("api/[controller]")]
     [ApiController]
@@ -28,7 +29,7 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
-
+        [AllowAnonymous]
         [HttpPost("login-docente")]
         public async Task<IActionResult> PostLoginDocente(LoginDocenteRequest request)
         {

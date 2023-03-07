@@ -1006,6 +1006,15 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_Egresado_Informacion_Basica_Consultar.
+        /// </summary>
+        public static string sp_Egresado_Informacion_Basica_Consultar {
+            get {
+                return ResourceManager.GetString("sp_Egresado_Informacion_Basica_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_Egresados_Agregar.
         /// </summary>
         public static string sp_Egresados_Agregar {
@@ -1020,6 +1029,15 @@ namespace JobList.Resources {
         public static string sp_Egresados_DatosPersonales_Actualizar {
             get {
                 return ResourceManager.GetString("sp_Egresados_DatosPersonales_Actualizar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Egresados_get_imgUrl.
+        /// </summary>
+        public static string sp_Egresados_get_imgUrl {
+            get {
+                return ResourceManager.GetString("sp_Egresados_get_imgUrl", resourceCulture);
             }
         }
         
@@ -1461,6 +1479,15 @@ namespace JobList.Resources {
         public static string sp_TiposUsuario_Consultar {
             get {
                 return ResourceManager.GetString("sp_TiposUsuario_Consultar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_updateFotoEgresado.
+        /// </summary>
+        public static string sp_updateFotoEgresado {
+            get {
+                return ResourceManager.GetString("sp_updateFotoEgresado", resourceCulture);
             }
         }
         

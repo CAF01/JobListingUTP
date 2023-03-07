@@ -4,7 +4,7 @@
     using JobList.Entities.Requests;
     using JobList.Services.Service;
     using MediatR;
-    public class ReadGenerosHandler : IRequestHandler<ReadGenerosRequest, List<ReadGenerosResponse>>
+    public class ReadGenerosHandler : IRequestHandler<ReadGenerosRequest, IEnumerable<ReadGenerosResponse>>
     {
         private readonly IGenerosService generosService;
 
@@ -13,10 +13,9 @@
             this.generosService = generosService;
         }
 
-        public async Task<List<ReadGenerosResponse>> Handle(ReadGenerosRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ReadGenerosResponse>> Handle(ReadGenerosRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<ReadGenerosResponse> listGeneros = await this.generosService.readGeneros();
-            return listGeneros.ToList();
+            return await this.generosService.readGeneros();
         }
     }
 }
