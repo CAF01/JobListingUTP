@@ -25,13 +25,13 @@
                 return new UpdateEstadoPostulacionResponse()
                 {
                     mensaje = ValidationResources.successUpdate,
-                    success = true
+                    success = result
                 };
             }
             return new UpdateEstadoPostulacionResponse()
             {
                 mensaje = ValidationResources.failUpdate,
-                success = false
+                success = result
             };
         }
     }

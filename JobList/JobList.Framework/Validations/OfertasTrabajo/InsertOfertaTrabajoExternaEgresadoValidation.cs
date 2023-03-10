@@ -4,10 +4,9 @@
     using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
     using JobList.Resources;
-
-    public class InsertOfertaTrabajoExternaValidation : AbstractValidator<InsertOfertaTrabajoExternaRequest>
+    public class InsertOfertaTrabajoExternaEgresadoValidation : AbstractValidator<InsertOfertaTrabajoExternaEgresadoRequest>
     {
-        public InsertOfertaTrabajoExternaValidation()
+        public InsertOfertaTrabajoExternaEgresadoValidation()
         {
             RuleFor(data => data.descripcionPuesto).NotNull().WithMessage(ValidationResources.positionRequired)
                 .NotEmpty().WithMessage(ValidationResources.positionNotEmpty)

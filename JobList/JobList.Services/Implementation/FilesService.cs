@@ -41,6 +41,43 @@
             return false;
         }
 
+        public async Task<PostEmpresaImageResponse> uploadDetallesImg(PostDetalleContactoImageRequest request)
+        {
+            try
+            {
+                PostEmpresaImageResponse response = new PostEmpresaImageResponse();
+
+                Cloudinary cloudinary = new Cloudinary(account);
+
+                ImageUploadParams uploadParams = new ImageUploadParams()
+                {
+                    File = new FileDescription(($"det-{Guid.NewGuid()}"), request.file.OpenReadStream()),
+                    Folder = CloudinaryFolderType.Externo.ToString()
+                };
+
+                ImageUploadResult uploadResult = await Task.Run(() =>
+                {
+                    return cloudinary.Upload(uploadParams);
+                });
+
+
+                if (uploadResult.StatusCode == HttpStatusCode.OK)
+                {
+                    var cad = uploadResult.PublicId.ToString();
+                    var array = cad.Split('/');
+                    response.result = array[1] + "." + uploadResult.Format;
+                    response.success = true;
+                    return response;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+
+            }
+        }
+
         public async Task<PostEgresadoImageResponse> uploadEgresadoImage(PostEgresadoImageRequest request)
         {
             try

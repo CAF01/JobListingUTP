@@ -1,22 +1,22 @@
-﻿namespace JobList.Handlers.Docente
+﻿namespace JobList.Handlers.Egresado
 {
     using JobList.Entities.Requests;
     using JobList.Entities.Responses;
     using JobList.Resources;
     using JobList.Services.Service;
     using MediatR;
-    public class InsertOfertaTrabajoExternaHandler : IRequestHandler<InsertOfertaTrabajoExternaRequest, InsertOfertaTrabajoResponse>
+    public class InsertOfertaTrabajoExternaEgresadoHandler : IRequestHandler<InsertOfertaTrabajoExternaEgresadoRequest, InsertOfertaTrabajoResponse>
     {
-        private readonly ICuentaDocenteService cuentaDocenteService;
+        private readonly ICuentaEgresadoService cuentaEgresadoService;
 
-        public InsertOfertaTrabajoExternaHandler(ICuentaDocenteService cuentaDocenteService)
+        public InsertOfertaTrabajoExternaEgresadoHandler(ICuentaEgresadoService cuentaEgresadoService)
         {
-            this.cuentaDocenteService = cuentaDocenteService;
+            this.cuentaEgresadoService = cuentaEgresadoService;
         }
 
-        public async Task<InsertOfertaTrabajoResponse> Handle(InsertOfertaTrabajoExternaRequest request, CancellationToken cancellationToken)
+        public async Task<InsertOfertaTrabajoResponse> Handle(InsertOfertaTrabajoExternaEgresadoRequest request, CancellationToken cancellationToken)
         {
-            var result = await this.cuentaDocenteService.insertOfertaTrabajo(request);
+            var result = await this.cuentaEgresadoService.insertOfertaTrabajo(request);
             if (result != null && result.idOferta > 0)
             {
                 return new InsertOfertaTrabajoResponse()
