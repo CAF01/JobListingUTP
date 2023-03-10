@@ -97,10 +97,41 @@
             var result = await this.mediator.Send(new GetOfertasTrabajoDetalleRequest() { idOferta = idOferta });
             return HelperResult.Result(result);
         }
+    
         [HttpPut("actualizar-estado-postulacion")]
         public async Task<IActionResult> PutEstadoPostulacion(UpdateEstadoPostulacionRequest request)
         {
             var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+
+        [HttpPost("upload-image")]
+        public async Task<IActionResult> PostImage(IFormFile formFile)
+        {
+            var idUsuario = Convert.ToInt32(HttpContext.Request.Query["idusuario"]);
+            if (idUsuario < 1)
+                return null;
+            PostEmpresaImageRequest request = new PostEmpresaImageRequest();
+            request.idUsuario = idUsuario;
+            request.file = formFile;
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+
+        [HttpGet("detalles-empresa")]
+        public async Task<IActionResult> GetDetallesEmpresa(int idUsuarioEmpresa)
+        {
+            var result = await this.mediator.Send(new ReadDetallesEmpresaRequest()
+            {
+                idUsuarioEmpresa = idUsuarioEmpresa
+            });
+            return HelperResult.Result(result);
+        }
+
+        [HttpGet("obtener-detalles-postulado")]
+        public async Task<IActionResult> GetDetallesPostulado(int idUsuario)
+        {
+            var result = await this.mediator.Send(new GetEmpresaDetallesPostuladoRequest() { idUsuario = idUsuario });
             return HelperResult.Result(result);
         }
     }

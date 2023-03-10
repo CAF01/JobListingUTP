@@ -188,7 +188,8 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
-        [AllowAnonymous]
+
+        //[AllowAnonymous]
         [HttpPost("upload-image")]
         public async Task<IActionResult> PostImage(IFormFile formFile)
         {

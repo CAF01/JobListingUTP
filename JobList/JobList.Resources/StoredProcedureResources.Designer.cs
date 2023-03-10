@@ -1096,6 +1096,42 @@ namespace JobList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sp_Empresa_get_imgUrl.
+        /// </summary>
+        public static string sp_Empresa_get_imgUrl {
+            get {
+                return ResourceManager.GetString("sp_Empresa_get_imgUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Empresa_ObtenerConocimientosPostulado.
+        /// </summary>
+        public static string sp_Empresa_ObtenerConocimientosPostulado {
+            get {
+                return ResourceManager.GetString("sp_Empresa_ObtenerConocimientosPostulado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Empresa_ObtenerExperienciasPostulado.
+        /// </summary>
+        public static string sp_Empresa_ObtenerExperienciasPostulado {
+            get {
+                return ResourceManager.GetString("sp_Empresa_ObtenerExperienciasPostulado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_Empresa_ObtenerHabilidadesPostulado.
+        /// </summary>
+        public static string sp_Empresa_ObtenerHabilidadesPostulado {
+            get {
+                return ResourceManager.GetString("sp_Empresa_ObtenerHabilidadesPostulado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sp_Empresas_Consultar.
         /// </summary>
         public static string sp_Empresas_Consultar {
@@ -1488,6 +1524,15 @@ namespace JobList.Resources {
         public static string sp_updateFotoEgresado {
             get {
                 return ResourceManager.GetString("sp_updateFotoEgresado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sp_updateFotoEmpresa.
+        /// </summary>
+        public static string sp_updateFotoEmpresa {
+            get {
+                return ResourceManager.GetString("sp_updateFotoEmpresa", resourceCulture);
             }
         }
         
