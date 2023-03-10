@@ -666,7 +666,7 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return response.success = true;
+                return result>0;
             }
             catch
             {

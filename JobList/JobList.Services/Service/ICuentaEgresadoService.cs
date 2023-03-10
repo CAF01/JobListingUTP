@@ -23,5 +23,7 @@ namespace JobList.Services.Service
         public Task<GetEgresadoBasicInfoResponse> GetBasicInfo(GetEgresadoBasicInfoRequest request);
         public Task<updateEgresadoFotoResponse> updateFoto(updateEgresadoFotoRequest request);
         public Task<string> getUrlById(int idUsuario);
+
+        public Task<InsertOfertaTrabajoResponse> insertOfertaTrabajo(InsertOfertaTrabajoExternaEgresadoRequest request);
     }
 }

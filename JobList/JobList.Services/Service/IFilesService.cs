@@ -9,5 +9,7 @@
 
         public Task<PostEmpresaImageResponse> uploadEmpresaImage(PostEmpresaImageRequest request);
         public Task<bool> deleteImageEmpresa(string publicId);
+
+        public Task<PostEmpresaImageResponse> uploadDetallesImg(PostDetalleContactoImageRequest request);
     }
 }

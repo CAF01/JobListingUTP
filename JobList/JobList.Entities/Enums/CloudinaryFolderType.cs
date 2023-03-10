@@ -4,6 +4,7 @@
     {
         Graduados,
         Empresa,
-        Extra
+        Extra,
+        Externo
     }
 }

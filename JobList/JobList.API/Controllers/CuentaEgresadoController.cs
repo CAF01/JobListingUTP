@@ -168,12 +168,12 @@
             return HelperResult.Result(result);
         }
         
-        [HttpPost("crear-oferta")]
-        public async Task<IActionResult> PostOfertaEmpresa(InsertOfertaTrabajoExternaRequest request)
-        {
-            var result = await this.mediator.Send(request);
-            return HelperResult.Result(result);
-        }
+        //[HttpPost("crear-oferta")]
+        //public async Task<IActionResult> PostOfertaEmpresa(InsertOfertaTrabajoExternaRequest request)
+        //{
+        //    var result = await this.mediator.Send(request);
+        //    return HelperResult.Result(result);
+        //}
 
         [HttpPut("borrar-oferta-activa")]
         public async Task<IActionResult> PutDeleteOfertaActiva(DeleteOfertaTrabajoActivaRequest request)
@@ -189,7 +189,13 @@
             return HelperResult.Result(result);
         }
 
-        //[AllowAnonymous]
+        [HttpPost("crear-oferta")]
+        public async Task<IActionResult> PostOfertaEgresado(InsertOfertaTrabajoExternaEgresadoRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        
         [HttpPost("upload-image")]
         public async Task<IActionResult> PostImage(IFormFile formFile)
         {
@@ -202,5 +208,15 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+
+        [HttpPost("upload-detalle-image")]
+        public async Task<IActionResult> PostDetalleImage(IFormFile formFile)
+        {
+            PostDetalleContactoImageRequest request = new PostDetalleContactoImageRequest();
+            request.file = formFile;
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
+        
     }
 }
