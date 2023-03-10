@@ -16,5 +16,10 @@
         public Task<PaginationListResponse<GetEmpresaOfertasHistorialResponse>> getOfertasHistorialEmpresa(GetEmpresaOfertasHistorialRequest request);
         public Task<GetOfertasTrabajoDetalleResponse> GetDetallesOferta(GetOfertasTrabajoDetalleRequest request);
         public Task<bool> updateEstadoPostulacion(UpdateEstadoPostulacionRequest request);
+
+        public Task<updateEmpresaFotoResponse> updateFoto(updateEmpresaFotoRequest request);
+        public Task<string> getUrlById(int idUsuario);
+
+        public Task<GetEmpresaDetallesPostuladoResponse> GetDetallesPostulado(GetEmpresaDetallesPostuladoRequest request);
     }
 }

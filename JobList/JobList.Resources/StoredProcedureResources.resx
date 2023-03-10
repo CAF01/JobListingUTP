@@ -630,4 +630,19 @@
   <data name="sp_Egresados_get_imgUrl" xml:space="preserve">
     <value>sp_Egresados_get_imgUrl</value>
   </data>
+  <data name="sp_Empresa_get_imgUrl" xml:space="preserve">
+    <value>sp_Empresa_get_imgUrl</value>
+  </data>
+  <data name="sp_updateFotoEmpresa" xml:space="preserve">
+    <value>sp_updateFotoEmpresa</value>
+  </data>
+  <data name="sp_Empresa_ObtenerConocimientosPostulado" xml:space="preserve">
+    <value>sp_Empresa_ObtenerConocimientosPostulado</value>
+  </data>
+  <data name="sp_Empresa_ObtenerExperienciasPostulado" xml:space="preserve">
+    <value>sp_Empresa_ObtenerExperienciasPostulado</value>
+  </data>
+  <data name="sp_Empresa_ObtenerHabilidadesPostulado" xml:space="preserve">
+    <value>sp_Empresa_ObtenerHabilidadesPostulado</value>
+  </data>
 </root>

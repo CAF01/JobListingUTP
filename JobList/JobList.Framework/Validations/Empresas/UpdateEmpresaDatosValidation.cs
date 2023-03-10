@@ -46,8 +46,6 @@
                 .MinimumLength(ValidatorHelper.TEN).WithMessage(ValidationResources.companymailMinLength)
                 .MaximumLength(ValidatorHelper.EIGHTYFIVE).WithMessage(ValidationResources.companymailMaxLength);
 
-            RuleFor(data => data.imgUrl).MaximumLength(ValidatorHelper.ONEHUNDRED).WithMessage(ValidationResources.imgUrlMaxLength);
-
             RuleFor(data => data.acercaEmpresa).NotNull().WithMessage(ValidationResources.companyDescriptionRequired)
                 .NotEmpty().WithMessage(ValidationResources.companyDescriptionNotEmpty)
                 .MinimumLength(ValidatorHelper.ONEHUNDRED).WithMessage(ValidationResources.companyDescriptionMinLength)

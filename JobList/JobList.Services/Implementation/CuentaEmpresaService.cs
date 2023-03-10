@@ -9,7 +9,6 @@
     using JobList.Resources;
     using JobList.Services.Service;
     using Microsoft.IdentityModel.Tokens;
-    using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
@@ -106,6 +105,21 @@
         public async Task<bool> updateEstadoPostulacion(UpdateEstadoPostulacionRequest request)
         {
             return await this.cuentaEmpresaRepository.updateEstadoPostulacion(request);
+        }
+
+        public async Task<updateEmpresaFotoResponse> updateFoto(updateEmpresaFotoRequest request)
+        {
+            return await this.cuentaEmpresaRepository.updateFoto(request);
+        }
+
+        public async Task<string> getUrlById(int idUsuario)
+        {
+            return await this.cuentaEmpresaRepository.getUrlById(idUsuario);
+        }
+
+        public async Task<GetEmpresaDetallesPostuladoResponse> GetDetallesPostulado(GetEmpresaDetallesPostuladoRequest request)
+        {
+            return await this.cuentaEmpresaRepository.GetDetallesPostulado(request);
         }
     }
 }
