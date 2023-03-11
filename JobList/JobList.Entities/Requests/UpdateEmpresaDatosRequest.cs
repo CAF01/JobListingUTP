@@ -15,7 +15,6 @@
         public string CP { get; set; } = default!;
         public string telefonos { get; set; } = default!;
         public string correoElectronico { get; set; } = default!;
-        public string imgUrl { get; set; } = default!;
         public string acercaEmpresa { get; set; } = default!;
 
         public string nombreResponsable { get; set; } = default!;

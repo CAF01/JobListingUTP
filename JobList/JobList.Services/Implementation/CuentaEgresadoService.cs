@@ -1,5 +1,6 @@
 ﻿namespace JobList.Services.Implementation
 {
+    using JobList.Entities.Helpers;
     using JobList.Entities.Requests;
     using JobList.Entities.Responses;
     using JobList.Framework;
@@ -143,6 +144,12 @@
         public async Task<string> getUrlById(int idUsuario)
         {
             return await this.cuentaEgresadoRepository.getUrlById(idUsuario);
+        }
+
+        public async Task<InsertOfertaTrabajoResponse> insertOfertaTrabajo(InsertOfertaTrabajoExternaEgresadoRequest request)
+        {
+            request.fechaCreacion = MexicoDateHelper.obtainDate();
+            return await this.cuentaEgresadoRepository.insertOfertaTrabajo(request);
         }
     }
 }

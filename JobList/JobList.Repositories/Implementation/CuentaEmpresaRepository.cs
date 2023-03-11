@@ -359,7 +359,6 @@
                 parameters.Add(StoredProcedureResources.TelefonoResponsable, request.telefonoResponsable);
                 parameters.Add(StoredProcedureResources.CorreoResponsable, request.correoElectronicoResponsable);
                 parameters.Add(StoredProcedureResources.DescripcionEmpresa, request.acercaEmpresa);
-                parameters.Add(StoredProcedureResources.ImgUrl, request.imgUrl);
 
 
                 var result = await dbConnection.ExecuteAsync(
@@ -667,11 +666,128 @@
                            commandTimeout: DatabaseHelper.TIMEOUT,
                            commandType: CommandType.StoredProcedure
                         );
-                return response.success = true;
+                return result>0;
             }
             catch
             {
                 return false;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<updateEmpresaFotoResponse> updateFoto(updateEmpresaFotoRequest request)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+                parameters.Add(StoredProcedureResources.ImgUrl, request.path);
+
+                var result = await dbConnection.ExecuteAsync(
+                           sql: StoredProcedureResources.sp_updateFotoEmpresa,
+                           param: parameters,
+                           transaction: null,
+                           commandTimeout: DatabaseHelper.TIMEOUT,
+                           commandType: CommandType.StoredProcedure
+                        );
+                return new updateEmpresaFotoResponse() { success = (result > 0) };
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<string> getUrlById(int idUsuario)
+        {
+            try
+            {
+                dbConnection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, idUsuario);
+
+                var result = await dbConnection.QueryFirstAsync<string>(
+                    sql: StoredProcedureResources.sp_Empresa_get_imgUrl,
+                    param: parameters,
+                    transaction: null,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                dbConnection?.Close();
+            }
+        }
+
+        public async Task<GetEmpresaDetallesPostuladoResponse> GetDetallesPostulado(GetEmpresaDetallesPostuladoRequest request)
+        {
+            try
+            {
+                GetEmpresaDetallesPostuladoResponse response = new GetEmpresaDetallesPostuladoResponse();
+                dbConnection.Open();
+
+                var parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                response.habilidades = await dbConnection.QueryAsync<HabilidadesEgresado>(
+                    sql: StoredProcedureResources.sp_Empresa_ObtenerHabilidadesPostulado,
+                    transaction: null,
+                    param: parameters,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure
+                    );
+
+                parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                response.conocimientos = await dbConnection.QueryAsync<ConocimientosEgresado>(
+                    sql: StoredProcedureResources.sp_Empresa_ObtenerConocimientosPostulado,
+                    transaction: null,
+                    param: parameters,
+                    commandTimeout: DatabaseHelper.TIMEOUT,
+                    commandType: CommandType.StoredProcedure
+                    );
+
+                parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                response.experiencias = await dbConnection.QueryAsync<ExperienciasEgresado>(
+                   sql: StoredProcedureResources.sp_Empresa_ObtenerExperienciasPostulado,
+                   transaction: null,
+                   param: parameters,
+                   commandTimeout: DatabaseHelper.TIMEOUT,
+                   commandType: CommandType.StoredProcedure
+                   );
+
+                parameters = new DynamicParameters();
+                parameters.Add(StoredProcedureResources.idUsuario, request.idUsuario);
+
+                response.imgUrl = await dbConnection.QueryFirstAsync<string>(
+                   sql: StoredProcedureResources.sp_Egresados_get_imgUrl,
+                   transaction: null,
+                   param: parameters,
+                   commandTimeout: DatabaseHelper.TIMEOUT,
+                   commandType: CommandType.StoredProcedure
+                   );
+
+                return response;
+            }
+            catch
+            {
+                return null;
             }
             finally
             {

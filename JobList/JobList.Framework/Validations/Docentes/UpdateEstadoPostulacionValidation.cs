@@ -9,7 +9,7 @@
         public UpdateEstadoPostulacionValidation()
         {
             RuleFor(data => data.idPostulacion).NotNull().NotEmpty().GreaterThan(ValidatorHelper.ZERO);
-            RuleFor(data => data.accion).NotNull().NotEmpty().GreaterThan(ValidatorHelper.ZERO).LessThanOrEqualTo(ValidatorHelper.TWO);
+            RuleFor(data => data.accion).NotNull().NotEmpty().GreaterThanOrEqualTo(ValidatorHelper.ZERO).LessThanOrEqualTo(ValidatorHelper.TWO);
         }
     }
 }

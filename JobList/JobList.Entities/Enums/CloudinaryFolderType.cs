@@ -3,7 +3,8 @@
     public enum CloudinaryFolderType
     {
         Graduados,
-        Empresas,
-        Extra
+        Empresa,
+        Extra,
+        Externo
     }
 }
