@@ -113,5 +113,21 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
+
+        [HttpGet("obtener-detalles-postulado")]
+        public async Task<IActionResult> GetDetallesPostulado(int idUsuario)
+        {
+            var result = await this.mediator.Send(new GetEmpresaDetallesPostuladoRequest() { idUsuario = idUsuario });
+            return HelperResult.Result(result);
+        }
+
+        [HttpPost("upload-detalle-image")]
+        public async Task<IActionResult> PostDetalleImage(IFormFile formFile)
+        {
+            PostDetalleContactoImageRequest request = new PostDetalleContactoImageRequest();
+            request.file = formFile;
+            var result = await this.mediator.Send(request);
+            return HelperResult.Result(result);
+        }
     }
 }
