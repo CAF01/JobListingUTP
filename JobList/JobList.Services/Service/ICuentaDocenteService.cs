@@ -12,5 +12,6 @@
         public Task<PaginationListResponse<ReadOfertasActivasDocenteResponse>> readOfertasActivasDocente(ReadOfertasActivasDocenteRequest request);    
         public Task<UpdatePasswordDocenteResponse> updatePassword(UpdatePasswordDocenteRequest request);
         public Task<InsertOfertaTrabajoResponse> insertOfertaTrabajo(InsertOfertaTrabajoExternaRequest request);
+        public Task<GetEmpresaDetallesPostuladoResponse> GetDetallesPostulado(GetEmpresaDetallesPostuladoRequest request);
     }
 }
