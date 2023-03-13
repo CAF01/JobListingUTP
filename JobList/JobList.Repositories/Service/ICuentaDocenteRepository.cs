@@ -12,5 +12,6 @@
         public Task<UpdatePasswordDocenteResponse> updatePassword(UpdatePasswordDocenteRequest request);
         public Task<bool> updateUltimoAccesoSistema(int idUsuario);
         public Task<InsertOfertaTrabajoResponse> insertOfertaTrabajo(InsertOfertaTrabajoExternaRequest request);
+        public Task<GetEmpresaDetallesPostuladoResponse> GetDetallesPostulado(GetEmpresaDetallesPostuladoRequest request);
     }
 }

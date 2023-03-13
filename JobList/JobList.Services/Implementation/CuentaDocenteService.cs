@@ -100,5 +100,11 @@
             request.fechaCreacion = MexicoDateHelper.obtainDate();
             return await this.cuentaDocenteRepository.insertOfertaTrabajo(request);
         }
+
+        // Obtener detalles de un postulante
+        public async Task<GetEmpresaDetallesPostuladoResponse> GetDetallesPostulado(GetEmpresaDetallesPostuladoRequest request)
+        {
+            return await this.cuentaDocenteRepository.GetDetallesPostulado(request);
+        }
     }
 }
