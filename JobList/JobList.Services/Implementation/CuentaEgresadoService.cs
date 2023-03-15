@@ -1,6 +1,7 @@
 ﻿namespace JobList.Services.Implementation
 {
     using JobList.Entities.Helpers;
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Entities.Responses;
     using JobList.Framework;
