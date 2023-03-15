@@ -217,6 +217,42 @@
             var result = await this.mediator.Send(request);
             return HelperResult.Result(result);
         }
-        
+
+        [HttpGet("list-empresas-afiliadas")]
+        public async Task<IActionResult> GetEmpresasAfiliadas()
+        {
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
+            var result = await this.mediator.Send(new ReadEmpresasAfiliadasRequest()
+            {
+                Skip = skip,
+                Take = take
+            });
+            return HelperResult.Result(result);
+        }
+
+        [HttpGet("detalles-empresa")]
+        public async Task<IActionResult> GetDetallesEmpresa(int idUsuarioEmpresa)
+        {
+            var result = await this.mediator.Send(new ReadDetallesEmpresaRequest()
+            {
+                idUsuarioEmpresa = idUsuarioEmpresa
+            });
+            return HelperResult.Result(result);
+        }
+
+        [HttpGet("list-ofertas-publicadas-empresa")]
+        public async Task<IActionResult> GetOfertasPublicadasEmpresa(int idUsuarioEmpresa)
+        {
+            var skip = Convert.ToInt16(HttpContext.Request.Query["skip"]);
+            var take = string.IsNullOrEmpty(HttpContext.Request.Query["take"]) ? options.PageSize : Convert.ToInt16(HttpContext.Request.Query["take"]);
+            var result = await this.mediator.Send(new ReadOfertasPublicadasEmpresaRequest()
+            {
+                idUsuarioEmpresa = idUsuarioEmpresa,
+                Skip = skip,
+                Take = take
+            });
+            return HelperResult.Result(result);
+        }
     }
 }

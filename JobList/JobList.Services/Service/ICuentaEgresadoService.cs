@@ -1,4 +1,5 @@
-﻿using JobList.Entities.Requests;
+﻿using JobList.Entities.Models;
+using JobList.Entities.Requests;
 using JobList.Entities.Responses;
 
 namespace JobList.Services.Service

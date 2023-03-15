@@ -1,5 +1,6 @@
 ﻿namespace JobList.Repositories.Service
 {
+    using JobList.Entities.Models;
     using JobList.Entities.Requests;
     using JobList.Entities.Responses;
 
